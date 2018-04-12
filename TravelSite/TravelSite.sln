@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelSite", "TravelSite\Tr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{A8A2053B-E85B-4FF1-98EE-08C061E3A327}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelSiteLibrary", "TravelSiteLibrary\TravelSiteLibrary.csproj", "{70EE63FD-E314-49DC-BE99-4D11834C9652}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A8A2053B-E85B-4FF1-98EE-08C061E3A327}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8A2053B-E85B-4FF1-98EE-08C061E3A327}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8A2053B-E85B-4FF1-98EE-08C061E3A327}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70EE63FD-E314-49DC-BE99-4D11834C9652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70EE63FD-E314-49DC-BE99-4D11834C9652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70EE63FD-E314-49DC-BE99-4D11834C9652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70EE63FD-E314-49DC-BE99-4D11834C9652}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
