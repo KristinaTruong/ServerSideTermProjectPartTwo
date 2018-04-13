@@ -73,6 +73,7 @@
     <Content Include="image\nortonSmall.png" />
     <Content Include="image\SCOTT-A-WOODWARD_1SW1943-1170x689.jpg" />
     <Content Include="image\ZackRoifLandscapePhotography.jpg" />
+    <Content Include="OurVision.aspx" />
     <Content Include="packages.config" />
     <Content Include="Registration.aspx" />
     <Content Include="TOS.aspx" />
@@ -88,6 +89,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OurVision.aspx.cs">
+      <DependentUpon>OurVision.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OurVision.aspx.designer.cs">
+      <DependentUpon>OurVision.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration.aspx.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
