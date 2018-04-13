@@ -71,8 +71,11 @@
     <Content Include="image\KJ LOGO.png" />
     <Content Include="image\norton-seal-large.png" />
     <Content Include="image\nortonSmall.png" />
+    <Content Include="image\SCOTT-A-WOODWARD_1SW1943-1170x689.jpg" />
+    <Content Include="image\ZackRoifLandscapePhotography.jpg" />
     <Content Include="packages.config" />
     <Content Include="Registration.aspx" />
+    <Content Include="TOS.aspx" />
     <Content Include="TravelSite.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -92,6 +95,13 @@
     </Compile>
     <Compile Include="Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TOS.aspx.cs">
+      <DependentUpon>TOS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TOS.aspx.designer.cs">
+      <DependentUpon>TOS.aspx</DependentUpon>
     </Compile>
     <Compile Include="TravelSite.Master.cs">
       <DependentUpon>TravelSite.Master</DependentUpon>
