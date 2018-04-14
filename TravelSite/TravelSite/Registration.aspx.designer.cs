@@ -13,15 +13,6 @@ namespace TravelSite {
     public partial class Registration {
         
         /// <summary>
-        /// head control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
-        
-        /// <summary>
         /// travelForm control.
         /// </summary>
         /// <remarks>
@@ -40,13 +31,13 @@ namespace TravelSite {
         protected global::System.Web.UI.WebControls.TextBox txtCustomerName;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// validatorName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator validatorName;
         
         /// <summary>
         /// txtCustomerPhone control.
@@ -58,13 +49,13 @@ namespace TravelSite {
         protected global::System.Web.UI.WebControls.TextBox txtCustomerPhone;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// validatorPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator validatorPhone;
         
         /// <summary>
         /// txtCustomerEmail control.
@@ -76,13 +67,31 @@ namespace TravelSite {
         protected global::System.Web.UI.WebControls.TextBox txtCustomerEmail;
         
         /// <summary>
-        /// RequiredFieldValidator3 control.
+        /// validatorEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator validatorEmail;
+        
+        /// <summary>
+        /// txtCustomerPayment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCustomerPayment;
+        
+        /// <summary>
+        /// validatorPayment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator validatorPayment;
         
         /// <summary>
         /// btnRegister control.
@@ -92,5 +101,14 @@ namespace TravelSite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegister;
+        
+        /// <summary>
+        /// testing control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl testing;
     }
 }
