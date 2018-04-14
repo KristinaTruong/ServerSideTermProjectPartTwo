@@ -19,13 +19,35 @@ namespace TravelSite
         {
             if (!Page.IsPostBack)
             {
-               
+
+                String password = CustomerData.getCustomerPassword("tuf54356@temple.edu");
+                testing.Style["display"] = "block";
+                testing.InnerText += "PASSWORD:-" + password;
+
             }
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            
+            CustomerClass newCustomer =
+                new CustomerClass(txtCustomerEmail.Text,
+                txtCustomerName.Text,
+                txtCustomerPhone.Text,
+                txtCustomerAddress.Text,
+                txtCustomerEmail.Text,
+                txtCustomerPayment.Text,
+                txtCustomerPassword.Text);
+            if (CustomerData.checkIfLoginExists(newCustomer))
+            {
+                invalidLogin.Style["display"] = "block";
+                txtCustomerEmail.Text = "";
+            }
+            else
+            {
+                CustomerData.createCustomer(newCustomer);
+                //validLogin.Style["display"] = "block";
+            }
+
         }
     }
 }

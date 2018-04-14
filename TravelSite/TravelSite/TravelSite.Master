@@ -39,7 +39,6 @@
             }
 
             #footer {
-
                 width: auto;
                 max-width:100%;
                 background-color:  #343a40;

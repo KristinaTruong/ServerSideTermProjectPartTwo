@@ -7,7 +7,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Teko">
     <title></title>
-    
+
     <style>
         * {
             font-family: 'Teko', Arial;
@@ -32,11 +32,14 @@
             height: 100%;
             max-height: 100%;
             margin-top: 30px;
-            margin-bottom: 30px;
+            
+            padding-bottom: 10px;
         }
 
         #footer {
-            width: auto;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
             max-width: 100%;
             background-color: #343a40;
             color: white;
@@ -72,6 +75,10 @@
             padding-left: 5px;
             padding-right: 5px;
         }
+
+        #invalidLogin {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -93,32 +100,49 @@
     </nav>
     <div class="contentBody">
         <div class="row" style="margin: 0px;">
+            
             <div class="col">
                 <form id="travelForm" runat="server">
-                    <div>
-                        <br />
-                        Full Name<br />
-                        <asp:TextBox ID="txtCustomerName" runat="server" ValidationGroup="validRegister" Width="311px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="validatorName" runat="server" ControlToValidate="txtCustomerName" ErrorMessage="*Required" ForeColor="Red" SetFocusOnError="True" ValidationGroup="validRegister">*Required</asp:RequiredFieldValidator>
-                        <br />
-                        Phone Number<br />
-                        <asp:TextBox ID="txtCustomerPhone" runat="server" ValidationGroup="validRegister" Width="315px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="validatorPhone" runat="server" ControlToValidate="txtCustomerPhone" ErrorMessage="*Required" ForeColor="Red" ValidationGroup="validRegister">*Required</asp:RequiredFieldValidator>
-                        <br />
-                        Email Address<br />
-                        <asp:TextBox ID="txtCustomerEmail" runat="server" ValidationGroup="validRegister" Width="311px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="validatorEmail" runat="server" ControlToValidate="txtCustomerEmail" ErrorMessage="*Required" ForeColor="Red" ValidationGroup="validRegister">*Required</asp:RequiredFieldValidator>
-                        <br />
-                        Payment Information<br />
-                        <asp:TextBox ID="txtCustomerPayment" runat="server" ValidationGroup="validRegister" Width="311px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="validatorPayment" runat="server" ControlToValidate="txtCustomerEmail" ErrorMessage="*Required" ForeColor="Red" ValidationGroup="validRegister">*Required</asp:RequiredFieldValidator>
-                        <br />
-                        <br />
-                        <asp:Button ID="btnRegister" runat="server" BackColor="#343A40" BorderStyle="Solid" ForeColor="White" OnClick="btnRegister_Click" Text="Register" ValidationGroup="validRegister" Width="316px" />
-                        <br />
-                        <div id="testing" runat="server" style="max-width:600px;">
-
+                    <h2>Sign up with us!</h2>
+                    <div class="alert alert-danger" role="alert" id="invalidLogin" runat="server">
+                        ERROR: This email address is already associated with an exisiting account!<br />
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Full Name<br />
+                            <asp:TextBox ID="txtCustomerName" runat="server" ValidationGroup="validRegister" Width="311px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="validatorName" runat="server" ControlToValidate="txtCustomerName" ErrorMessage="*Required" ForeColor="Red" SetFocusOnError="True" ValidationGroup="validRegister">*Required</asp:RequiredFieldValidator>
+                            <br />
+                            Password<br />
+                            <asp:TextBox ID="txtCustomerPassword" runat="server" ValidationGroup="validRegister" Width="315px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="validatorPassword" runat="server" ControlToValidate="txtCustomerPassword" ErrorMessage="*Required" ForeColor="Red" ValidationGroup="validRegister">*Required</asp:RequiredFieldValidator>
+                            <br />
+                            Home Address<br />
+                            <asp:TextBox ID="txtCustomerAddress" runat="server" ValidationGroup="validRegister" Width="315px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="validatorAddress" runat="server" ControlToValidate="txtCustomerAddress" ErrorMessage="*Required" ForeColor="Red" ValidationGroup="validRegister">*Required</asp:RequiredFieldValidator>
+                            <br />
                         </div>
+                        <div class="col">
+                            Phone Number<br />
+                            <asp:TextBox ID="txtCustomerPhone" runat="server" ValidationGroup="validRegister" Width="315px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="validatorPhone" runat="server" ControlToValidate="txtCustomerPhone" ErrorMessage="*Required" ForeColor="Red" ValidationGroup="validRegister">*Required</asp:RequiredFieldValidator>
+                            <br />
+                            Email Address<br />
+                            <asp:TextBox ID="txtCustomerEmail" runat="server" ValidationGroup="validRegister" Width="311px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="validatorEmail" runat="server" ControlToValidate="txtCustomerEmail" ErrorMessage="*Required" ForeColor="Red" ValidationGroup="validRegister">*Required</asp:RequiredFieldValidator>
+                            <br />
+                            Payment Information<br />
+                            <asp:TextBox ID="txtCustomerPayment" runat="server" ValidationGroup="validRegister" Width="311px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="validatorPayment" runat="server" ControlToValidate="txtCustomerEmail" ErrorMessage="*Required" ForeColor="Red" ValidationGroup="validRegister">*Required</asp:RequiredFieldValidator>
+                            <br />
+                            <br />
+                        </div>
+                    </div>
+                    <!--  ----------------------------------------->
+                    <div class="row">
+                        <asp:Button ID="btnRegister" Width="100%" runat="server" BackColor="#343A40" BorderStyle="Solid" ForeColor="White" OnClick="btnRegister_Click" Text="Register" ValidationGroup="validRegister" />
+                    </div>
+                    <div id="testing" runat="server" style="max-width: 600px;">
                     </div>
                 </form>
             </div>
