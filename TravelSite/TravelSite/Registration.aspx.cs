@@ -19,10 +19,18 @@ namespace TravelSite
         {
             if (!Page.IsPostBack)
             {
-
-                String password = CustomerData.getCustomerPassword("tuf54356@temple.edu");
+                /*
+                HttpCookie travelCookie = new HttpCookie("TravelSite");
+                travelCookie.Value = "TravelCookie";
+                travelCookie.Expires = new DateTime(2019, 1, 1);
+                travelCookie.Values["LoginID"] = "tuf54356@temple.edu";
+                travelCookie.Values["LastVisited"] = DateTime.Now.ToString();
+                Response.Cookies.Add(travelCookie);
+                Response.Redirect("Account.aspx");*/
+            //---------------------------------
+            /*String password = CustomerData.getCustomerPassword("tuf54356@temple.edu");
                 testing.Style["display"] = "block";
-                testing.InnerText += "PASSWORD:-" + password;
+                testing.InnerText += "PASSWORD:-" + password;*/
 
             }
         }
@@ -46,6 +54,17 @@ namespace TravelSite
             {
                 CustomerData.createCustomer(newCustomer);
                 //validLogin.Style["display"] = "block";
+                if (chkRemember.Checked == true)
+                {
+                    HttpCookie travelCookie = new HttpCookie("TravelSite");
+                    travelCookie.Value = "TravelCookie";
+                    travelCookie.Expires = new DateTime(2019, 1, 1);
+                    travelCookie.Values["LoginID"] = newCustomer.customerLoginID;
+                    travelCookie.Values["LastVisited"] = DateTime.Now.ToString();
+                    Response.Cookies.Add(travelCookie);
+                    
+                }
+                Response.Redirect("Account.aspx");
             }
 
         }

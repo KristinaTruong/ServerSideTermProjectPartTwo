@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Data;
 using Utilities;
 using System.Data.SqlClient;
+using System.Web;
 
 namespace TravelSiteLibrary
 {
@@ -97,8 +98,8 @@ namespace TravelSiteLibrary
         public static void createCustomer(CustomerClass customer)
         {
             if (checkIfLoginExists(customer) == false)
-                //checks if customer login already exists, 
-                //if not already exists, continue to create the record
+            //checks if customer login already exists, 
+            //if not already exists, continue to create the record
             {
                 SqlCommand objCommand = new SqlCommand();
                 objCommand.CommandType = CommandType.StoredProcedure;
@@ -113,6 +114,26 @@ namespace TravelSiteLibrary
                 DataSet ds = objDB.GetDataSetUsingCmdObj(objCommand);
             }
 
+        }
+
+        public static Boolean checkForLoginCookie(HttpCookie objCookie)
+        {
+            if (objCookie != null)
+            {
+                if (objCookie.Values["LoginID"] != null)
+                {
+                    if (objCookie.Values["LoginID"].ToString() != "")
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                return false;
+            }
+            return false;
         }
     }
 }

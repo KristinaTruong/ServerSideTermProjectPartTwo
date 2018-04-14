@@ -120,7 +120,8 @@
                             Home Address<br />
                             <asp:TextBox ID="txtCustomerAddress" runat="server" ValidationGroup="validRegister" Width="315px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="validatorAddress" runat="server" ControlToValidate="txtCustomerAddress" ErrorMessage="*Required" ForeColor="Red" ValidationGroup="validRegister">*Required</asp:RequiredFieldValidator>
-                            <br />
+                            <br /><br />
+                            <asp:CheckBox ID="chkRemember" runat="server" Text="Remember Me" />
                         </div>
                         <div class="col">
                             Phone Number<br />
@@ -168,7 +169,8 @@
                 </div>
                 <div class="col-2" style="font-size: 15px;">
                     215-555-5555<br />
-                    123 Maple Street<br />
+                    123 Maple Street
+                    <br />
                     Philadelphia, PA 19231
                 </div>
                 <div class="col-2">
