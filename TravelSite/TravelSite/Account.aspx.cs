@@ -12,16 +12,20 @@ namespace TravelSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie objCookie;
-            objCookie = Request.Cookies["TravelSite"];
-            Boolean loggedIn = CustomerData.checkForLoginCookie(objCookie);
-            if (loggedIn)
+            if (!Page.IsPostBack)
             {
-                Response.Redirect("TOS.aspx");
-            }
-            else
-            {
-                Response.Redirect("Registration.aspx");
+                //copy and paste to check if a user is logged in
+                HttpCookie objCookie;
+                objCookie = Request.Cookies["TravelSite"];
+                Boolean loggedIn = CustomerData.checkForLoginCookie(objCookie);
+                if (loggedIn)
+                {
+                    //do nothing
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
             }
 
         }

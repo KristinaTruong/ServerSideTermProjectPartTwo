@@ -58,7 +58,7 @@ namespace TravelSite
                 {
                     HttpCookie travelCookie = new HttpCookie("TravelSite");
                     travelCookie.Value = "TravelCookie";
-                    travelCookie.Expires = new DateTime(2019, 1, 1);
+                    travelCookie.Expires = new DateTime(2025, 1, 1);
                     travelCookie.Values["LoginID"] = newCustomer.customerLoginID;
                     travelCookie.Values["LastVisited"] = DateTime.Now.ToString();
                     Response.Cookies.Add(travelCookie);

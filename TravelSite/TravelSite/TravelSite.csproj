@@ -67,6 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account.aspx" />
+    <Content Include="Car.aspx" />
+    <Content Include="Confirmation.aspx" />
+    <Content Include="Experience.aspx" />
+    <Content Include="Flight.aspx" />
+    <Content Include="Hotel.aspx" />
     <Content Include="image\KJ LOGO smaller 2.png" />
     <Content Include="image\KJ LOGO smaller.png" />
     <Content Include="image\KJ LOGO.png" />
@@ -75,6 +80,8 @@
     <Content Include="image\SCOTT-A-WOODWARD_1SW1943-1170x689.jpg" />
     <Content Include="image\ZackRoifLandscapePhotography.jpg" />
     <Content Include="Login.aspx" />
+    <Content Include="MyTrips.aspx" />
+    <Content Include="MyVacationPackage.aspx" />
     <Content Include="OurVision.aspx" />
     <Content Include="packages.config" />
     <Content Include="Registration.aspx" />
@@ -98,12 +105,61 @@
     <Compile Include="Account.aspx.designer.cs">
       <DependentUpon>Account.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Car.aspx.cs">
+      <DependentUpon>Car.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Car.aspx.designer.cs">
+      <DependentUpon>Car.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Confirmation.aspx.cs">
+      <DependentUpon>Confirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Confirmation.aspx.designer.cs">
+      <DependentUpon>Confirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Experience.aspx.cs">
+      <DependentUpon>Experience.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Experience.aspx.designer.cs">
+      <DependentUpon>Experience.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Flight.aspx.cs">
+      <DependentUpon>Flight.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Flight.aspx.designer.cs">
+      <DependentUpon>Flight.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Hotel.aspx.cs">
+      <DependentUpon>Hotel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Hotel.aspx.designer.cs">
+      <DependentUpon>Hotel.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyTrips.aspx.cs">
+      <DependentUpon>MyTrips.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyTrips.aspx.designer.cs">
+      <DependentUpon>MyTrips.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyVacationPackage.aspx.cs">
+      <DependentUpon>MyVacationPackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyVacationPackage.aspx.designer.cs">
+      <DependentUpon>MyVacationPackage.aspx</DependentUpon>
     </Compile>
     <Compile Include="OurVision.aspx.cs">
       <DependentUpon>OurVision.aspx</DependentUpon>

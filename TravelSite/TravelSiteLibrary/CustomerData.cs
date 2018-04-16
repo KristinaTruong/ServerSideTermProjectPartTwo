@@ -135,5 +135,10 @@ namespace TravelSiteLibrary
             }
             return false;
         }
+
+        public static void checkIfLoggedIn()
+        {
+
+        }
     }
 }
