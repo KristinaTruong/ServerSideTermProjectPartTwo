@@ -74,6 +74,7 @@
     <Content Include="image\nortonSmall.png" />
     <Content Include="image\SCOTT-A-WOODWARD_1SW1943-1170x689.jpg" />
     <Content Include="image\ZackRoifLandscapePhotography.jpg" />
+    <Content Include="Login.aspx" />
     <Content Include="OurVision.aspx" />
     <Content Include="packages.config" />
     <Content Include="Registration.aspx" />
@@ -96,6 +97,13 @@
     </Compile>
     <Compile Include="Account.aspx.designer.cs">
       <DependentUpon>Account.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="OurVision.aspx.cs">
       <DependentUpon>OurVision.aspx</DependentUpon>
