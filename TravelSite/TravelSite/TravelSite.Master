@@ -89,30 +89,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    <!-- ADD FLIGHT ASPX PAGE LATER -->
+                    <a class="nav-link" href="Homepage.aspx">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Flights</a>
-                    <!-- ADD LINK -->
+                    <a class="nav-link" href="Flight.aspx">Flights</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Hotels</a><!-- ADD LINK -->
+                    <a class="nav-link" href="Hotel.aspx">Hotels</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Car Rental</a><!-- ADD LINK -->
+                    <a class="nav-link" href="Car.aspx">Car Rental</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Experiences</a><!-- ADD LINK -->
+                    <a class="nav-link" href="Experience.aspx">Experiences</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Vacation Package</a><!-- ADD LINK -->
+                    <a class="nav-link" href="MyVacationPackage.aspx">My Vacation Package</a>
                 </li>
             </ul>
             <div class="float-right">
-                <a href="#">My Trips</a><!-- ADD LINK -->
-                <a href="#">Account</a><!-- ADD LINK -->
-                <a href="#">Logout</a><!-- ADD LINK -->
+                <a href="MyTrips.aspx">My Trips</a>
+                <a href="Account.aspx">Account</a>
+                <a href="Login.aspx">Logout</a>
             </div>
         </div>
     </nav>
