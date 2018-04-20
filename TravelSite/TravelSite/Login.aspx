@@ -25,7 +25,7 @@
         body {
             background-image: url("image/ZackRoifLandscapePhotography.jpg");
             background-repeat: no-repeat;
-            background-size: 100%;
+            background-size: cover;
         }
 
         .login-form {

@@ -73,6 +73,10 @@
     <Content Include="Flight.aspx" />
     <Content Include="Homepage.aspx" />
     <Content Include="Hotel.aspx" />
+    <Content Include="image\272866-car-combi-748x495.jpg" />
+    <Content Include="image\6-Places-to-Swim-with-Dolphins-1835cdaa19ee4566aa631ea6ecaa5a0d.jpg" />
+    <Content Include="image\air-airplane-blue-sky-cloud-Favim.com-3157133.jpg" />
+    <Content Include="image\iberostar-grand-hotel-bavaro-4256x2828-punta-kana-best-hotels-of-2017-3175.jpg" />
     <Content Include="image\KJ LOGO smaller 2.png" />
     <Content Include="image\KJ LOGO smaller.png" />
     <Content Include="image\KJ LOGO.png" />
@@ -84,6 +88,7 @@
     <Content Include="MyTrips.aspx" />
     <Content Include="MyVacationPackage.aspx" />
     <Content Include="OurVision.aspx" />
+    <Content Include="PackagePageTemplate.aspx" />
     <Content Include="packages.config" />
     <Content Include="Registration.aspx" />
     <Content Include="TOS.aspx" />
@@ -175,6 +180,13 @@
     </Compile>
     <Compile Include="OurVision.aspx.designer.cs">
       <DependentUpon>OurVision.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PackagePageTemplate.aspx.cs">
+      <DependentUpon>PackagePageTemplate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PackagePageTemplate.aspx.designer.cs">
+      <DependentUpon>PackagePageTemplate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration.aspx.cs">
