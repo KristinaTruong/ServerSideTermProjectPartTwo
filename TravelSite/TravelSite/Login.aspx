@@ -139,7 +139,7 @@
 
                 <asp:Button ID="btnLogin" runat="server" Text="Login" class="btn btn-primary btn-bloc" OnClick="btnLogin_Click" ValidationGroup="validLogin"></asp:Button>
 
-                <input type="checkbox" checked="checked" name="remember" class="btn btn-primary btn-bloc" />
+                <input type="checkbox" checked="checked" name="remember" runat="server" id="rememberMe" class="btn btn-primary btn-bloc" />
                 Remember me<br />
                 <hr />
 

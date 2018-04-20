@@ -112,6 +112,9 @@
                 <form id="travelForm" runat="server">
                     <div style="margin:auto;text-align:center;"><img src="image/KJ LOGO smaller.png" alt="" class="img-responsive" /></div>
                     <h2>Sign up with us!</h2>
+                    <div id="successfulReg" class="alert alert-success" role="alert" runat="server" style="display:none;">
+  SUCCESS! You've successfully created an account! <a href="Login.aspx">Click here to log in!</a>
+</div>
                     <div class="alert alert-danger" role="alert" id="invalidLogin" runat="server">
                         ERROR: This email address is already associated with an exisiting account!<br />
                     </div>
@@ -142,7 +145,7 @@
                             <br />
                             Payment Information<br />
                             <asp:TextBox ID="txtCustomerPayment" runat="server" ValidationGroup="validRegister" Width="311px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="validatorPayment" runat="server" ControlToValidate="txtCustomerEmail" ErrorMessage="*Required" ForeColor="Red" ValidationGroup="validRegister">*Required</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="validatorPayment" runat="server" ControlToValidate="txtCustomerPayment" ErrorMessage="*Required" ForeColor="Red" ValidationGroup="validRegister">*Required</asp:RequiredFieldValidator>
                             <br />
                             <br />
                         </div>

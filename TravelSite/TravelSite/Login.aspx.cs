@@ -24,23 +24,23 @@ namespace TravelSite
                 {
                     Response.Redirect("Homepage.aspx");
                 }
-                
+
             }
-                /*
-                if (!IsPostBack)
+            /*
+            if (!IsPostBack)
+            {
+                if (Request.Cookies["TravelSite"] != null)
                 {
-                    if (Request.Cookies["TravelSite"] != null)
-                    {
-                        cookieExists = true;
-                        cookie = Request.Cookies["TravelSite"];
-                        if (cookie.Values["LoginID"] != null) { txtUserNm.Text = cookie.Values["LoginID"].ToString(); }
+                    cookieExists = true;
+                    cookie = Request.Cookies["TravelSite"];
+                    if (cookie.Values["LoginID"] != null) { txtUserNm.Text = cookie.Values["LoginID"].ToString(); }
 
-                        if (cookie.Values["Password"] != null) { txtPassword.Text = cookie.Values["Password"].ToString(); }
-                    }
-                    else { }
-                }*/
+                    if (cookie.Values["Password"] != null) { txtPassword.Text = cookie.Values["Password"].ToString(); }
+                }
+                else { }
+            }*/
 
-            }
+        }
 
         protected void lbtnCreateAccount_Click(object sender, EventArgs e)
         {
@@ -55,27 +55,34 @@ namespace TravelSite
             if (CustomerData.checkIfLoginExists(loginCustomer))
             {
                 String correctPassword = CustomerData.getCustomerPassword(txtUserNm.Text);
-                if(enteredPassword == correctPassword)
+                if (enteredPassword == correctPassword)
                 {
                     if (!cookieExists)
                     {
-                        CustomerClass newCustomer =
-                    new CustomerClass();
+                        CustomerClass newCustomer = new CustomerClass();
                         newCustomer.customerLoginID = txtUserNm.Text.ToString();
                         newCustomer.customerPassword = txtPassword.Text.ToString();
                         HttpCookie travelCookie = new HttpCookie("TravelSite");
                         travelCookie.Value = "TravelCookie";
-                        travelCookie.Expires = new DateTime(2025, 1, 1);
+                        
                         travelCookie.Values["LoginID"] = newCustomer.customerLoginID;
                         travelCookie.Values["Password"] = txtPassword.Text;
                         travelCookie.Values["LastVisited"] = DateTime.Now.ToString();
+
+                        if(rememberMe.Checked == true)
+                        {
+                            travelCookie.Expires = new DateTime(2025, 1, 1);
+                        }
                         Response.Cookies.Add(travelCookie);
                     }
                     else
                     {
                         cookie.Values["LoginID"] = txtUserNm.Text;
                         cookie.Values["Password"] = txtPassword.Text;
-                        cookie.Values["LastVisited"] = DateTime.Now.ToString();
+                        if (rememberMe.Checked == true)
+                        {
+                            cookie.Expires = new DateTime(2025, 1, 1);
+                        }
                         Response.Cookies.Add(cookie);
                     }
                     Response.Redirect("Homepage.aspx");
