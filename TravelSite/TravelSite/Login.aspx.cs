@@ -69,16 +69,19 @@ namespace TravelSite
                         travelCookie.Values["Password"] = txtPassword.Text;
                         travelCookie.Values["LastVisited"] = DateTime.Now.ToString();
 
+                        //if remember me is checked, set a far off expiration date
                         if(rememberMe.Checked == true)
                         {
                             travelCookie.Expires = new DateTime(2025, 1, 1);
                         }
+
                         Response.Cookies.Add(travelCookie);
                     }
                     else
                     {
                         cookie.Values["LoginID"] = txtUserNm.Text;
                         cookie.Values["Password"] = txtPassword.Text;
+                        //if remember me is checked, set a far off expiration date
                         if (rememberMe.Checked == true)
                         {
                             cookie.Expires = new DateTime(2025, 1, 1);

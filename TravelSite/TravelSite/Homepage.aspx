@@ -25,6 +25,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container container-fluid">
+        <div class="row"><div class="col"><h1>Welcome!</h1></div></div>
+        <div class="row"><div class="col">To get started on your personalized vacation package, <br />please select from below to start adding items to your dream vacation!</div></div>
+        <div class="row"><div class="col"><br /><hr /></div></div>
         <div class="row">
 
             <div class="col">

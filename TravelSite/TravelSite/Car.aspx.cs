@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TravelSiteLibrary;
+
 namespace TravelSite
 {
     public partial class Car : System.Web.UI.Page
@@ -20,6 +21,10 @@ namespace TravelSite
                 if (loggedIn)
                 {
                     //do nothing
+                    //Control myCtrl = LoadControl("PageTemplateASCX.ascx"); Form.Controls.Add(myCtrl);
+                    /*
+                    PageTempleASCX myCtrl = (PageTempleASCX)LoadControl("PageTemplateASCX.ascx");
+                    Form.Controls.Add(myCtrl);*/
                 }
                 else
                 {
@@ -27,6 +32,14 @@ namespace TravelSite
                 }
             }
 
+        }
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (true) //validation of input
+            {
+
+            }
+            //gvAvailable.DataBind();
         }
     }
 }
