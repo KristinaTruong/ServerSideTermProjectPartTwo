@@ -29,5 +29,15 @@ namespace TravelSite
             }
 
         }
+
+        protected void btnEditClick(object sender, EventArgs e)
+        {
+            txtAddress.Enabled = true;
+            txtName.Enabled = true;
+            txtEmail.Enabled = true;
+            txtPassword.Enabled = true;
+            txtPhone.Enabled = true;
+            btnSave.Enabled = true;
+        }
     }
 }
