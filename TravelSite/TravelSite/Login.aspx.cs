@@ -22,7 +22,7 @@ namespace TravelSite
                 cookieExists = true;
                 if ((cookie.Values["LoginID"] != null) && (cookie.Values["Password"] != null))
                 {
-                    Response.Redirect("Flight.aspx");
+                    Response.Redirect("Homepage.aspx");
                 }
                 
             }
@@ -78,7 +78,7 @@ namespace TravelSite
                         cookie.Values["LastVisited"] = DateTime.Now.ToString();
                         Response.Cookies.Add(cookie);
                     }
-                    Response.Redirect("Flight.aspx");
+                    Response.Redirect("Homepage.aspx");
                 }
                 else
                 {

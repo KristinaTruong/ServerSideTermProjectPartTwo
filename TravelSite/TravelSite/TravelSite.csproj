@@ -71,6 +71,7 @@
     <Content Include="Confirmation.aspx" />
     <Content Include="Experience.aspx" />
     <Content Include="Flight.aspx" />
+    <Content Include="Homepage.aspx" />
     <Content Include="Hotel.aspx" />
     <Content Include="image\KJ LOGO smaller 2.png" />
     <Content Include="image\KJ LOGO smaller.png" />
@@ -132,6 +133,13 @@
     </Compile>
     <Compile Include="Flight.aspx.designer.cs">
       <DependentUpon>Flight.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Homepage.aspx.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Homepage.aspx.designer.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Hotel.aspx.cs">
       <DependentUpon>Hotel.aspx</DependentUpon>
