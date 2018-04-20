@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravelSiteLibrary
 {
-    class Flight
+    public class CarClass
     {
     }
 }

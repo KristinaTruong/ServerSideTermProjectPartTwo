@@ -22,18 +22,24 @@
 
         form {
             padding: 30px;
+            vertical-align:middle;
             font-family: 'Agency FB',Arial;
             font-size: 19px;
-            background-color: white;
-            opacity: 0.9;
-            width: 80%;
+            background-color: darkgray;
+            opacity: 0.85;
+            width: 60%;
             margin: auto;
             max-width: 100%;
             height: 100%;
             max-height: 100%;
             margin-top: 30px;
+
             
             padding-bottom: 10px;
+
+
+            margin-top: 40px;
+            margin-bottom: 40px;
         }
 
         #footer {
@@ -82,6 +88,7 @@
     </style>
 </head>
 <body>
+    <!--
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-size: 20px;">
         <a class="navbar-brand" href="#">
             <img src="image/KJ%20LOGO%20smaller%202.png" />
@@ -97,12 +104,13 @@
                 </li>
             </ul>
         </div>
-    </nav>
+    </nav> -->
     <div class="contentBody">
         <div class="row" style="margin: 0px;">
             
             <div class="col">
                 <form id="travelForm" runat="server">
+                    <div style="margin:auto;text-align:center;"><img src="image/KJ LOGO smaller.png" alt="" class="img-responsive" /></div>
                     <h2>Sign up with us!</h2>
                     <div class="alert alert-danger" role="alert" id="invalidLogin" runat="server">
                         ERROR: This email address is already associated with an exisiting account!<br />
@@ -149,6 +157,7 @@
             </div>
         </div>
     </div>
+    <!-- 
     <div id="footer">
         <div class="container">
             <div class="row">
@@ -185,7 +194,7 @@
 
             </div>
         </div>
-    </div>
+    </div>-->
 </body>
 
 </html>
