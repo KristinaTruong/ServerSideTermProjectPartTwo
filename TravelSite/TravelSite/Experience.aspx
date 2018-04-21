@@ -7,7 +7,7 @@
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <h1>Explore Activities</h1>
+      <h1>Experience</h1>
     <div id="searchSection" runat="server">
         <div class="row">
             <div class="col">
@@ -25,6 +25,7 @@
             </div>
         </div>
     </div>
+    <br />
     <div class="container container-fluid">
     <div class="row">
         <div class="col"><asp:Button ID="btnSearch" class="btn btn-dark"
@@ -34,7 +35,22 @@
                 runat="server" Text="Add" style="width:100%;display:none;"/></div>
 
     </div></div>
-    <asp:GridView ID="gvAvailable" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" EmptyDataText="No results were found." ForeColor="Black" GridLines="Horizontal" AutoGenerateColumns="False">
+    <br />
+    <asp:GridView ID="gvAvailable" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" EmptyDataText="No results were found." ForeColor="Black" GridLines="Horizontal" AutoGenerateColumns="False" Width="100%">
+        <Columns>
+            <asp:TemplateField HeaderText="Select">
+                <ItemTemplate>
+                    <asp:CheckBox ID="chkSelect" runat="server" TextAlign="Left" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:BoundField DataField="Agency_Id" Visible="False" />
+            <asp:BoundField DataField="Agency_Name" HeaderText="Name" />
+            <asp:BoundField DataField="Agency_City" HeaderText="City" />
+            <asp:BoundField DataField="Agency_State" HeaderText="State" />
+            <asp:BoundField DataField="Agency_Zip" HeaderText="Zip" />
+            <asp:BoundField DataField="Agency_Phone" HeaderText="Phone" />
+            <asp:BoundField DataField="Agency_Email" HeaderText="Email" />
+        </Columns>
         <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
         <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />

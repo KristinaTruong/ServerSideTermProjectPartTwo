@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -20,7 +21,15 @@ namespace TravelSite
                 Boolean loggedIn = CustomerData.checkForLoginCookie(objCookie);
                 if (loggedIn)
                 {
+                    DataSet ds = CustomerData.getCustomerInfo(objCookie["LoginID"].ToString());
+
                     //do nothing
+                    txtAddress.Text = ds.Tables[0].Rows[0][2].ToString();
+                    txtName.Text = ds.Tables[0].Rows[0][1].ToString();
+                    txtEmail.Text = ds.Tables[0].Rows[0][0].ToString();
+                    txtPassword.Text = ds.Tables[0].Rows[0][3].ToString();
+                    txtPhone.Text = ds.Tables[0].Rows[0][5].ToString();
+                    btnSave.Enabled = false;
                 }
                 else
                 {
