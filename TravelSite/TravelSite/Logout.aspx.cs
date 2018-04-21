@@ -10,21 +10,37 @@ namespace TravelSite
 {
     public partial class Logout : System.Web.UI.Page
     {
+        public Boolean cookieExists = false;
+        public HttpCookie cookie = null;
+        public CustomerClass loginCustomer;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            cookie = Request.Cookies["TravelSite"];
+            if (Request.Cookies["TravelSite"] != null) //cookie exists
             {
-                //copy and paste to check if a user is logged in
-                HttpCookie objCookie;
-                objCookie = Request.Cookies["TravelSite"];
-                Boolean loggedIn = CustomerData.checkForLoginCookie(objCookie);
-                if (loggedIn)
+                //see if to keep cookie if remember me was selected
+                if (cookie.Values["Remember"].ToString() == "true")
                 {
-                    objCookie.Expires = DateTime.Now.AddDays(-5d);
-                    Response.Cookies.Add(objCookie);
+                    cookie.Values["LoggedIn"] = "false";
+                    //if selected, assigned loggedin as false,
+                    //so that user must sign in again
+                    Response.Cookies.Add(cookie);
                 }
-            }
+                else
+                {
+                    //else, if do not remember
+                    //delete the cookie entirely
+                    cookie.Expires = DateTime.Now.AddDays(-1d);
+                    Response.Cookies.Add(cookie);
+                }
 
+            }
+            else
+            {
+
+            }
+            //finally, redirect to the Login page
+            //Response.Redirect("Login.aspx");
         }
     }
 }
