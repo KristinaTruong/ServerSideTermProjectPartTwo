@@ -85,11 +85,13 @@
     <Content Include="image\SCOTT-A-WOODWARD_1SW1943-1170x689.jpg" />
     <Content Include="image\ZackRoifLandscapePhotography.jpg" />
     <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="MyTrips.aspx" />
     <Content Include="MyVacationPackage.aspx" />
     <Content Include="OurVision.aspx" />
     <Content Include="PackagePageTemplate.aspx" />
     <Content Include="packages.config" />
+    <Content Include="PageTemplateASCX.ascx" />
     <Content Include="Registration.aspx" />
     <Content Include="TOS.aspx" />
     <Content Include="TravelSite.Master" />
@@ -160,6 +162,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MyTrips.aspx.cs">
       <DependentUpon>MyTrips.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -187,6 +196,13 @@
     </Compile>
     <Compile Include="PackagePageTemplate.aspx.designer.cs">
       <DependentUpon>PackagePageTemplate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageTemplateASCX.ascx.cs">
+      <DependentUpon>PageTemplateASCX.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTemplateASCX.ascx.designer.cs">
+      <DependentUpon>PageTemplateASCX.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration.aspx.cs">

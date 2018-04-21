@@ -10,7 +10,7 @@
 namespace TravelSite {
     
     
-    public partial class Experience {
+    public partial class PageTempleASCX {
         
         /// <summary>
         /// searchSection control.

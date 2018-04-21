@@ -120,6 +120,23 @@ namespace TravelSiteLibrary
         {
             if (objCookie != null)
             {
+                if (objCookie.Values["LoggedIn"] != null)
+                {
+                    if (objCookie.Values["LoggedIn"].ToString() == "true")
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                return false;
+            }
+            return false;
+            /*
+            if (objCookie != null)
+            {
                 if (objCookie.Values["LoginID"] != null)
                 {
                     if (objCookie.Values["LoginID"].ToString() != "")
@@ -133,7 +150,7 @@ namespace TravelSiteLibrary
                 }
                 return false;
             }
-            return false;
+            return false;*/
         }
 
         public static void checkIfLoggedIn()

@@ -110,7 +110,7 @@
             <div class="float-right">
                 <a href="MyTrips.aspx">My Trips</a>
                 <a href="Account.aspx">Account</a>
-                <a href="Login.aspx">Logout</a>
+                <a href="Logout.aspx">Logout</a>
             </div>
         </div>
     </nav>

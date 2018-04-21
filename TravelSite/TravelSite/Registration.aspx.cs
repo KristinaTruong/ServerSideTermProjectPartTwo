@@ -15,8 +15,21 @@ namespace TravelSite
 {
     public partial class Registration : System.Web.UI.Page
     {
+        public Boolean cookieExists = false;
+        public HttpCookie cookie = null;
+        public CustomerClass loginCustomer;
         protected void Page_Load(object sender, EventArgs e)
         {
+            cookie = Request.Cookies["TravelSite"];
+            if (Request.Cookies["TravelSite"] != null)
+            {
+                cookieExists = true;
+                if ((cookie.Values["LoginID"] != null) && (cookie.Values["Password"] != null))
+                {
+                    Response.Redirect("Homepage.aspx");
+                }
+
+            }
             if (!Page.IsPostBack)
             {
                 /*
@@ -64,7 +77,8 @@ namespace TravelSite
                     Response.Cookies.Add(travelCookie);
                     
                 }
-                Response.Redirect("Account.aspx");
+                //Response.Redirect("Account.aspx");
+                successfulReg.Style["display"] = "block";
             }
 
         }

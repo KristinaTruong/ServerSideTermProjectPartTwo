@@ -1,13 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TravelSite.Master" AutoEventWireup="true" CodeBehind="Experience.aspx.cs" Inherits="TravelSite.Experience" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
-      #btnSearch, #btnAdd {
-            width: 40%;
-        }
-</style>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <h1>Explore Activities</h1>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="PageTemplateASCX.ascx.cs" Inherits="TravelSite.PageTempleASCX" %>
+ <h1>Title</h1>
     <div id="searchSection" runat="server">
         <div class="row">
             <div class="col">
@@ -44,4 +36,3 @@
         <SortedDescendingCellStyle BackColor="#E5E5E5" />
         <SortedDescendingHeaderStyle BackColor="#242121" />
     </asp:GridView>
-</asp:Content>

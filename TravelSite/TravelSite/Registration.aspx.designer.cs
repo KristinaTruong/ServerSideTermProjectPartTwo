@@ -22,6 +22,15 @@ namespace TravelSite {
         protected global::System.Web.UI.HtmlControls.HtmlForm travelForm;
         
         /// <summary>
+        /// successfulReg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl successfulReg;
+        
+        /// <summary>
         /// invalidLogin control.
         /// </summary>
         /// <remarks>
