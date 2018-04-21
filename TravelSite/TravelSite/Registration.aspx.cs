@@ -67,18 +67,30 @@ namespace TravelSite
             {
                 CustomerData.createCustomer(newCustomer);
                 //validLogin.Style["display"] = "block";
+
+
+                HttpCookie travelCookie = new HttpCookie("TravelSite");
+                travelCookie.Value = "TravelCookie";
+                travelCookie.Expires = new DateTime(2025, 1, 1);
+
+                travelCookie.Values["LoginID"] = newCustomer.customerLoginID;
+                //travelCookie.Values["Password"] = txtPassword.Text;
+                //travelCookie.Values["LastVisited"] = DateTime.Now.ToString();
+
+                //if remember me is checked, set a far off expiration date
                 if (chkRemember.Checked == true)
                 {
-                    HttpCookie travelCookie = new HttpCookie("TravelSite");
-                    travelCookie.Value = "TravelCookie";
-                    travelCookie.Expires = new DateTime(2025, 1, 1);
-                    travelCookie.Values["LoginID"] = newCustomer.customerLoginID;
-                    travelCookie.Values["LastVisited"] = DateTime.Now.ToString();
-                    Response.Cookies.Add(travelCookie);
-                    
+                    travelCookie.Values["Remember"] = "true";
                 }
-                //Response.Redirect("Account.aspx");
-                successfulReg.Style["display"] = "block";
+                else
+                {
+                    travelCookie.Values["Remember"] = "false";
+                }
+                travelCookie.Values["LoggedIn"] = "true";
+                Response.Cookies.Add(travelCookie);
+
+                Response.Redirect("Homepage.aspx");
+                //successfulReg.Style["display"] = "block";
             }
 
         }
