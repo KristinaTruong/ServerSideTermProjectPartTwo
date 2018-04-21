@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TravelSiteLibrary;
+using TravelSite.ExperienceWebService;
+
 namespace TravelSite
 {
     public partial class Experience : System.Web.UI.Page
@@ -24,7 +26,14 @@ namespace TravelSite
                 if (loggedIn)
                 {
                     //defaultData = pxy._____(); //web method here
-                    gvAvailable.DataSource = defaultData;
+                    /*
+                    ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
+                    DataSet ds = pxy.GetActivityAgencies("PA", "Philadelphia");
+                    gvAvailable.AutoGenerateColumns = true;
+                    gvAvailable.DataSource = ds;
+                    gvAvailable.DataBind();
+                    */
+                    
                 }
                 else
                 {
@@ -37,9 +46,13 @@ namespace TravelSite
         {
             if (true) //validation of input
             {
-
+                ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
+                DataSet ds = pxy.GetActivityAgencies("PA", "Philadelphia");
+                //gvAvailable.AutoGenerateColumns = true;
+                gvAvailable.DataSource = ds;
+                gvAvailable.DataBind();
             }
-            gvAvailable.DataBind();
+            //gvAvailable.DataBind();
         }
     }
 }
