@@ -1,35 +1,65 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TravelSite.Master" AutoEventWireup="true" CodeBehind="Car.aspx.cs" Inherits="TravelSite.Car" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <h1>Car Rental</h1>
+    <h1>Car Rental</h1>
+    <div id="successfulAdd" runat="server" style="display:none;" class="alert alert-success" role="alert">
+  SUCCESS! Your items have  successfully added to your vacation package!
+</div>
+<div id="failedAdd" runat="server" style="display:none;" class="alert alert-danger" role="alert">
+  ERROR! No items were selected. Please select at least one item to add
+</div>
     <div id="searchSection" runat="server">
         <div class="row">
             <div class="col">
-                COLUMN 1
-                <asp:TextBox ID="TextBox2" runat="server" ValidationGroup="validationGroup"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="val1" runat="server" ErrorMessage="*Required" ForeColor="#CC0000" ValidationGroup="validationGroup" ControlToValidate="TextBox2">*Required</asp:RequiredFieldValidator>
+                <div class="row">
+                    <div class="col-2">City:</div>
+                    <div class="col-10">
+                        <asp:TextBox ID="txtCity" runat="server" ValidationGroup="validationGroup"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="valCity" runat="server" ErrorMessage="*Required" ForeColor="#CC0000" ValidationGroup="validationGroup" ControlToValidate="txtCity">*Required</asp:RequiredFieldValidator>
+                    </div>
+                    </div><div class="row">
+                    <div class="col-2">State:</div>
+                    <div class="col-10">
+                        <asp:TextBox ID="txtState" runat="server" ValidationGroup="validationGroup"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="valState" runat="server" ErrorMessage="*Required" ForeColor="#CC0000" ValidationGroup="validationGroup" ControlToValidate="txtState">*Required</asp:RequiredFieldValidator>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">Agency:</div>
+                    <div class="col-10"> <asp:TextBox ID="txtAgency" runat="server" ValidationGroup="validationGroup"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="valAgency" runat="server" ErrorMessage="*Required" ForeColor="#CC0000" ValidationGroup="validationGroup" ControlToValidate="txtAgency">*Required</asp:RequiredFieldValidator>
+                    </div></div>
             </div>
             <div class="col">
-                COLUMN 2
-               
-                <asp:TextBox ID="TextBox3" runat="server" ValidationGroup="validationGroup"></asp:TextBox>
-               
-                <asp:RequiredFieldValidator ID="val2" runat="server" ErrorMessage="*Required" ForeColor="#CC0000" ValidationGroup="validationGroup" ControlToValidate="TextBox3">*Required</asp:RequiredFieldValidator>
-               
+                <div class="row">
+
+                    <div class="col-2">Requirement:</div>
+                    <div class="col-10"><asp:TextBox ID="txtRequirement" runat="server" ValidationGroup="validationGroup"></asp:TextBox>
+
+                <asp:RequiredFieldValidator ID="valRequirement" runat="server" ErrorMessage="*Required" ForeColor="#CC0000" ValidationGroup="validationGroup" ControlToValidate="txtRequirement">*Required</asp:RequiredFieldValidator>
+</div>
+               </div>
+                
             </div>
         </div>
-    </div><br />
+    </div>
     <br />
     <div class="container container-fluid">
-    <div class="row">
-        <div class="col"><asp:Button ID="btnSearch" class="btn btn-dark"
-                runat="server" Text="Search" Style="width: 100%;" OnClick="btnSearch_Click" ValidationGroup="validationGroup" /></div>
-        <div class="col">
-            <asp:Button ID="btnAdd" class="btn btn-dark" 
-                runat="server" Text="Add" style="width:100%;display:none;"/></div>
-        <br />
-    </div></div><br />
+        <div class="row">
+            <div class="col">
+                <asp:Button ID="btnSearch" class="btn btn-dark"
+                    runat="server" Text="Search" Style="width: 100%;" OnClick="btnSearch_Click" ValidationGroup="validationGroup" />
+            </div>
+            <div class="col">
+                <asp:Button ID="btnAdd" class="btn btn-dark"
+                    runat="server" Text="Add" Style="width: 100%; display: none;" OnClick="btnAdd_Click"/>
+            </div>
+            <br />
+        </div>
+    </div>
+    <br />
     <asp:GridView ID="gvAvailable" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" EmptyDataText="No results were found." ForeColor="Black" GridLines="Horizontal" Width="100%" AutoGenerateColumns="False">
         <Columns>
             <asp:TemplateField HeaderText="Select">

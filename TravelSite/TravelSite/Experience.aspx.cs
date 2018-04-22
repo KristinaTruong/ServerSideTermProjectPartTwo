@@ -14,13 +14,15 @@ namespace TravelSite
     {
 
         private DataSet defaultData;
+        public DataSet ds;
+        HttpCookie objCookie;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!Page.IsPostBack)
             {
                 //copy and paste to check if a user is logged in
-                HttpCookie objCookie;
+
                 objCookie = Request.Cookies["TravelSite"];
                 Boolean loggedIn = CustomerData.checkForLoginCookie(objCookie);
                 if (loggedIn)
@@ -33,7 +35,7 @@ namespace TravelSite
                     gvAvailable.DataSource = ds;
                     gvAvailable.DataBind();
                     */
-                    
+
                 }
                 else
                 {
@@ -47,12 +49,40 @@ namespace TravelSite
             if (true) //validation of input
             {
                 ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
-                DataSet ds = pxy.GetActivityAgencies("PA", "Philadelphia");
+                ds = pxy.GetActivityAgencies("PA", "Philadelphia");
                 //gvAvailable.AutoGenerateColumns = true;
                 gvAvailable.DataSource = ds;
                 gvAvailable.DataBind();
             }
             //gvAvailable.DataBind();
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                btnAdd.Style["display"] = "inline";
+            }
+        }
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            int selectedCount = 0;
+            for (int i = 0; i < gvAvailable.Rows.Count; i++)
+            {
+                CheckBox selected = (CheckBox)gvAvailable.Rows[i].FindControl("chkSelect");
+                if (selected.Checked) { selectedCount++; }
+            }
+            //DEBUG
+            TextBox2.Text = selectedCount.ToString();
+            if (selectedCount == 0)
+            {
+                failedAdd.Style["display"] = "block";
+            }
+            else
+            {
+                ExperienceClass newExperience = new ExperienceClass();
+                VacationPackage.addExperience(objCookie.Values["LoginID"].ToString());
+                //get vacation package
+                successfulAdd.Style["display"] = "block";
+            }
+
         }
     }
 }

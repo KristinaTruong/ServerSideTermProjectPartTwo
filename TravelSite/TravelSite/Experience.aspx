@@ -8,6 +8,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
       <h1>Experience</h1>
+     <div id="successfulAdd" runat="server" style="display:none;" class="alert alert-success" role="alert">
+  SUCCESS! Your items have  successfully added to your vacation package!
+</div>
+<div id="failedAdd" runat="server" style="display:none;" class="alert alert-danger" role="alert">
+  ERROR! No items were selected. Please select at least one item to add
+</div>
     <div id="searchSection" runat="server">
         <div class="row">
             <div class="col">
@@ -27,14 +33,18 @@
     </div>
     <br />
     <div class="container container-fluid">
-    <div class="row">
-        <div class="col"><asp:Button ID="btnSearch" class="btn btn-dark"
-                runat="server" Text="Search" Style="width: 100%;" OnClick="btnSearch_Click" ValidationGroup="validationGroup" /></div>
-        <div class="col">
-            <asp:Button ID="btnAdd" class="btn btn-dark" 
-                runat="server" Text="Add" style="width:100%;display:none;"/></div>
-
-    </div></div>
+        <div class="row">
+            <div class="col">
+                <asp:Button ID="btnSearch" class="btn btn-dark"
+                    runat="server" Text="Search" Style="width: 100%;" OnClick="btnSearch_Click" ValidationGroup="validationGroup" />
+            </div>
+            <div class="col">
+                <asp:Button ID="btnAdd" class="btn btn-dark"
+                    runat="server" Text="Add" Style="width: 100%; display: none;" OnClick="btnAdd_Click"/>
+            </div>
+            <br />
+        </div>
+    </div>
     <br />
     <asp:GridView ID="gvAvailable" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" EmptyDataText="No results were found." ForeColor="Black" GridLines="Horizontal" AutoGenerateColumns="False" Width="100%">
         <Columns>

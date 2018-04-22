@@ -17,6 +17,7 @@ namespace TravelSite
         public CarWebService.Car pxyCar = new CarWebService.Car();
         public CarWebService.Customer pxyCustomer = new CarWebService.Customer();
         public CarWebService.Agency pxyAgency = new CarWebService.Agency();
+        public DataSet ds;
 
         //search flags
 
@@ -37,7 +38,7 @@ namespace TravelSite
                     Form.Controls.Add(myCtrl);*/
 
 
-                    
+
                 }
                 else
                 {
@@ -51,18 +52,32 @@ namespace TravelSite
         {
             if (true) //validation of input
             {
-                CarWebService.RentalCarService reqs = new RentalCarService();
+                CarWebService.RentalCarService pxy = new RentalCarService();
                 CarWebService.Agency agency = new Agency();
                 agency.AgencyID = 1;
-                DataSet ds= reqs.GetCarsByAgency(agency, "Philadelphia", "PA");
-               // reqs.RequirementID = 1;
-                //CarWebService.Requirement[] reqArray = { reqs };
-                //DataSet ds = pxy.FindCars(reqArray, "", "");
+                ds = pxy.GetCarsByAgency(agency, "Philadelphia", "PA");
+
                 gvAvailable.DataSource = ds;
                 gvAvailable.DataBind();
 
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    btnAdd.Style["display"] = "inline";
+                }
             }
             //gvAvailable.DataBind();
+        }
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            int selectedCount = 0;
+            for (int i = 0; i < gvAvailable.Rows.Count; i++)
+            {
+                CheckBox selected = (CheckBox)gvAvailable.Rows[i].FindControl("chkSelect");
+                if (selected.Checked) { selectedCount++; }
+            }
+            txtAgency.Text = selectedCount.ToString();
+            failedAdd.Style["display"] = "block";
+            successfulAdd.Style["display"] = "block";
         }
     }
 }
