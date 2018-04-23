@@ -8,21 +8,27 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using Utilities;
+using TravelSiteLibrary.CarWebServiceClass2;
 
 namespace TravelSiteLibrary
 {
     public class VacationPackage
     {
+        public String loginID { get; set; }
+        public String purchaseDate { get; set; }
+        public double salesTotal { get; set; }
         public static DBConnect objDB = new DBConnect();
-        public CustomerClass[] customerArray { get; set; }
-        public FlightClass[] flightArray { get; set; }
 
-        public ExperienceClass[] experienceArray { get; set; }
+        //AMENITITES LIST ---------------------------------------------------------------
+        public List<ExperienceClass> experienceArray { get; set; }
 
-        public HotelClass[] hotelArray { get; set; }
+        //--------------------------------------------------------------------------------
 
-        //serialize a customer object
-        public static byte[] serializeVacationPackage(VacationPackage package)
+        public List<CarWebServiceClass2.Car> carArrayNew { get; set; }
+        public List<HotelClass> hotelArray { get; set; }
+
+        //serialize a vacation package object
+        private static byte[] serializeVacationPackage(VacationPackage package)
         {
             BinaryFormatter serializer = new BinaryFormatter();
             MemoryStream memStream = new MemoryStream();
@@ -32,7 +38,7 @@ namespace TravelSiteLibrary
             return myArray;
         }
 
-        //deserializes a customer, and returns it as a customerClass object
+        //deserializes a vacation package, and returns it as a VacationPackage object
         private static VacationPackage deserializeVacationPackage(byte[] customer)
         {
             BinaryFormatter deserializer = new BinaryFormatter();
@@ -42,11 +48,23 @@ namespace TravelSiteLibrary
 
         }
 
-        //returns customer's password (deserialized) when a loginID is inserted
+        //get a customer's information
+        private static DataSet getCustomerInfo(String loginID)
+        {
+            SqlCommand objCommand = new SqlCommand();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "FindTravelCustomer";
+            objCommand.Parameters.AddWithValue("loginID", loginID);
+            DataSet ds = objDB.GetDataSetUsingCmdObj(objCommand);
+            return ds;
+        }
+
+        //returns vacation package when loginID is provided
         public static VacationPackage getCustomerPackage(String loginID)
         {
             DataSet customerInfo = getCustomerInfo(loginID);
             byte[] package = (byte[])customerInfo.Tables[0].Rows[0][8];
+
             if (package != null || package.Length != 0)
             {
                 BinaryFormatter deserializer = new BinaryFormatter();
@@ -80,27 +98,23 @@ namespace TravelSiteLibrary
 
         }
 
-        public static DataSet getCustomerInfo(String loginID)
+        public Boolean checkPackage()
         {
-            SqlCommand objCommand = new SqlCommand();
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "FindTravelCustomer";
-            objCommand.Parameters.AddWithValue("loginID", loginID);
-            DataSet ds = objDB.GetDataSetUsingCmdObj(objCommand);
-            return ds;
+            return false;
         }
 
-        public static Boolean addExperience(ExperienceClass exp, String login)
+
+        public void purchasePackage()
         {
-            VacationPackage custPackage = VacationPackage.getCustomerPackage(login);
-            for (int i = 0; i < gvAvailable.Rows.Count; i++)
+            if (checkPackage())
             {
-                CheckBox selected = (CheckBox)gvAvailable.Rows[i].FindControl("chkSelect");
-                if (selected.Checked)
+                for (int i = 0; i < experienceArray.Count; i++)
                 {
-                    custPackage.experienceArray.
-                    }
+                    ExperienceWebServiceClass.ser
+                }
             }
         }
+
+
     }
 }

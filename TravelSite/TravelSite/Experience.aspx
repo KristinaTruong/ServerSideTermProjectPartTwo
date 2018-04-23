@@ -1,19 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TravelSite.Master" AutoEventWireup="true" CodeBehind="Experience.aspx.cs" Inherits="TravelSite.Experience" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-      #btnSearch, #btnAdd {
+        #btnSearch, #btnAdd {
             width: 40%;
         }
-</style>
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <h1>Experience</h1>
-     <div id="successfulAdd" runat="server" style="display:none;" class="alert alert-success" role="alert">
-  SUCCESS! Your items have  successfully added to your vacation package!
-</div>
-<div id="failedAdd" runat="server" style="display:none;" class="alert alert-danger" role="alert">
-  ERROR! No items were selected. Please select at least one item to add
-</div>
+    <h1>Experience</h1>
+    <div id="successfulAdd" runat="server" style="display: none;" class="alert alert-success" role="alert">
+        SUCCESS! Your items have  successfully added to your vacation package!
+    </div>
+    <div id="failedAdd" runat="server" style="display: none;" class="alert alert-danger" role="alert">
+        ERROR! No items were selected. Please select at least one item to add
+    </div>
     <div id="searchSection" runat="server">
         <div class="row">
             <div class="col">
@@ -25,9 +26,9 @@
                 COLUMN 2
                
                 <asp:TextBox ID="TextBox3" runat="server" ValidationGroup="validationGroup"></asp:TextBox>
-               
+
                 <asp:RequiredFieldValidator ID="val2" runat="server" ErrorMessage="*Required" ForeColor="#CC0000" ValidationGroup="validationGroup" ControlToValidate="TextBox3">*Required</asp:RequiredFieldValidator>
-               
+
             </div>
         </div>
     </div>
@@ -40,7 +41,7 @@
             </div>
             <div class="col">
                 <asp:Button ID="btnAdd" class="btn btn-dark"
-                    runat="server" Text="Add" Style="width: 100%; display: none;" OnClick="btnAdd_Click"/>
+                    runat="server" Text="Add" Style="width: 100%; display: none;" OnClick="btnAdd_Click" />
             </div>
             <br />
         </div>

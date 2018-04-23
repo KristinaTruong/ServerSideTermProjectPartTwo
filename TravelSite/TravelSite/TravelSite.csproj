@@ -99,7 +99,13 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Web References\CarWebService2\CarService.disco" />
     <Content Include="Web References\CarWebService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\CarWebService2\CarService.wsdl" />
+    <Content Include="Web References\CarWebService2\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
@@ -247,6 +253,11 @@
     <Compile Include="TravelSite.Master.designer.cs">
       <DependentUpon>TravelSite.Master</DependentUpon>
     </Compile>
+    <Compile Include="Web References\CarWebService2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\CarWebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -275,6 +286,17 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <WebReferenceUrl Include="http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf45882/TermProjectWS/CarService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CarWebService2\</RelPath>
+      <UpdateFromURL>http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf45882/TermProjectWS/CarService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>TravelSite_CarWebService2_CarService</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://cis-iis2.temple.edu/Spring2018/CIS3342_tug34927/TermProjectWS/RentalCarService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\CarWebService\</RelPath>

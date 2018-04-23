@@ -77,9 +77,35 @@ namespace TravelSite
             }
             else
             {
-                ExperienceClass newExperience = new ExperienceClass();
-                VacationPackage.addExperience(objCookie.Values["LoginID"].ToString());
-                //get vacation package
+                VacationPackage vacationPackage = VacationPackage.getCustomerPackage(objCookie.Values["LoginID"].ToString());
+
+                for (int i = 0; i < gvAvailable.Rows.Count; i++)
+                {
+                    CheckBox selected = (CheckBox)gvAvailable.Rows[i].FindControl("chkSelect");
+                    if (selected.Checked)
+                    {
+                        ExperienceClass newExp = new ExperienceClass();
+
+                        //AGENCY OBJECT
+                        newExp.agency.Agency_id = Convert.ToInt32(gvAvailable.Rows[i].Cells[1].ToString());
+                        newExp.agency.Agency_name = gvAvailable.Rows[i].Cells[1].ToString();
+                        newExp.agency.Agency_city = gvAvailable.Rows[i].Cells[1].ToString();
+                        newExp.agency.Agency_state = gvAvailable.Rows[i].Cells[1].ToString();
+                        newExp.agency.Agency_zip = Convert.ToInt32(gvAvailable.Rows[i].Cells[1].ToString());
+                        newExp.agency.Agency_phone = gvAvailable.Rows[i].Cells[1].ToString();
+                        newExp.agency.Agency_email = gvAvailable.Rows[i].Cells[1].ToString();
+
+                        //ACTIVITY OBJECT
+                        //newExp.activity.___
+
+                        //CUSTOMER OBJECT
+                        //newExp.customer.___
+
+                        //add experience item to experience array in vacation object
+                        vacationPackage.experienceArray.Add(newExp);
+                    }
+
+                }
                 successfulAdd.Style["display"] = "block";
             }
 
