@@ -41,23 +41,23 @@ namespace TravelSite
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            failedAdd.Style["display"] = "none";
-            failedAdd.Style["display"] = "none";
+            reset();
+            if (validateInput()) { 
 
-
-            if (true) //validation of input --------------------------------------------------------FILL
-            {
-                if (true)//----------------------------------FILL WITH PARAMETERS if-else then statements
+                if (true) //validation of input --------------------------------------------------------FILL
                 {
-                    ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
-                    ds = pxy.GetActivityAgencies("PA", "Philadelphia"); //get appropriate dataset
-                    gvAvailable.DataSource = ds; //assign as datasource
-                    gvAvailable.DataBind(); //databind it to gridview
+                    if (true)//----------------------------------FILL WITH PARAMETERS if-else then statements
+                    {
+                        ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
+                        ds = pxy.GetActivityAgencies("PA", "Philadelphia"); //get appropriate dataset
+                        gvAvailable.DataSource = ds; //assign as datasource
+                        gvAvailable.DataBind(); //databind it to gridview
+                    }
                 }
-            }
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                btnAdd.Enabled = true;
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    btnAdd.Enabled = true;
+                }
             }
         }
         protected void btnAdd_Click(object sender, EventArgs e)
@@ -110,6 +110,26 @@ namespace TravelSite
                 successfulAdd.Style["display"] = "block";
             }
 
+        }
+
+        //PRIVATE METHODS
+        private Boolean validateInput()
+        {
+            Boolean valid = true;
+            if(txtCity.Text == "")
+            {
+                valid = false;
+                valItem.Style["display"] = "inline";
+                failedSearch.Style["display"] = "block";
+            }
+            return valid;
+        }
+        private void reset()
+        {
+            failedAdd.Style["display"] = "none";
+            successfulAdd.Style["display"] = "none";
+            failedSearch.Style["display"] = "none";
+            valItem.Style["display"] = "none";
         }
     }
 }
