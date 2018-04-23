@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace TravelSiteLibrary
 {
+    [Serializable]
     public class FlightClass
     {
+
     }
 }

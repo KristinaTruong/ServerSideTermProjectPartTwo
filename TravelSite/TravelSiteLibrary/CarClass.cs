@@ -7,6 +7,7 @@ using TravelSiteLibrary.CarWebServiceClass2;
 
 namespace TravelSiteLibrary
 {
+    [Serializable]
     public class CarClass
     {
         public String CarID { get; set; }

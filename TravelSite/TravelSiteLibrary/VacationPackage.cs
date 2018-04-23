@@ -9,11 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Utilities;
 using TravelSiteLibrary.CarWebServiceClass2;
+using TravelSiteLibrary;
 
 namespace TravelSiteLibrary
 {
+    [Serializable]
     public class VacationPackage
     {
+
         public String loginID { get; set; }
         public String purchaseDate { get; set; }
         public double salesTotal { get; set; }
@@ -21,12 +24,22 @@ namespace TravelSiteLibrary
 
         //AMENITITES LIST ---------------------------------------------------------------
         public List<ExperienceClass> experienceArray { get; set; }
-
+        /*
+        public List<CarClass> carArray { get; set; }
+        public List<FlightClass> flightArray { get; set; }
+        public List<HotelClass> hotelArray { get; set; }
+        */
         //--------------------------------------------------------------------------------
 
-        public List<CarWebServiceClass2.Car> carArrayNew { get; set; }
-        public List<HotelClass> hotelArray { get; set; }
-
+        public VacationPackage()
+        {
+            experienceArray = new List<ExperienceClass>();
+            /*
+            carArray = new List<CarClass>();
+            flightArray = new List<FlightClass>();
+            hotelArray = new List<HotelClass>();
+            */
+        }
         //serialize a vacation package object
         private static byte[] serializeVacationPackage(VacationPackage package)
         {
@@ -55,6 +68,7 @@ namespace TravelSiteLibrary
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.CommandText = "FindTravelCustomer";
             objCommand.Parameters.AddWithValue("loginID", loginID);
+
             DataSet ds = objDB.GetDataSetUsingCmdObj(objCommand);
             return ds;
         }
@@ -62,22 +76,34 @@ namespace TravelSiteLibrary
         //returns vacation package when loginID is provided
         public static VacationPackage getCustomerPackage(String loginID)
         {
-            DataSet customerInfo = getCustomerInfo(loginID);
-            byte[] package = (byte[])customerInfo.Tables[0].Rows[0][8];
-
-            if (package != null || package.Length != 0)
+            if (getCustomerInfo(loginID).Tables[0].Rows.Count != 0)
             {
-                BinaryFormatter deserializer = new BinaryFormatter();
-                MemoryStream newMemStream = new MemoryStream(package);
+                DataSet customerInfo = getCustomerInfo(loginID);
+                if ((customerInfo.Tables[0].Rows[0][8]) != DBNull.Value)
+                {
+                    byte[] package;
 
-                VacationPackage vacationPackage = (VacationPackage)deserializer.Deserialize(newMemStream);
-                return vacationPackage;
-            }
-            else
-            {
+                    package = (byte[])customerInfo.Tables[0].Rows[0][8];
+
+                    if (package.Length != 0)
+                    {
+                        BinaryFormatter deserializer = new BinaryFormatter();
+                        MemoryStream newMemStream = new MemoryStream(package);
+
+                        VacationPackage vacationPackage = (VacationPackage)deserializer.Deserialize(newMemStream);
+                        return vacationPackage;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
                 return null;
-            }
 
+
+
+            }
+            else { return null; }
         }
 
 
@@ -98,21 +124,37 @@ namespace TravelSiteLibrary
 
         }
 
-        public Boolean checkPackage()
-        {
-            return false;
-        }
 
+        public static DataSet myTrips(String login)
+        {
+            SqlCommand objCommand = new SqlCommand();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "getMyTrips";
+            objCommand.Parameters.AddWithValue("login", login);
+            DataSet ds = objDB.GetDataSetUsingCmdObj(objCommand);
+            return ds;
+        }
 
         public void purchasePackage()
         {
-            if (checkPackage())
+            /*
+            //Book experience objects
+            for (int i = 0; i < experienceArray.Count; i++)
             {
-                for (int i = 0; i < experienceArray.Count; i++)
+                ExperienceWebServiceClass.ActivitiesService expPxy = new ExperienceWebServiceClass.ActivitiesService();
+                Boolean reserved = expPxy.Reserve(experienceArray[i].agency, experienceArray[i].activity, experienceArray[i].customer, "", "");
+                if (reserved)
                 {
-                    ExperienceWebServiceClass.ser
+                    experienceArray.RemoveAt(i);
+                }
+                else
+                {
+                    i++;
                 }
             }
+
+            */
+
         }
 
 

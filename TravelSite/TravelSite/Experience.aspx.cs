@@ -14,28 +14,23 @@ namespace TravelSite
     {
 
         private DataSet defaultData;
-        public DataSet ds;
-        HttpCookie objCookie;
+        public DataSet ds; //set up dataset
+        HttpCookie objCookie; //setup cookie
+        VacationPackage myPackage; //user's vacation package
+        ExperienceClass newExp;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            objCookie = Request.Cookies["TravelSite"];
 
             if (!Page.IsPostBack)
             {
                 //copy and paste to check if a user is logged in
 
-                objCookie = Request.Cookies["TravelSite"];
                 Boolean loggedIn = CustomerData.checkForLoginCookie(objCookie);
                 if (loggedIn)
                 {
-                    //defaultData = pxy._____(); //web method here
-                    /*
-                    ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
-                    DataSet ds = pxy.GetActivityAgencies("PA", "Philadelphia");
-                    gvAvailable.AutoGenerateColumns = true;
-                    gvAvailable.DataSource = ds;
-                    gvAvailable.DataBind();
-                    */
-
+                    myPackage = VacationPackage.getCustomerPackage(objCookie.Values["LoginID"].ToString());
                 }
                 else
                 {
@@ -46,66 +41,72 @@ namespace TravelSite
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            if (true) //validation of input
-            {
-                ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
-                ds = pxy.GetActivityAgencies("PA", "Philadelphia");
-                //gvAvailable.AutoGenerateColumns = true;
-                gvAvailable.DataSource = ds;
-                gvAvailable.DataBind();
-            }
-            //gvAvailable.DataBind();
+            failedAdd.Style["display"] = "none";
+            failedAdd.Style["display"] = "none";
 
+
+            if (true) //validation of input --------------------------------------------------------FILL
+            {
+                if (true)//----------------------------------FILL WITH PARAMETERS if-else then statements
+                {
+                    ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
+                    ds = pxy.GetActivityAgencies("PA", "Philadelphia"); //get appropriate dataset
+                    gvAvailable.DataSource = ds; //assign as datasource
+                    gvAvailable.DataBind(); //databind it to gridview
+                }
+            }
             if (ds.Tables[0].Rows.Count > 0)
             {
-                btnAdd.Style["display"] = "inline";
+                btnAdd.Enabled = true;
             }
         }
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            int selectedCount = 0;
-            for (int i = 0; i < gvAvailable.Rows.Count; i++)
+            int selectedCount = 0; //count number selected
+            for (int i = 0; i < gvAvailable.Rows.Count; i++) //count
             {
                 CheckBox selected = (CheckBox)gvAvailable.Rows[i].FindControl("chkSelect");
-                if (selected.Checked) { selectedCount++; }
+                if (selected.Checked) { selectedCount++; } //if selected, increment counter
             }
+
             //DEBUG
-            TextBox2.Text = selectedCount.ToString();
-            if (selectedCount == 0)
+            //txtAgency.Text = selectedCount.ToString();
+
+            if (selectedCount == 0) //if none selected
             {
                 failedAdd.Style["display"] = "block";
             }
-            else
+
+            else //if at least one selected
             {
-                VacationPackage vacationPackage = VacationPackage.getCustomerPackage(objCookie.Values["LoginID"].ToString());
-
-                for (int i = 0; i < gvAvailable.Rows.Count; i++)
+                //reloop through gridview
+                for (int j = 0; j < gvAvailable.Rows.Count; j++)
                 {
-                    CheckBox selected = (CheckBox)gvAvailable.Rows[i].FindControl("chkSelect");
-                    if (selected.Checked)
+                    //if the select box is checked..
+                    CheckBox selected = (CheckBox)gvAvailable.Rows[j].FindControl("chkSelect");
+                    if (selected.Checked == true)
                     {
+                        //create a new object
                         ExperienceClass newExp = new ExperienceClass();
+                        //initialize its properities to the record's values that was chosen
+                        newExp.Agency_id = 1;
 
-                        //AGENCY OBJECT
-                        newExp.agency.Agency_id = Convert.ToInt32(gvAvailable.Rows[i].Cells[1].ToString());
-                        newExp.agency.Agency_name = gvAvailable.Rows[i].Cells[1].ToString();
-                        newExp.agency.Agency_city = gvAvailable.Rows[i].Cells[1].ToString();
-                        newExp.agency.Agency_state = gvAvailable.Rows[i].Cells[1].ToString();
-                        newExp.agency.Agency_zip = Convert.ToInt32(gvAvailable.Rows[i].Cells[1].ToString());
-                        newExp.agency.Agency_phone = gvAvailable.Rows[i].Cells[1].ToString();
-                        newExp.agency.Agency_email = gvAvailable.Rows[i].Cells[1].ToString();
-
-                        //ACTIVITY OBJECT
-                        //newExp.activity.___
-
-                        //CUSTOMER OBJECT
-                        //newExp.customer.___
-
-                        //add experience item to experience array in vacation object
-                        vacationPackage.experienceArray.Add(newExp);
+                        //if a vacation package exists
+                        if (VacationPackage.getCustomerPackage(objCookie.Values["LoginID"].ToString()) == null)
+                        {
+                            myPackage = new VacationPackage(); //if not, create a new one
+                        }
+                        else
+                        {
+                            //if yes, retrieve the package
+                            myPackage = VacationPackage.getCustomerPackage(objCookie.Values["LoginID"].ToString());
+                        }
+                        //finally, add the new object to the vacation package's appropriate list
+                        myPackage.experienceArray.Add(newExp);
                     }
-
                 }
+                //update the vacation package in the database
+                VacationPackage.updatePackage(objCookie.Values["LoginID"].ToString(), myPackage);
                 successfulAdd.Style["display"] = "block";
             }
 

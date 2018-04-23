@@ -18,9 +18,29 @@
     <div id="searchSection" runat="server">
         <div class="row">
             <div class="col">
-                COLUMN 1
-                <asp:TextBox ID="TextBox2" runat="server" ValidationGroup="validationGroup"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="val1" runat="server" ErrorMessage="*Required" ForeColor="#CC0000" ValidationGroup="validationGroup" ControlToValidate="TextBox2">*Required</asp:RequiredFieldValidator>
+                 <!-- name, address, phone -->
+            <div class="row">
+                <div class="col-2">City:</div>
+                <div class="col-10">
+                    <asp:TextBox ID="txtCity" style="width:60%;" runat="server" ValidationGroup="validationGroup" ></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="valCity" runat="server" ErrorMessage="*Required" ForeColor="#CC0000" ValidationGroup="validationGroup" ControlToValidate="txtCity">*Required</asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">State:</div>
+                <div class="col-10">
+                    <asp:TextBox ID="txtState" style="width:60%;" runat="server" ValidationGroup="validationGroup" ></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="valState" runat="server" ErrorMessage="*Required" ForeColor="#CC0000" ValidationGroup="validationGroup" ControlToValidate="txtState">*Required</asp:RequiredFieldValidator>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-2">Agency:</div>
+                <div class="col-10">
+                <asp:TextBox ID="txtAgency"  style="width:60%;" runat="server" ValidationGroup="validationGroup" ></asp:TextBox>
+                <asp:RequiredFieldValidator ID="valAgency" runat="server" ErrorMessage="*Required" ForeColor="#CC0000" ValidationGroup="validationGroup" ControlToValidate="txtAgency">*Required</asp:RequiredFieldValidator>
+            </div>
+                </div>
             </div>
             <div class="col">
                 COLUMN 2
@@ -41,7 +61,7 @@
             </div>
             <div class="col">
                 <asp:Button ID="btnAdd" class="btn btn-dark"
-                    runat="server" Text="Add" Style="width: 100%; display: none;" OnClick="btnAdd_Click" />
+                    runat="server" Text="Add" Style="width: 100%;" OnClick="btnAdd_Click" Enabled="False" />
             </div>
             <br />
         </div>
@@ -54,7 +74,7 @@
                     <asp:CheckBox ID="chkSelect" runat="server" TextAlign="Left" />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Agency_Id" Visible="False" />
+            <asp:BoundField DataField="Agency_Id" HeaderText="Agency ID" Visible="true"/>
             <asp:BoundField DataField="Agency_Name" HeaderText="Name" />
             <asp:BoundField DataField="Agency_City" HeaderText="City" />
             <asp:BoundField DataField="Agency_State" HeaderText="State" />
