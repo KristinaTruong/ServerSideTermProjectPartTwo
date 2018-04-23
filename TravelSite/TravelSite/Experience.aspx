@@ -8,33 +8,69 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <!-- ERROR MESSAGES -------------------------------------------------------------------------------->
     <h1>Experience</h1>
+    <!-- IF SUCESSFULLY ADDED -->
     <div id="successfulAdd" runat="server" style="display: none;" class="alert alert-success" role="alert">
-        SUCCESS! Your items have  successfully added to your vacation package!
+        SUCCESS! Your items have  successfully added to your vacation package
     </div>
+    <!-- IF ADD FAILED -->
     <div id="failedAdd" runat="server" style="display: none;" class="alert alert-danger" role="alert">
         ERROR! No items were selected. Please select at least one item to add
     </div>
+    <!-- IF SEARCH CRITERIA IS INVALID -->
     <div id="failedSearch" runat="server" style="display: none;" class="alert alert-danger" role="alert">
-        ERROR! Search criteria is invalid!
+        ERROR! Search criteria is invalid
     </div>
+    <!--  -------------------------------------------------------------------------------------------------->
+    <!--  -------------------------------------------------------------------------------------------------->
+
     <div id="searchSection" runat="server">
-        <div class="row" >
+        <div class="row">
             <div class="col">
-            <div class="card">
-                <div class="card-header" style="background-color:black;color:white;">
-                    REQUIRED
+                <div class="card">
+                    <div class="card-header" style="background-color: #343a40; color: white;">
+                        REQUIRED
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                CITY<br />
+                                <asp:TextBox ID="txtCity" runat="server"></asp:TextBox><div id="valCity" style="display: none; color: red;" runat="server">*Required</div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    CITY<br />
-                    <asp:TextBox ID="txtCity" runat="server"></asp:TextBox><div id="valItem" style="display:none;color:red;" runat="server">*Required</div>
-                </div>
-            </div></div>
+            </div>
         </div>
+
+        <!-- SECTION TEMPLATE --------------------------------------------------------------------------------------
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header" style="background-color: #343a40; color: white;">
+                        [SECTION TITLE]
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                [FIELD]<br />
+                                <asp:TextBox ID="item" runat="server"></asp:TextBox><div id="valItem" style="display: none; color: red;" runat="server">*Required</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---------------------------------------------------------------------------------------------------------->
+
     </div>
-    
-    
+
+
     <br />
+    <!----------- BUTTONS -------------------------------------------------------------------------------->
     <div class="container container-fluid">
         <div class="row">
             <div class="col">
@@ -48,6 +84,8 @@
             <br />
         </div>
     </div>
+    <!--------------------------------------------------------------------------------------------------->
+    <!----- GRIDVIEW ----------------------------------------------------------------------------->
     <br />
     <asp:GridView ID="gvAvailable" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" EmptyDataText="No results were found." ForeColor="Black" GridLines="Horizontal" AutoGenerateColumns="False" Width="100%">
         <Columns>
@@ -73,4 +111,5 @@
         <SortedDescendingCellStyle BackColor="#E5E5E5" />
         <SortedDescendingHeaderStyle BackColor="#242121" />
     </asp:GridView>
+    <!--------------------------------------------------------------------------------------------------->
 </asp:Content>

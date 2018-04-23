@@ -51,32 +51,30 @@ namespace TravelSite
                         ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
                         ds = pxy.GetActivityAgencies("PA", "Philadelphia"); //get appropriate dataset
                         gvAvailable.DataSource = ds; //assign as datasource
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            btnAdd.Enabled = true;
+                        }
                         gvAvailable.DataBind(); //databind it to gridview
+
                     }
                 }
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    btnAdd.Enabled = true;
-                }
+                
             }
         }
         protected void btnAdd_Click(object sender, EventArgs e)
         {
+            reset();
             int selectedCount = 0; //count number selected
             for (int i = 0; i < gvAvailable.Rows.Count; i++) //count
             {
                 CheckBox selected = (CheckBox)gvAvailable.Rows[i].FindControl("chkSelect");
                 if (selected.Checked) { selectedCount++; } //if selected, increment counter
             }
-
-            //DEBUG
-            //txtAgency.Text = selectedCount.ToString();
-
             if (selectedCount == 0) //if none selected
             {
                 failedAdd.Style["display"] = "block";
             }
-
             else //if at least one selected
             {
                 //reloop through gridview
@@ -126,9 +124,11 @@ namespace TravelSite
         }
         private void reset()
         {
+            //reset error messagess
             failedAdd.Style["display"] = "none";
             successfulAdd.Style["display"] = "none";
             failedSearch.Style["display"] = "none";
+            //reset validation
             valItem.Style["display"] = "none";
         }
     }
