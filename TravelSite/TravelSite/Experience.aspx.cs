@@ -77,6 +77,7 @@ namespace TravelSite
                             {
                                 ExperienceWebService.Agency agency = new Agency();
                                 agency.Agency_id = Convert.ToInt32(txtAgencyID.Text);
+                                
                                 ds = pxy.GetActivities(agency, txtState.Text, txtCity.Text); //get appropriate dataset
                                 if (ds != null)
                                 {
@@ -86,6 +87,7 @@ namespace TravelSite
                                     if (ds.Tables[0].Rows.Count > 0)
                                     {
                                         btnAdd.Enabled = true;
+
                                     }
                                     else
                                     {noResults.Style["display"] = "block";}
