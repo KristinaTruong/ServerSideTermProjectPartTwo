@@ -26,26 +26,59 @@ namespace TravelSite
         //city and state validators
         public Control cityValidator { get { return valCity; } }
         public Control stateValidator { get { return valState; } }
-        //text box labels
+        //TEXTBOX LABELS
+        //default search
         public String txtbox1head { set { txtbox1Heading.InnerText = value; } }
-
         public String txtbox2head { set { txtbox2Heading.InnerText = value; } }
-
+        //search2
         public String txtbox3head { set { txtbox3Heading.InnerText = value; } }
-
         public String txtbox4head { set { txtbox4Heading.InnerText = value; } }
+        public String txtbox5head { set { txtbox5Heading.InnerText = value; } }
+        //search3
+        public String txtbox6head { set { txtbox6Heading.InnerText = value; } }
+        public String txtbox7head { set { txtbox7Heading.InnerText = value; } }
+        public String txtbox8head { set { txtbox8Heading.InnerText = value; } }
+        //search4
+        public String txtbox9head { set { txtbox9Heading.InnerText = value; } }
+        public String txtbox10head { set { txtbox10Heading.InnerText = value; } }
+        public String txtbox11head { set { txtbox11Heading.InnerText = value; } }
 
-        //textbox validators
+
+        //TEXTBOX VALIDATORS
+        //defaultSearch
         public Control txtbox1validator { get { return valtxtbox1; } }
         public Control txtbox2validator { get { return valtxtbox2; } }
+        //search2
         public Control txtbox3validator { get { return valtxtbox3; } }
         public Control txtbox4validator { get { return valtxtbox4; } }
+        public Control txtbox5validator { get { return valtxtbox5; } }
+        //search3
+        public Control txtbox6validator { get { return valtxtbox6; } }
+        public Control txtbox7validator { get { return valtxtbox7; } }
+        public Control txtbox8validator { get { return valtxtbox8; } }
+        //search4
+        public Control txtbox9validator { get { return valtxtbox9; } }
+        public Control txtbox10validator { get { return valtxtbox10; } }
+        public Control txtbox11validator { get { return valtxtbox11; } }
 
-        //textbox textboxes
+
+        //TXTBOX CONTROL
+        //defaultSearch
         public Control txtbox1control { get { return txtbox1; } }
         public Control txtbox2control { get { return txtbox2; } }
+        //search2
         public Control txtbox3control { get { return txtbox3; } }
         public Control txtbox4control { get { return txtbox4; } }
+        public Control txtbox5control { get { return txtbox5; } }
+        //search 3
+        public Control txtbox6control { get { return txtbox6; } }
+        public Control txtbox7control { get { return txtbox7; } }
+        public Control txtbox8control { get { return txtbox8; } }
+        //search4
+        public Control txtbox9control { get { return txtbox9; } }
+        public Control txtbox10control { get { return txtbox10; } }
+        public Control txtbox11control { get { return txtbox11; } }
+
 
         //error messages  
         public Control failedSearchError { get { return failedSearch; } }
@@ -335,6 +368,13 @@ namespace TravelSite
             valtxtbox2.Style["display"] = "none";
             valtxtbox3.Style["display"] = "none";
             valtxtbox4.Style["display"] = "none";
+            valtxtbox5.Style["display"] = "none";
+            valtxtbox6.Style["display"] = "none";
+            valtxtbox7.Style["display"] = "none";
+            valtxtbox8.Style["display"] = "none";
+            valtxtbox9.Style["display"] = "none";
+            valtxtbox10.Style["display"] = "none";
+            valtxtbox11.Style["display"] = "none";
         }
 
         public void resetSearch() //resets search section visibility
@@ -360,7 +400,8 @@ namespace TravelSite
         public void display2(object Source, EventArgs e) //search by agencies
         {
 
-            ViewState["method"] = "byAgency";
+            //ViewState["method"] = "byAgency";
+            ViewState["method"] = "2";
             resetSearch();
             buttonSection.Style["visibility"] = "visible";
             searchDefault.Style["display"] = "block";
@@ -370,7 +411,8 @@ namespace TravelSite
 
         public void display3(object Source, EventArgs e) //search by activity
         {
-            ViewState["method"] = "byActivity";
+            //ViewState["method"] = "byActivity";
+            ViewState["method"] = "3";
             resetSearch();
             buttonSection.Style["visibility"] = "visible";
             searchDefault.Style["display"] = "block";
@@ -380,7 +422,8 @@ namespace TravelSite
 
         public void display4(object Source, EventArgs e) //search by agency and activity
         {
-            ViewState["method"] = "byAgencyAndActivity";
+            //ViewState["method"] = "byAgencyAndActivity";
+            ViewState["method"] = "4";
             resetSearch();
             buttonSection.Style["visibility"] = "visible";
             searchDefault.Style["display"] = "block";
@@ -393,6 +436,17 @@ namespace TravelSite
         {
             noResults.Style["display"] = "block";
         }
+
+        public void failedAddResults()
+        {
+            failedAdd.Style["display"] = "block";
+        }
+
+        public void successfulAddResults()
+        {
+            successfulAdd.Style["display"] = "block";
+        }
+    
 
     }
 
