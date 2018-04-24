@@ -18,6 +18,7 @@ namespace TravelSite
         {
             if (!Page.IsPostBack)
             {
+
                 this.PageTemplateASCX.title = "Test Page";
                 this.PageTemplateASCX.navDefaultHeading = "Default Search";
                 this.PageTemplateASCX.navHeading2 = "Search 1";
@@ -30,17 +31,129 @@ namespace TravelSite
                 this.PageTemplateASCX.txtbox2head = "Activity ID";
                 this.PageTemplateASCX.txtbox3head = "Agency ID";
                 this.PageTemplateASCX.txtbox4head = "Activity ID";
-                myaddButton= (Button)this.PageTemplateASCX.addButton;
-                mysearchButton = (Button)this.PageTemplateASCX.searchButton;
             }
-            this.PageTemplateASCX.searchButtonClick += new EventHandler(changeTest);
-            this.PageTemplateASCX.addButtonClick += new EventHandler(changeTest2);
+                myaddButton = (Button)this.PageTemplateASCX.addButton;
+                mysearchButton = (Button)this.PageTemplateASCX.searchButton;
+                this.PageTemplateASCX.searchButtonClick += new EventHandler(search);
+                this.PageTemplateASCX.addButtonClick += new EventHandler(changeTest2);
         }
-
-        private void changeTest(object sender, System.EventArgs e)
+        private void search2(object sender, System.EventArgs e) { this.PageTemplateASCX.navHeading2 = "GOT HERE"; }
+        private void search(object sender, System.EventArgs e)
         {
-            this.PageTemplateASCX.title = "YEYEYYEYYEYEYE";
-            ((Button)this.PageTemplateASCX.addButton).Enabled = true;
+            this.PageTemplateASCX.reset();
+            ((GridView)this.PageTemplateASCX.gridview).DataSource = null;
+            this.PageTemplateASCX.ds = null;
+            ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
+            if (this.PageTemplateASCX.validateRequirements())
+            {
+                if (this.PageTemplateASCX.viewState != null)
+                {
+                    switch (this.PageTemplateASCX.viewState.ToString())
+                    {
+                        case "default":
+                            this.PageTemplateASCX.ds = pxy.GetActivityAgencies(((TextBox)this.PageTemplateASCX.stateCritbox).Text, ((TextBox)this.PageTemplateASCX.cityCritbox).Text); //get appropriate dataset
+                            if (this.PageTemplateASCX.ds != null)
+                            {
+                                ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
+                                ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
+                                if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
+                                {
+
+                                    ((Button)this.PageTemplateASCX.addButton).Enabled = true;
+                                }
+                                else
+                                { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                            }
+                            else
+                            { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                            break;
+                        case "byAgency":
+                            if (this.PageTemplateASCX.validate2())
+                            {
+                                ExperienceWebService.Agency agency = new Agency();
+                                agency.Agency_id = Convert.ToInt32(((TextBox)this.PageTemplateASCX.txtbox1control).Text);
+
+                                this.PageTemplateASCX.ds = pxy.GetActivities(agency, ((TextBox)this.PageTemplateASCX.stateCritbox).Text, ((TextBox)this.PageTemplateASCX.cityCritbox).Text); //get appropriate dataset
+                                if (this.PageTemplateASCX.ds != null)
+                                {
+                                    ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
+
+                                    ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
+                                    if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
+                                    {
+                                        ((Button)this.PageTemplateASCX.addButton).Enabled = true;
+
+                                    }
+                                    else
+                                    { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                                }
+                                else
+                                { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                            }
+                            else
+                            { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+
+                            break;
+                        case "byActivity":
+                            if (((TextBox)this.PageTemplateASCX.txtbox2control).Text != "")
+                            {
+
+                                ExperienceWebService.Activities activity = new Activities();
+                                activity.Activity_type = ((TextBox)this.PageTemplateASCX.txtbox2control).Text;
+                                activity.Activity_startDate = "02/02/2018";
+                                activity.Activity_enddate = "02/03/2018";
+                                this.PageTemplateASCX.ds = null;
+                                this.PageTemplateASCX.ds = pxy.FindActivities(activity, ((TextBox)this.PageTemplateASCX.stateCritbox).Text, ((TextBox)this.PageTemplateASCX.cityCritbox).Text); //get appropriate dataset
+                                if (this.PageTemplateASCX.ds != null)
+                                {
+                                    ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
+
+                                    ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
+                                    if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
+                                    {
+
+                                        ((Button)this.PageTemplateASCX.addButton).Enabled = true;
+                                    }
+                                    else
+                                    { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+
+                                }
+                                else
+                                { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                            }
+                            else
+                            { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; ((Control)this.PageTemplateASCX.txtbox2validator).Visible = false; }
+                            break;
+                        case "byVenue":
+
+                            break;
+                        case "byAgencyAndActivity":
+
+                            break;
+                        default:
+                            this.PageTemplateASCX.ds = pxy.GetActivityAgencies(((TextBox)this.PageTemplateASCX.stateCritbox).Text, ((TextBox)this.PageTemplateASCX.cityCritbox).Text); //get appropriate dataset
+                            if (this.PageTemplateASCX.ds != null)
+                            {
+                                ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
+                                ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
+                                if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
+                                {
+
+                                    ((Button)this.PageTemplateASCX.addButton).Enabled = true;
+                                }
+                                else
+                                { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                            }
+                            else
+                            { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                this.PageTemplateASCX.viewState = "default";
+            }
         }
 
         private void changeTest2(object sender, System.EventArgs e)

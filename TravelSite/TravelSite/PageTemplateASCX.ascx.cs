@@ -18,25 +18,39 @@ namespace TravelSite
         public String navHeading4 { set { navAgencyAndActivity.InnerText = value; } }
         
         public String cityCrit { set { cityCriteria.InnerText = value; } }
+        public Control cityCritbox { get { return txtCity; } }
+        public Control cityValidator { get { return valCity; } }
+        public Control stateCritbox { get { return txtState; } }
         public String stateCrit { set { stateCriteria.InnerText = value; } }
+        public Control stateValidator { get { return valState; } }
         public String txtbox1head { set { txtbox1Heading.InnerText = value; } }
+        public Control txtbox1validator { get { return valtxtbox1; } }
         public String txtbox2head { set { txtbox2Heading.InnerText = value; } }
+        public Control txtbox2validator { get { return valtxtbox2; } }
         public String txtbox3head { set { txtbox3Heading.InnerText = value; } }
+        public Control txtbox3validator { get { return valtxtbox3; } }
         public String txtbox4head { set { txtbox4Heading.InnerText = value; } }
+        public Control txtbox4validator { get { return valtxtbox4; } }
+        public Control txtbox1control { get { return txtbox1; } }
+        public Control txtbox2control { get { return txtbox2; } }
+        public Control txtbox3control { get { return txtbox3; } }
+        public Control txtbox4control { get { return txtbox4; } }
         public Control failedSearchError { get { return failedSearch; } }
         public Control failedAddError { get { return failedAdd; } }
-        public Control noResultserror { get { return noResults; } }
+        public Control noResultsError { get { return noResults; } }
         public Control successfulAddMessage { get { return successfulAdd; } }
         public Control gridview { get { return gvAvailable; } }
         public Control addButton { get { return btnAdd; } }
         public Control searchButton { get { return btnSearch; } }
+        public object viewState { get { return ViewState["method"]; }set { ViewState["method"] = value; } }
+
+
 
         //EVENT HANDLERS
         public event EventHandler searchButtonClick;
         public event EventHandler addButtonClick;
 
 
-        public object noResultsError { get; internal set; }
 
         public DataSet defaultData;
         public DataSet ds; //set up dataset
