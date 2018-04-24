@@ -31,6 +31,9 @@ namespace TravelSite
                 //defaultSearch
                 this.PageTemplateASCX.cityCrit = "City";
                 this.PageTemplateASCX.stateCrit = "State";
+                this.PageTemplateASCX.txtbox3head = "Agency ID";
+                this.PageTemplateASCX.hideTxtBox1();
+                /*
                 this.PageTemplateASCX.txtbox1head = "Agency ID";
                 this.PageTemplateASCX.txtbox2head = "Agency ID";
                 //search2
@@ -45,6 +48,9 @@ namespace TravelSite
                 this.PageTemplateASCX.txtbox9head = "Agency ID";
                 this.PageTemplateASCX.txtbox10head = "Agency ID";
                 this.PageTemplateASCX.txtbox11head = "Agency ID";
+                */
+
+
 
             }
             //buttons
@@ -60,15 +66,36 @@ namespace TravelSite
             this.PageTemplateASCX.reset();
             ((GridView)this.PageTemplateASCX.gridview).DataSource = null;
             this.PageTemplateASCX.ds = null;
+
+            //CHANGE THIS-----------------------------------------------------------------------------------------FILL
             ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
-            if (this.PageTemplateASCX.validateRequirements())
+
+            //check if mandatory fields were filled out
+            //in this case, city and state must be filled out for every search
+            Boolean valid = true;
+            if (((TextBox)this.PageTemplateASCX.cityCritbox).Text == "")
+            {
+                valid = false;
+                //valCity.Style["display"] = "inline";
+                this.PageTemplateASCX.displayCityVal();
+                this.PageTemplateASCX.failedAddResults() ;
+            }
+            if (((TextBox)this.PageTemplateASCX.stateCritbox).Text == "")
+            {
+                valid = false;
+                //valState.Style["display"] = "inline";
+                this.PageTemplateASCX.displayStateVal();
+                this.PageTemplateASCX.failedAddResults();
+            }
+
+            if (valid)
             {
                 if (this.PageTemplateASCX.viewState != null)
                 {
                     switch (this.PageTemplateASCX.viewState.ToString())
                     {
                         case "default": //default search
-                            this.PageTemplateASCX.ds = //REPLACE THIS METHOD
+                            this.PageTemplateASCX.ds = //CHANGE THIS-----------------------------------------------------------------------------------------FILL
                                 pxy.GetActivityAgencies(((TextBox)this.PageTemplateASCX.stateCritbox).Text, ((TextBox)this.PageTemplateASCX.cityCritbox).Text); //get appropriate dataset
                             if (this.PageTemplateASCX.ds != null)
                             {
@@ -83,16 +110,17 @@ namespace TravelSite
                                 { this.PageTemplateASCX.noSearchResults(); }
                             }
                             else
-                            { this.PageTemplateASCX.noSearchResults(); }
+                            { this.PageTemplateASCX.noSearchResults();}
                             break;
                         case "2": //search 2
-                            if (this.PageTemplateASCX.validate2())
+                            if (((TextBox)this.PageTemplateASCX.txtbox3control).Text != "")
                             {
-                                //CREATE NECESSARY OBJECTS TO RUN METHOD
+                                //CREATE NECESSARY OBJECTS TO RUN METHOD//CHANGE THIS-----------------------------------------------------------------------------------------FILL
                                 ExperienceWebService.Agency agency = new Agency();
-                                agency.Agency_id = Convert.ToInt32(((TextBox)this.PageTemplateASCX.txtbox1control).Text);
+                                agency.Agency_id = Convert.ToInt32(((TextBox)this.PageTemplateASCX.txtbox3control).Text);
 
-                                this.PageTemplateASCX.ds = //REPLACE THIS METHOD
+                                //REPLACE THIS METHOD //CHANGE THIS-----------------------------------------------------------------------------------------FILL
+                                this.PageTemplateASCX.ds = 
                                     pxy.GetActivities(agency, ((TextBox)this.PageTemplateASCX.stateCritbox).Text, ((TextBox)this.PageTemplateASCX.cityCritbox).Text); //get appropriate dataset
                                 if (this.PageTemplateASCX.ds != null)
                                 {
@@ -111,19 +139,22 @@ namespace TravelSite
                                 { this.PageTemplateASCX.noSearchResults(); }
                             }
                             else
-                            { //this.PageTemplateASCX.noSearchResults(); 
+                            {
+                                this.PageTemplateASCX.displayVal3();
+                                this.PageTemplateASCX.failedSearchResults();
                             }
 
                             break;
                         case "3": //search 3
                             if (((TextBox)this.PageTemplateASCX.txtbox2control).Text != "")
                             {
-
+                                //CHANGE THIS-----------------------------------------------------------------------------------------FILL
                                 ExperienceWebService.Activities activity = new Activities();
                                 activity.Activity_type = ((TextBox)this.PageTemplateASCX.txtbox2control).Text;
                                 activity.Activity_startDate = "02/02/2018";
                                 activity.Activity_enddate = "02/03/2018";
                                 this.PageTemplateASCX.ds = null;
+                                //CHANGE THIS-----------------------------------------------------------------------------------------FILL
                                 this.PageTemplateASCX.ds = pxy.FindActivities(activity, ((TextBox)this.PageTemplateASCX.stateCritbox).Text, ((TextBox)this.PageTemplateASCX.cityCritbox).Text); //get appropriate dataset
                                 if (this.PageTemplateASCX.ds != null)
                                 {
@@ -143,7 +174,7 @@ namespace TravelSite
                                 { this.PageTemplateASCX.noSearchResults(); }
                             }
                             else
-                            { this.PageTemplateASCX.noSearchResults(); ((Control)this.PageTemplateASCX.txtbox2validator).Visible = false; }
+                            { this.PageTemplateASCX.noSearchResults();  }
                             break;
                         case "4": //search 4
 

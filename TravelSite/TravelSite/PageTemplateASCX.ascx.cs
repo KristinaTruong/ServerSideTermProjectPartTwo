@@ -388,7 +388,9 @@ namespace TravelSite
 
         //-------------------------------------------------------------------------------------------------------------
         //SPECIFIES WEB METHOD IN VIEW STATE OBJECT DEPENDING ON SEARCH TAB THAT WAS CLICKED
-        public void displayDefault(object Source, EventArgs e) //search for agencies
+
+        //DISPLAYS APPROPRIATE SEARCH SECTION
+        public void displayDefault(object Source, EventArgs e) 
         {
             resetSearch();
             buttonSection.Style["visibility"] = "visible";
@@ -397,7 +399,7 @@ namespace TravelSite
             introSection.Style["display"] = "none";
         }
 
-        public void display2(object Source, EventArgs e) //search by agencies
+        public void display2(object Source, EventArgs e) 
         {
 
             //ViewState["method"] = "byAgency";
@@ -409,7 +411,7 @@ namespace TravelSite
             introSection.Style["display"] = "none";
         }
 
-        public void display3(object Source, EventArgs e) //search by activity
+        public void display3(object Source, EventArgs e) 
         {
             //ViewState["method"] = "byActivity";
             ViewState["method"] = "3";
@@ -420,7 +422,7 @@ namespace TravelSite
             introSection.Style["display"] = "none";
         }
 
-        public void display4(object Source, EventArgs e) //search by agency and activity
+        public void display4(object Source, EventArgs e)
         {
             //ViewState["method"] = "byAgencyAndActivity";
             ViewState["method"] = "4";
@@ -431,7 +433,7 @@ namespace TravelSite
             introSection.Style["display"] = "none";
         }
 
-        //display no results if no results were yielded
+        //DISPLAY ERROR / SUCCESS MESSAGES
         public void noSearchResults()
         {
             noResults.Style["display"] = "block";
@@ -446,8 +448,55 @@ namespace TravelSite
         {
             successfulAdd.Style["display"] = "block";
         }
-    
 
+        public void failedSearchResults()
+        {
+            failedSearch.Style["display"] = "block";
+        }
+    
+        //DISPLAY VALIDATORS
+        public void displayCityVal() { valCity.Style["display"] = "inline"; }
+        public void displayStateVal() { valState.Style["display"] = "inline"; }
+        public void displayVal1() { valtxtbox1.Style["display"] = "inline"; }
+        public void displayVal2() { valtxtbox2.Style["display"] = "inline"; }
+        public void displayVal3() { valtxtbox3.Style["display"] = "inline"; }
+        public void displayVal4() { valtxtbox4.Style["display"] = "inline"; }
+        public void displayVal5() { valtxtbox5.Style["display"] = "inline"; }
+        public void displayVal6() { valtxtbox6.Style["display"] = "inline"; }
+        public void displayVal7() { valtxtbox7.Style["display"] = "inline"; }
+        public void displayVal8() { valtxtbox8.Style["display"] = "inline"; }
+        public void displayVal9() { valtxtbox9.Style["display"] = "inline"; }
+        public void displayVal10() { valtxtbox10.Style["display"] = "inline"; }
+        public void displayVal11() { valtxtbox11.Style["display"] = "inline"; }
+
+        //HIDE VALIDATORS
+        public void hideCityVal() { valCity.Style["display"] = "none"; }
+        public void hideStateVal() { valState.Style["display"] = "none"; }
+        public void hideVal1() { valtxtbox1.Style["display"] = "none"; }
+        public void hideVal2() { valtxtbox2.Style["display"] = "none"; }
+        public void hideVal3() { valtxtbox3.Style["display"] = "none"; }
+        public void hideVal4() { valtxtbox4.Style["display"] = "none"; }
+        public void hideVal5() { valtxtbox5.Style["display"] = "none"; }
+        public void hideVal6() { valtxtbox6.Style["display"] = "none"; }
+        public void hideVal7() { valtxtbox7.Style["display"] = "none"; }
+        public void hideVal8() { valtxtbox8.Style["display"] = "none"; }
+        public void hideVal9() { valtxtbox9.Style["display"] = "none"; }
+        public void hideVal10() { valtxtbox10.Style["display"] = "none"; }
+        public void hideVal11() { valtxtbox11.Style["display"] = "none"; }
+
+        //hide unnecessary textboxes, and their headings & validators
+        public void hideTxtBox1() { txtbox1Heading.Visible = false; valtxtbox1.Visible = false; txtbox1.Visible = false; }
+        public void hideTxtBox2() { txtbox2Heading.Visible = false; valtxtbox2.Visible = false; txtbox2.Visible = false; }
+        public void hideTxtBox3() { txtbox3Heading.Visible = false; valtxtbox3.Visible = false; txtbox3.Visible = false; }
+        public void hideTxtBox4() { txtbox4Heading.Visible = false; valtxtbox4.Visible = false; txtbox4.Visible = false; }
+        public void hideTxtBox5() { txtbox5Heading.Visible = false; valtxtbox5.Visible = false; txtbox5.Visible = false; }
+        public void hideTxtBox6() { txtbox6Heading.Visible = false; valtxtbox6.Visible = false; txtbox6.Visible = false; }
+        public void hideTxtBox7() { txtbox7Heading.Visible = false; valtxtbox7.Visible = false; txtbox7.Visible = false; }
+        public void hideTxtBox8() { txtbox8Heading.Visible = false; valtxtbox8.Visible = false; txtbox8.Visible = false; }
+        public void hideTxtBox9() { txtbox9Heading.Visible = false; valtxtbox9.Visible = false; txtbox9.Visible = false; }
+        public void hideTxtBox10() { txtbox10Heading.Visible = false; valtxtbox10.Visible = false; txtbox10.Visible = false; }
+        public void hideTxtBox11() { txtbox11Heading.Visible = false; valtxtbox11.Visible = false; txtbox11.Visible = false; }
+        
     }
 
 }
