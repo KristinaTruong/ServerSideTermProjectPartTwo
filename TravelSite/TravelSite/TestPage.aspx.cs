@@ -12,6 +12,8 @@ namespace TravelSite
 {
     public partial class TestPage : System.Web.UI.Page
     {
+        Button myaddButton;
+        Button mysearchButton;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -28,18 +30,23 @@ namespace TravelSite
                 this.PageTemplateASCX.txtbox2head = "Activity ID";
                 this.PageTemplateASCX.txtbox3head = "Agency ID";
                 this.PageTemplateASCX.txtbox4head = "Activity ID";
-                Control addButton = this.PageTemplateASCX.addButton;
-                Control searchButton = this.PageTemplateASCX.searchButton;
+                myaddButton= (Button)this.PageTemplateASCX.addButton;
+                mysearchButton = (Button)this.PageTemplateASCX.searchButton;
             }
             this.PageTemplateASCX.searchButtonClick += new EventHandler(changeTest);
-            this.PageTemplateASCX.addButtonClick += new EventHandler(changeTest);
+            this.PageTemplateASCX.addButtonClick += new EventHandler(changeTest2);
         }
 
         private void changeTest(object sender, System.EventArgs e)
         {
             this.PageTemplateASCX.title = "YEYEYYEYYEYEYE";
+            ((Button)this.PageTemplateASCX.addButton).Enabled = true;
         }
 
+        private void changeTest2(object sender, System.EventArgs e)
+        {
+            this.PageTemplateASCX.navDefaultHeading = "yasssssss";
+        }
         protected void UserControl_ButtonClick(object sender, EventArgs e)
         {
             //handle the event 

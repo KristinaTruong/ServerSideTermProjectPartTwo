@@ -72,6 +72,8 @@ namespace TravelSite
             if (this.searchButtonClick != null)
                 this.searchButtonClick(this, e);
         }
+        
+
 
         /*
         public  void btnSearch_Click(object sender, EventArgs e)
@@ -194,6 +196,12 @@ namespace TravelSite
         */
         public void btnAdd_Click(object sender, EventArgs e)
         {
+            if (this.addButtonClick != null)
+                this.addButtonClick(this, e);
+        }
+        /*
+        public void btnAdd_Click(object sender, EventArgs e)
+        {
             reset();
             int selectedCount = 0; //count number selected
             for (int i = 0; i < gvAvailable.Rows.Count; i++) //count
@@ -239,7 +247,7 @@ namespace TravelSite
             }
 
         }
-
+        */
         //---------------------------------------------------------------------------------------------------------------------
         //PRIVATE METHODS -----------------------------------------------------------------------------------------------------
 
