@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TravelSite.Properties {
+namespace TravelSiteLibrary.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -28,9 +28,9 @@ namespace TravelSite.Properties {
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://cis-iis2.temple.edu/Spring2018/CIS3342_tug34927/TermProjectWS/RentalCarSer" +
             "vice.asmx")]
-        public string TravelSite_CarWebService_RentalCarService {
+        public string TravelSiteLibrary_CarWebServiceClass_RentalCarService {
             get {
-                return ((string)(this["TravelSite_CarWebService_RentalCarService"]));
+                return ((string)(this["TravelSiteLibrary_CarWebServiceClass_RentalCarService"]));
             }
         }
         
@@ -39,9 +39,9 @@ namespace TravelSite.Properties {
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://cis-iis2.temple.edu/Spring2018/CIS3342_tug62391/TermProjectWS/ActivitiesSe" +
             "rvice.asmx")]
-        public string TravelSite_ExperienceWebService_ActivitiesService {
+        public string TravelSiteLibrary_ExperienceWebServiceClass_ActivitiesService {
             get {
-                return ((string)(this["TravelSite_ExperienceWebService_ActivitiesService"]));
+                return ((string)(this["TravelSiteLibrary_ExperienceWebServiceClass_ActivitiesService"]));
             }
         }
         
@@ -50,9 +50,9 @@ namespace TravelSite.Properties {
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf45882/TermProjectWS/CarService.a" +
             "smx")]
-        public string TravelSite_CarWebService2_CarService {
+        public string TravelSiteLibrary_CarWebService2_CarService {
             get {
-                return ((string)(this["TravelSite_CarWebService2_CarService"]));
+                return ((string)(this["TravelSiteLibrary_CarWebService2_CarService"]));
             }
         }
     }

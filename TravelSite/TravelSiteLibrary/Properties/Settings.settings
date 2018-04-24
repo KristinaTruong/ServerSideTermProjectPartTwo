@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TravelSiteLibrary.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TravelSiteLibrary_CarWebServiceClass_RentalCarService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://cis-iis2.temple.edu/Spring2018/CIS3342_tug34927/TermProjectWS/RentalCarService.asmx</Value>
+    </Setting>
+    <Setting Name="TravelSiteLibrary_ExperienceWebServiceClass_ActivitiesService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://cis-iis2.temple.edu/Spring2018/CIS3342_tug62391/TermProjectWS/ActivitiesService.asmx</Value>
+    </Setting>
+    <Setting Name="TravelSiteLibrary_CarWebService2_CarService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf45882/TermProjectWS/CarService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
