@@ -16,19 +16,38 @@ namespace TravelSite
         public String navHeading2 { set { navAgency.InnerText = value; } }
         public String navHeading3 { set { navActivity.InnerText = value; } }
         public String navHeading4 { set { navAgencyAndActivity.InnerText = value; } }
-        //public String 
+        
+        public String cityCrit { set { cityCriteria.InnerText = value; } }
+        public String stateCrit { set { stateCriteria.InnerText = value; } }
+        public String txtbox1head { set { txtbox1Heading.InnerText = value; } }
+        public String txtbox2head { set { txtbox2Heading.InnerText = value; } }
+        public String txtbox3head { set { txtbox3Heading.InnerText = value; } }
+        public String txtbox4head { set { txtbox4Heading.InnerText = value; } }
+        public Control failedSearchError { get { return failedSearch; } }
+        public Control failedAddError { get { return failedAdd; } }
+        public Control noResultserror { get { return noResults; } }
+        public Control successfulAddMessage { get { return successfulAdd; } }
+        public Control gridview { get { return gvAvailable; } }
+        public Control addButton { get { return btnAdd; } }
+        public Control searchButton { get { return btnSearch; } }
+
+        //EVENT HANDLERS
+        public event EventHandler searchButtonClick;
+        public event EventHandler addButtonClick;
 
 
-        private DataSet defaultData;
+        public object noResultsError { get; internal set; }
+
+        public DataSet defaultData;
         public DataSet ds; //set up dataset
-        HttpCookie objCookie; //setup cookie
-        VacationPackage myPackage; //user's vacation package
-        ExperienceClass newExp;
-        String method = ""; //string to carry web method name
+        public HttpCookie objCookie; //setup cookie
+        public VacationPackage myPackage; //user's vacation package
+        public ExperienceClass newExp;
+        public String method = ""; //string to carry web method name
         //this will be used to know which column to extract the correct value for creating an object
         //because methods may return different fields 
 
-        protected void Page_Load(object sender, EventArgs e)
+        public void Page_Load(object sender, EventArgs e)
         {
             objCookie = Request.Cookies["TravelSite"];
 
@@ -48,8 +67,14 @@ namespace TravelSite
                 }
             }
         }
+        public void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (this.searchButtonClick != null)
+                this.searchButtonClick(this, e);
+        }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
+        /*
+        public  void btnSearch_Click(object sender, EventArgs e)
         {
             reset();
             gvAvailable.DataSource = null;
@@ -166,7 +191,8 @@ namespace TravelSite
                 ViewState["method"] = "default";
             }
         }
-        protected void btnAdd_Click(object sender, EventArgs e)
+        */
+        public void btnAdd_Click(object sender, EventArgs e)
         {
             reset();
             int selectedCount = 0; //count number selected
@@ -217,7 +243,7 @@ namespace TravelSite
         //---------------------------------------------------------------------------------------------------------------------
         //PRIVATE METHODS -----------------------------------------------------------------------------------------------------
 
-        private Boolean validateRequirements()
+        public Boolean validateRequirements()
         {
             Boolean valid = true;
             if (txtCity.Text == "")
@@ -235,7 +261,7 @@ namespace TravelSite
             return valid;
         }
 
-        private Boolean validate2()
+        public Boolean validate2()
         {
             Boolean valid = true;
             if (txtbox1.Text == "")
@@ -257,7 +283,7 @@ namespace TravelSite
             }
             return valid;
         }
-        private void reset() //resets error and validation messages
+        public void reset() //resets error and validation messages
         {
             //reset error messagess
             failedAdd.Style["display"] = "none";
@@ -273,7 +299,7 @@ namespace TravelSite
             valtxtbox4.Style["display"] = "none";
         }
 
-        private void resetSearch() //resets search section visibility
+        public void resetSearch() //resets search section visibility
         {
             searchDefault.Style["display"] = "none";
             search2.Style["display"] = "none";
@@ -284,7 +310,7 @@ namespace TravelSite
 
         //-------------------------------------------------------------------------------------------------------------
         //SPECIFIES WEB METHOD IN VIEW STATE OBJECT DEPENDING ON SEARCH TAB THAT WAS CLICKED
-        protected void displayDefault(object Source, EventArgs e) //search for agencies
+        public void displayDefault(object Source, EventArgs e) //search for agencies
         {
             resetSearch();
             buttonSection.Style["visibility"] = "visible";
@@ -293,7 +319,7 @@ namespace TravelSite
             introSection.Style["display"] = "none";
         }
 
-        protected void display2(object Source, EventArgs e) //search by agencies
+        public void display2(object Source, EventArgs e) //search by agencies
         {
 
             ViewState["method"] = "byAgency";
@@ -304,7 +330,7 @@ namespace TravelSite
             introSection.Style["display"] = "none";
         }
 
-        protected void display3(object Source, EventArgs e) //search by activity
+        public void display3(object Source, EventArgs e) //search by activity
         {
             ViewState["method"] = "byActivity";
             resetSearch();
@@ -314,7 +340,7 @@ namespace TravelSite
             introSection.Style["display"] = "none";
         }
 
-        protected void display4(object Source, EventArgs e) //search by agency and activity
+        public void display4(object Source, EventArgs e) //search by agency and activity
         {
             ViewState["method"] = "byAgencyAndActivity";
             resetSearch();

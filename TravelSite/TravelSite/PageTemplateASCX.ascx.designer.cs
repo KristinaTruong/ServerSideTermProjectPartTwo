@@ -121,6 +121,15 @@ namespace TravelSite {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchDefault;
         
         /// <summary>
+        /// cityCriteria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cityCriteria;
+        
+        /// <summary>
         /// txtCity control.
         /// </summary>
         /// <remarks>
@@ -137,6 +146,15 @@ namespace TravelSite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl valCity;
+        
+        /// <summary>
+        /// stateCriteria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl stateCriteria;
         
         /// <summary>
         /// txtState control.
@@ -166,6 +184,15 @@ namespace TravelSite {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl search2;
         
         /// <summary>
+        /// txtbox1Heading control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtbox1Heading;
+        
+        /// <summary>
         /// txtbox1 control.
         /// </summary>
         /// <remarks>
@@ -191,6 +218,15 @@ namespace TravelSite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl search3;
+        
+        /// <summary>
+        /// txtbox2Heading control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtbox2Heading;
         
         /// <summary>
         /// txtbox2 control.
@@ -220,6 +256,15 @@ namespace TravelSite {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl search4;
         
         /// <summary>
+        /// txtbox3Heading control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtbox3Heading;
+        
+        /// <summary>
         /// txtbox3 control.
         /// </summary>
         /// <remarks>
@@ -236,6 +281,15 @@ namespace TravelSite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl valtxtbox3;
+        
+        /// <summary>
+        /// txtbox4Heading control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtbox4Heading;
         
         /// <summary>
         /// txtbox4 control.

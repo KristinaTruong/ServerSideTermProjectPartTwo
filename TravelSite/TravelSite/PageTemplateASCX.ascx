@@ -66,11 +66,11 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <div id="cityCriteria">CITY</div><br />
+                                    <div id="cityCriteria" runat="server">CITY</div><br />
                                     <asp:TextBox ID="txtCity" runat="server"></asp:TextBox><div id="valCity" style="display: none; color: red;" runat="server">*Required</div>
                                 </div>
                                 <div class="col">
-                                    <div id="stateCriteria">STATE</div><br />
+                                    <div id="stateCriteria" runat="server">STATE</div><br />
                                     <asp:TextBox ID="txtState" runat="server"></asp:TextBox><div id="valState" style="display: none; color: red;" runat="server">*Required</div>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                    <div id="txtbox1Heading">STATE</div><br />
+                                    <div id="txtbox1Heading" runat="server">STATE</div><br />
                                     <asp:TextBox ID="txtbox1" runat="server"></asp:TextBox><div id="valtxtbox1" style="display: none; color: red;" runat="server">*Required</div>
                                 </div>
                         </div>
@@ -100,7 +100,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                    <div id="txtbox2Heading">STATE</div><br />
+                                    <div id="txtbox2Heading" runat="server">STATE</div><br />
                                     <asp:TextBox ID="txtbox2" runat="server"></asp:TextBox><div id="valtxtbox2" style="display: none; color: red;" runat="server">*Required</div>
                                 </div>
                         </div>
@@ -115,11 +115,11 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                    <div id="txtbox3Heading">STATE</div><br />
+                                    <div id="txtbox3Heading" runat="server">STATE</div><br />
                                     <asp:TextBox ID="txtbox3" runat="server"></asp:TextBox><div id="valtxtbox3" style="display: none; color: red;" runat="server">*Required</div>
                                 </div>
                             <div class="col">
-                                    <div id="txtbox4Heading">STATE</div><br />
+                                    <div id="txtbox4Heading" runat="server">STATE</div><br />
                                     <asp:TextBox ID="txtbox4" runat="server"></asp:TextBox><div id="valtxtbox4" style="display: none; color: red;" runat="server">*Required</div>
                                 </div>
                         </div>
