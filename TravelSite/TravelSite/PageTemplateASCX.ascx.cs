@@ -16,42 +16,58 @@ namespace TravelSite
         public String navHeading2 { set { navAgency.InnerText = value; } }
         public String navHeading3 { set { navActivity.InnerText = value; } }
         public String navHeading4 { set { navAgencyAndActivity.InnerText = value; } }
-        
+
+        //city and state labels
         public String cityCrit { set { cityCriteria.InnerText = value; } }
-        public Control cityCritbox { get { return txtCity; } }
-        public Control cityValidator { get { return valCity; } }
-        public Control stateCritbox { get { return txtState; } }
         public String stateCrit { set { stateCriteria.InnerText = value; } }
+        //city and state text boxes
+        public Control cityCritbox { get { return txtCity; } }
+        public Control stateCritbox { get { return txtState; } }
+        //city and state validators
+        public Control cityValidator { get { return valCity; } }
         public Control stateValidator { get { return valState; } }
+        //text box labels
         public String txtbox1head { set { txtbox1Heading.InnerText = value; } }
-        public Control txtbox1validator { get { return valtxtbox1; } }
+
         public String txtbox2head { set { txtbox2Heading.InnerText = value; } }
-        public Control txtbox2validator { get { return valtxtbox2; } }
+
         public String txtbox3head { set { txtbox3Heading.InnerText = value; } }
-        public Control txtbox3validator { get { return valtxtbox3; } }
+
         public String txtbox4head { set { txtbox4Heading.InnerText = value; } }
+
+        //textbox validators
+        public Control txtbox1validator { get { return valtxtbox1; } }
+        public Control txtbox2validator { get { return valtxtbox2; } }
+        public Control txtbox3validator { get { return valtxtbox3; } }
         public Control txtbox4validator { get { return valtxtbox4; } }
+
+        //textbox textboxes
         public Control txtbox1control { get { return txtbox1; } }
         public Control txtbox2control { get { return txtbox2; } }
         public Control txtbox3control { get { return txtbox3; } }
         public Control txtbox4control { get { return txtbox4; } }
+
+        //error messages  
         public Control failedSearchError { get { return failedSearch; } }
         public Control failedAddError { get { return failedAdd; } }
         public Control noResultsError { get { return noResults; } }
         public Control successfulAddMessage { get { return successfulAdd; } }
+
+        //gridview
         public Control gridview { get { return gvAvailable; } }
+
+        //buttons
         public Control addButton { get { return btnAdd; } }
         public Control searchButton { get { return btnSearch; } }
-        public object viewState { get { return ViewState["method"]; }set { ViewState["method"] = value; } }
 
+        //viewstate object
+        public object viewState { get { return ViewState["method"]; } set { ViewState["method"] = value; } }
 
-
-        //EVENT HANDLERS
+        //EVENT HANDLERS FOR THE BUTTONS
         public event EventHandler searchButtonClick;
         public event EventHandler addButtonClick;
 
-
-
+        //OTHER PROPERTIES
         public DataSet defaultData;
         public DataSet ds; //set up dataset
         public HttpCookie objCookie; //setup cookie
@@ -86,7 +102,7 @@ namespace TravelSite
             if (this.searchButtonClick != null)
                 this.searchButtonClick(this, e);
         }
-        
+
 
 
         /*
@@ -370,6 +386,12 @@ namespace TravelSite
             searchDefault.Style["display"] = "block";
             search4.Style["display"] = "block";
             introSection.Style["display"] = "none";
+        }
+
+        //display no results if no results were yielded
+        public void noSearchResults()
+        {
+            noResults.Style["display"] = "block";
         }
 
     }

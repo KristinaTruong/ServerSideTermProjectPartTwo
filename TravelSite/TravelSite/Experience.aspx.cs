@@ -67,10 +67,10 @@ namespace TravelSite
                                     btnAdd.Enabled = true;
                                 }
                                 else
-                                {noResults.Style["display"] = "block";}
+                                {noSearchResults();}
                             }
                             else
-                            {noResults.Style["display"] = "block";}
+                            {noSearchResults();}
                             break;
                         case "byAgency":
                             if (validateAgency())
@@ -90,13 +90,13 @@ namespace TravelSite
 
                                     }
                                     else
-                                    {noResults.Style["display"] = "block";}
+                                    {noSearchResults();}
                                 }
                                 else
-                                {noResults.Style["display"] = "block";}
+                                {noSearchResults();}
                             }
                             else
-                            {noResults.Style["display"] = "block";}
+                            {noSearchResults();}
 
                             break;
                         case "byActivity":
@@ -120,14 +120,14 @@ namespace TravelSite
                                         btnAdd.Enabled = true;
                                     }
                                     else
-                                    { noResults.Style["display"] = "block"; }
+                                    { noSearchResults(); }
 
                                 }
                                 else
-                                { noResults.Style["display"] = "block"; }
+                                { noSearchResults(); }
                             }
                             else
-                            { noResults.Style["display"] = "block"; valActivityType.Style["display"] = "inline"; }
+                            { noSearchResults(); valActivityType.Style["display"] = "inline"; }
                             break;
                         case "byVenue":
                             
@@ -147,10 +147,10 @@ namespace TravelSite
                                     btnAdd.Enabled = true;
                                 }
                                 else
-                                {noResults.Style["display"] = "block";}
+                                {noSearchResults();}
                             }
                             else
-                            {noResults.Style["display"] = "block";}
+                            {noSearchResults();}
                             break;
                     }
                 }
@@ -326,6 +326,10 @@ namespace TravelSite
             introSection.Style["display"] = "none";
         }
 
+        protected void noSearchResults()
+        {
+
+        }
 
     }
 }

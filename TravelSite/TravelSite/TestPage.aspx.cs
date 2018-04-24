@@ -35,7 +35,7 @@ namespace TravelSite
                 myaddButton = (Button)this.PageTemplateASCX.addButton;
                 mysearchButton = (Button)this.PageTemplateASCX.searchButton;
                 this.PageTemplateASCX.searchButtonClick += new EventHandler(search);
-                this.PageTemplateASCX.addButtonClick += new EventHandler(changeTest2);
+                this.PageTemplateASCX.addButtonClick += new EventHandler(add);
         }
         private void search2(object sender, System.EventArgs e) { this.PageTemplateASCX.navHeading2 = "GOT HERE"; }
         private void search(object sender, System.EventArgs e)
@@ -62,10 +62,10 @@ namespace TravelSite
                                     ((Button)this.PageTemplateASCX.addButton).Enabled = true;
                                 }
                                 else
-                                { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                                { this.PageTemplateASCX.noSearchResults(); }
                             }
                             else
-                            { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                            { this.PageTemplateASCX.noSearchResults(); }
                             break;
                         case "byAgency":
                             if (this.PageTemplateASCX.validate2())
@@ -85,13 +85,13 @@ namespace TravelSite
 
                                     }
                                     else
-                                    { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                                    { this.PageTemplateASCX.noSearchResults(); }
                                 }
                                 else
-                                { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                                { this.PageTemplateASCX.noSearchResults(); }
                             }
                             else
-                            { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                            { this.PageTemplateASCX.noSearchResults(); }
 
                             break;
                         case "byActivity":
@@ -115,14 +115,14 @@ namespace TravelSite
                                         ((Button)this.PageTemplateASCX.addButton).Enabled = true;
                                     }
                                     else
-                                    { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                                    { this.PageTemplateASCX.noSearchResults(); }
 
                                 }
                                 else
-                                { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                                { this.PageTemplateASCX.noSearchResults(); }
                             }
                             else
-                            { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; ((Control)this.PageTemplateASCX.txtbox2validator).Visible = false; }
+                            { this.PageTemplateASCX.noSearchResults(); ((Control)this.PageTemplateASCX.txtbox2validator).Visible = false; }
                             break;
                         case "byVenue":
 
@@ -142,10 +142,10 @@ namespace TravelSite
                                     ((Button)this.PageTemplateASCX.addButton).Enabled = true;
                                 }
                                 else
-                                { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                                { this.PageTemplateASCX.noSearchResults(); }
                             }
                             else
-                            { ((Control)this.PageTemplateASCX.noResultsError).Visible = false; }
+                            { this.PageTemplateASCX.noSearchResults(); }
                             break;
                     }
                 }
@@ -156,7 +156,7 @@ namespace TravelSite
             }
         }
 
-        private void changeTest2(object sender, System.EventArgs e)
+        private void add(object sender, System.EventArgs e)
         {
             this.PageTemplateASCX.navDefaultHeading = "yasssssss";
         }
