@@ -18,6 +18,9 @@ namespace TravelSite
         HttpCookie objCookie; //setup cookie
         VacationPackage myPackage; //user's vacation package
         ExperienceClass newExp;
+        String method = ""; //string to carry web method name
+        //this will be used to know which column to extract the correct value for creating an object
+        //because methods may return different fields 
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,6 +34,7 @@ namespace TravelSite
                 if (loggedIn)
                 {
                     myPackage = VacationPackage.getCustomerPackage(objCookie.Values["LoginID"].ToString());
+                    
                 }
                 else
                 {
@@ -42,24 +46,93 @@ namespace TravelSite
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             reset();
-            if (validateInput()) { 
-
-                if (true) //validation of input --------------------------------------------------------FILL
+            ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
+            if (validateRequirements())
+            {
+                if (ViewState["method"] != null) {
+                switch (ViewState["method"].ToString())
                 {
-                    if (true)//----------------------------------FILL WITH PARAMETERS if-else then statements
-                    {
-                        ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
-                        ds = pxy.GetActivityAgencies("PA", "Philadelphia"); //get appropriate dataset
-                        gvAvailable.DataSource = ds; //assign as datasource
-                        if (ds.Tables[0].Rows.Count > 0)
+                    case "default":
+                        ds = pxy.GetActivityAgencies(txtState.Text, txtCity.Text); //get appropriate dataset
+                        if (ds != null)
                         {
-                            btnAdd.Enabled = true;
-                        }
-                        gvAvailable.DataBind(); //databind it to gridview
+                            gvAvailable.DataSource = ds; //assign as datasource
 
-                    }
+                            gvAvailable.DataBind(); //databind it to gridview
+                            if (ds.Tables[0].Rows.Count > 0)
+                            {
+                                txtCity.Text = "GOT HERE";
+                                btnAdd.Enabled = true;
+                            }
+                        }
+                        break;
+                    case "byAgency":
+                        ExperienceWebService.Agency agency = new Agency();
+                        agency.Agency_id = Convert.ToInt32(txtAgencyID.Text);
+                        ds = pxy.GetActivities(agency,txtState.Text, txtCity.Text); //get appropriate dataset
+                        if (ds != null)
+                        {
+                            gvAvailable.DataSource = ds; //assign as datasource
+
+                            gvAvailable.DataBind(); //databind it to gridview
+                            if (ds.Tables[0].Rows.Count > 0)
+                            {
+                                txtCity.Text = "GOT HERE";
+                                btnAdd.Enabled = true;
+                            }
+                        }
+                        break;
+                    case "byActivity":
+                        ds = pxy.GetActivityAgencies(txtState.Text, txtCity.Text); //get appropriate dataset
+                        if (ds != null)
+                        {
+                            gvAvailable.DataSource = ds; //assign as datasource
+
+                            gvAvailable.DataBind(); //databind it to gridview
+                            if (ds.Tables[0].Rows.Count > 0)
+                            {
+                                txtCity.Text = "GOT HERE";
+                                btnAdd.Enabled = true;
+                            }
+                        }
+                        break;
+                    case "byVenue":
+                        ds = pxy.GetActivityAgencies(txtState.Text, txtCity.Text); //get appropriate dataset
+                        if (ds != null)
+                        {
+                            gvAvailable.DataSource = ds; //assign as datasource
+
+                            gvAvailable.DataBind(); //databind it to gridview
+                            if (ds.Tables[0].Rows.Count > 0)
+                            {
+                                txtCity.Text = "GOT HERE";
+                                btnAdd.Enabled = true;
+                            }
+                        }
+                        break;
+                    case "byAgencyAndActivity":
+                        ds = pxy.GetActivityAgencies(txtState.Text, txtCity.Text); //get appropriate dataset
+                        if (ds != null)
+                        {
+                            gvAvailable.DataSource = ds; //assign as datasource
+
+                            gvAvailable.DataBind(); //databind it to gridview
+                            if (ds.Tables[0].Rows.Count > 0)
+                            {
+                                txtCity.Text = "GOT HERE";
+                                btnAdd.Enabled = true;
+                            }
+                        }
+                        break;
+                    default:
+                        ViewState["method"] = "default";
+                        break;
                 }
-                
+                }
+            }
+            else
+            {
+                ViewState["method"] = "default";
             }
         }
         protected void btnAdd_Click(object sender, EventArgs e)
@@ -110,15 +183,31 @@ namespace TravelSite
 
         }
 
-        //PRIVATE METHODS
-        private Boolean validateInput()
+        //PRIVATE METHODS -----------------------------------------------------------------------------------------------------
+        private Boolean validateRequirements()
         {
             Boolean valid = true;
-            if(txtCity.Text == "")
+            if (txtCity.Text == "")
             {
                 valid = false;
-                valItem.Style["display"] = "inline";
+                valCity.Style["display"] = "inline";
                 failedSearch.Style["display"] = "block";
+            }
+            if (txtState.Text == "")
+            {
+                valid = false;
+                valState.Style["display"] = "inline";
+                failedSearch.Style["display"] = "block";
+            }
+            return valid;
+        }
+
+        private Boolean validateAgency()
+        {
+            Boolean valid = true;
+            if (txtAgencyID.Text == "")
+            {
+
             }
             return valid;
         }
@@ -129,7 +218,58 @@ namespace TravelSite
             successfulAdd.Style["display"] = "none";
             failedSearch.Style["display"] = "none";
             //reset validation
-            valItem.Style["display"] = "none";
+            valCity.Style["display"] = "none";
+            valState.Style["display"] = "none";
         }
+
+        private void resetSearch()
+        {
+            searchDefault.Style["display"] = "none";
+            searchAgency.Style["display"] = "none";
+            searchActivity.Style["display"] = "none";
+            searchAgencyAndActivity.Style["display"] = "none";
+            searchVenue.Style["display"] = "none";
+        }
+
+        protected void displayDefault(object Source, EventArgs e)
+        {
+            resetSearch();
+            ViewState["method"] = "default";
+            searchDefault.Style["display"] = "block";
+        }
+
+        protected void displayAgency(object Source, EventArgs e)
+        {
+            ViewState["method"] = "byAgency";
+            resetSearch();
+            searchDefault.Style["display"] = "block";
+            searchAgency.Style["display"] = "block";
+        }
+
+        protected void displayActivity(object Source, EventArgs e)
+        {
+            ViewState["method"] = "byActivity";
+            resetSearch();
+            searchDefault.Style["display"] = "block";
+            searchActivity.Style["display"] = "block";
+        }
+
+        protected void displayAgencyAndActivity(object Source, EventArgs e)
+        {
+            ViewState["method"] = "byAgencyAndActivity";
+            resetSearch();
+            searchDefault.Style["display"] = "block";
+            searchAgencyAndActivity.Style["display"] = "block";
+        }
+
+        protected void displayVenue(object Source, EventArgs e)
+        {
+            ViewState["method"] = "byVenue";
+            resetSearch();
+            searchDefault.Style["display"] = "block";
+            searchVenue.Style["display"] = "block";
+        }
+
+
     }
 }
