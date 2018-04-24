@@ -5,6 +5,10 @@
         #btnSearch, #btnAdd {
             width: 40%;
         }
+        .nav-link:hover{
+            background-color:gray;
+            color:black;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -22,6 +26,9 @@
     <div id="failedSearch" runat="server" style="display: none;" class="alert alert-danger" role="alert">
         ERROR! Search criteria is invalid
     </div>
+    <div id="noResults" runat="server" style="display: none;" class="alert alert-danger" role="alert">
+        ERROR! No results were found
+    </div>
     <!--  -------------------------------------------------------------------------------------------------->
     <!--  -------------------------------------------------------------------------------------------------->
     <!-- SEARCH MENU -->
@@ -30,23 +37,45 @@
     <a class="nav-link active" id="navDefault" href="#" runat="server" onserverclick="displayDefault" >Default</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="navAgency" href="#" runat="server" onserverclick="displayAgency">By Agency</a>
+    <a class="nav-link active" id="navAgency" href="#" runat="server" onserverclick="displayAgency">By Agency</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="navActivity" href="#" runat="server" onserverclick="displayActivity">By Activity Type</a>
+    <a class="nav-link active" id="navActivity" href="#" runat="server" onserverclick="displayActivity">By Activity Type</a>
   </li>
         <li class="nav-item">
-    <a class="nav-link" id="navAgencyAndActivity" href="#" runat="server" onserverclick="displayAgencyAndActivity">By Agency & Activity Type</a>
+    <a class="nav-link active" id="navAgencyAndActivity" href="#" runat="server" onserverclick="displayAgencyAndActivity">By Agency & Activity Type</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="navVenue" href="#" runat="server" onserverclick="displayVenue">By Venue</a>
+    <a class="nav-link active" id="navVenue" href="#" runat="server" onserverclick="displayVenue">By Venue</a>
   </li>
 </ul>
     <!----------------------------------------------------------------------------------------------------->
 
     <div id="searchSection" runat="server">
+        <!-- Introduction -->
+            <div class="row" id="introSection" runat="server" > 
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    
+                                    <br />
+                                    <br />
+
+                                    To get started, please click a search filter above!
+                                    <br />
+
+                                    <br />
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!-- REQUIRED CRITERIA -->
-            <div class="row" id="searchDefault" runat="server" > 
+            <div class="row" id="searchDefault" runat="server" style="display:none;"> 
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
@@ -80,15 +109,15 @@
                 </div>
             </div>
         </div>
-        <!-- SEARCH BY AGENCY -->
+        <!-- SEARCH BY ACTIVITY -->
         <div class="row" id="searchActivity" runat="server" style="display:none;">
             <div class="col">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                Activity ID<br />
-                                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><div id="Div2" style="display: none; color: red;" runat="server">*Required</div>
+                                Activity Type<br />
+                                <asp:TextBox ID="txtActivityType" runat="server"></asp:TextBox><div id="valActivityType" style="display: none; color: red;" runat="server">*Required</div>
 
                             </div>
                         </div>
@@ -155,11 +184,9 @@
         <!---------------------------------------------------------------------------------------------------------->
 
     </div>
-
-
     <br />
     <!----------- BUTTONS -------------------------------------------------------------------------------->
-    <div class="container container-fluid">
+    <div class="container container-fluid" id="buttonSection" style="visibility:hidden;" runat="server">
         <div class="row">
             <div class="col">
                 <asp:Button ID="btnSearch" class="btn btn-primary"
