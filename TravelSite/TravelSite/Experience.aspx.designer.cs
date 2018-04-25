@@ -40,6 +40,15 @@ namespace TravelSite {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl failedSearch;
         
         /// <summary>
+        /// noResults control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl noResults;
+        
+        /// <summary>
         /// navDefault control.
         /// </summary>
         /// <remarks>
@@ -92,6 +101,15 @@ namespace TravelSite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchSection;
+        
+        /// <summary>
+        /// introSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl introSection;
         
         /// <summary>
         /// searchDefault control.
@@ -175,22 +193,22 @@ namespace TravelSite {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchActivity;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtActivityType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtActivityType;
         
         /// <summary>
-        /// Div2 control.
+        /// valActivityType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl valActivityType;
         
         /// <summary>
         /// searchAgencyAndActivity control.
@@ -290,6 +308,15 @@ namespace TravelSite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl valItem;
+        
+        /// <summary>
+        /// buttonSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl buttonSection;
         
         /// <summary>
         /// btnSearch control.

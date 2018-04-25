@@ -10,7 +10,7 @@
 namespace TravelSite {
     
     
-    public partial class Car {
+    public partial class TestPage {
         
         /// <summary>
         /// PageTemplateASCX control.
