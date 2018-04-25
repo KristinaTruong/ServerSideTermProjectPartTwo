@@ -33,6 +33,7 @@ namespace TravelSite
                 this.PageTemplateASCX.stateCrit = "State";
                 this.PageTemplateASCX.txtbox3head = "Agency ID";
                 this.PageTemplateASCX.hideTxtBox1();
+                this.PageTemplateASCX.hideTxtBox2();
                 /*
                 this.PageTemplateASCX.txtbox1head = "Agency ID";
                 this.PageTemplateASCX.txtbox2head = "Agency ID";
