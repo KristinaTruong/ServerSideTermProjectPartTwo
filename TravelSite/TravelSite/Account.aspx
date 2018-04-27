@@ -13,6 +13,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>My Account</h1>
+    *NOTE: Your email is your login username, if it is changed, you must use that to login next time!
+    <div id="successMessage" class="alert alert-success" role="alert" runat="server" visible="false">
+  SUCCESS! Your account was updated
+</div>
     <div class="row">
         <div class="col">
             <!-- name, address, phone -->
@@ -47,6 +51,12 @@
 </div>
              </div>
             <div class="row">
+                <div class="col-2">Payment:</div>
+                <div class="col-10"><asp:TextBox ID="txtPayment" style="width:60%;" runat="server" SValidationGroup="validationGroup" Enabled="False"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="valPayment" runat="server" ErrorMessage="*Required" ForeColor="#CC0000" ValidationGroup="validationGroup" ControlToValidate="txtEmail">*Required</asp:RequiredFieldValidator><br />
+</div>
+             </div>
+            <div class="row">
                 <div class="col-2">Password:</div>
                 <div class="col-10"><asp:TextBox ID="txtPassword" style="width:60%;" runat="server"  ValidationGroup="validationGroup" Enabled="False"></asp:TextBox>
             <asp:RequiredFieldValidator ID="valPassword" runat="server" ErrorMessage="*Required" ForeColor="#CC0000" ValidationGroup="validationGroup" ControlToValidate="txtPassword">*Required</asp:RequiredFieldValidator><br />
@@ -67,7 +77,7 @@
                 runat="server" Text="Edit" Style="width: 100%;" OnClick="btnEditClick" /></div>
         <div class="col">
             <asp:Button ID="btnSave" class="btn btn-dark" 
-                runat="server" Text="Save Changes" style="width:100%;" Enabled="false" ValidationGroup="validationGroup" CausesValidation="true"/></div>
+                runat="server" Text="Save Changes" style="width:100%;" Enabled="false" ValidationGroup="validationGroup" CausesValidation="true" OnClick="btnSave_Click"/></div>
 
     </div></div>
 </asp:Content>

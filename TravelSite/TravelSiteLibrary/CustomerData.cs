@@ -94,6 +94,22 @@ namespace TravelSiteLibrary
             return ds;
         }
 
+        public static void updateCustomer(CustomerClass customer)
+        {
+            SqlCommand objCommand = new SqlCommand();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "UpdateTravelCustomer";
+            objCommand.Parameters.AddWithValue("login", customer.customerLoginID);
+            objCommand.Parameters.AddWithValue("name", customer.customerName);
+            objCommand.Parameters.AddWithValue("home", customer.customerAddress);
+            objCommand.Parameters.AddWithValue("phone", customer.customerPhone);
+            objCommand.Parameters.AddWithValue("email", customer.customerEmail);
+            objCommand.Parameters.AddWithValue("password", serializeCustomer(customer));
+            objCommand.Parameters.AddWithValue("payment", customer.customerPayment);
+            objDB.GetDataSetUsingCmdObj(objCommand);
+            
+        }
+
         //creates a customer record
         public static void createCustomer(CustomerClass customer)
         {

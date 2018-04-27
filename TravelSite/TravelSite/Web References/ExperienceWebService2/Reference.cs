@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace TravelSite.ExperienceWebService {
+namespace TravelSite.ExperienceWebService2 {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -24,7 +24,7 @@ namespace TravelSite.ExperienceWebService {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="ActivitiesServiceSoap", Namespace="http://tempuri.org/")]
@@ -40,7 +40,7 @@ namespace TravelSite.ExperienceWebService {
         
         private System.Threading.SendOrPostCallback FindActivities2OperationCompleted;
         
-        private System.Threading.SendOrPostCallback TravelLoginOperationCompleted;
+        private System.Threading.SendOrPostCallback loginCheckOperationCompleted;
         
         private System.Threading.SendOrPostCallback ReserveOperationCompleted;
         
@@ -48,7 +48,7 @@ namespace TravelSite.ExperienceWebService {
         
         /// <remarks/>
         public ActivitiesService() {
-            this.Url = global::TravelSite.Properties.Settings.Default.TravelSite_ExperienceWebService_ActivitiesService;
+            this.Url = global::TravelSite.Properties.Settings.Default.TravelSite_ExperienceWebService2_ActivitiesService;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -98,33 +98,33 @@ namespace TravelSite.ExperienceWebService {
         public event FindActivities2CompletedEventHandler FindActivities2Completed;
         
         /// <remarks/>
-        public event TravelLoginCompletedEventHandler TravelLoginCompleted;
+        public event loginCheckCompletedEventHandler loginCheckCompleted;
         
         /// <remarks/>
         public event ReserveCompletedEventHandler ReserveCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetActivityAgencies", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet GetActivityAgencies(string state, string city) {
+        public System.Data.DataSet GetActivityAgencies(string city, string state) {
             object[] results = this.Invoke("GetActivityAgencies", new object[] {
-                        state,
-                        city});
+                        city,
+                        state});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void GetActivityAgenciesAsync(string state, string city) {
-            this.GetActivityAgenciesAsync(state, city, null);
+        public void GetActivityAgenciesAsync(string city, string state) {
+            this.GetActivityAgenciesAsync(city, state, null);
         }
         
         /// <remarks/>
-        public void GetActivityAgenciesAsync(string state, string city, object userState) {
+        public void GetActivityAgenciesAsync(string city, string state, object userState) {
             if ((this.GetActivityAgenciesOperationCompleted == null)) {
                 this.GetActivityAgenciesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetActivityAgenciesOperationCompleted);
             }
             this.InvokeAsync("GetActivityAgencies", new object[] {
-                        state,
-                        city}, this.GetActivityAgenciesOperationCompleted, userState);
+                        city,
+                        state}, this.GetActivityAgenciesOperationCompleted, userState);
         }
         
         private void OnGetActivityAgenciesOperationCompleted(object arg) {
@@ -136,28 +136,28 @@ namespace TravelSite.ExperienceWebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetActivities", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet GetActivities(Agency a, string state, string city) {
+        public System.Data.DataSet GetActivities(Agencies agencies, string city, string state) {
             object[] results = this.Invoke("GetActivities", new object[] {
-                        a,
-                        state,
-                        city});
+                        agencies,
+                        city,
+                        state});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void GetActivitiesAsync(Agency a, string state, string city) {
-            this.GetActivitiesAsync(a, state, city, null);
+        public void GetActivitiesAsync(Agencies agencies, string city, string state) {
+            this.GetActivitiesAsync(agencies, city, state, null);
         }
         
         /// <remarks/>
-        public void GetActivitiesAsync(Agency a, string state, string city, object userState) {
+        public void GetActivitiesAsync(Agencies agencies, string city, string state, object userState) {
             if ((this.GetActivitiesOperationCompleted == null)) {
                 this.GetActivitiesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetActivitiesOperationCompleted);
             }
             this.InvokeAsync("GetActivities", new object[] {
-                        a,
-                        state,
-                        city}, this.GetActivitiesOperationCompleted, userState);
+                        agencies,
+                        city,
+                        state}, this.GetActivitiesOperationCompleted, userState);
         }
         
         private void OnGetActivitiesOperationCompleted(object arg) {
@@ -169,28 +169,28 @@ namespace TravelSite.ExperienceWebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/FindActivities", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet FindActivities(Activities a, string state, string city) {
+        public System.Data.DataSet FindActivities(Activity activity, string city, string state) {
             object[] results = this.Invoke("FindActivities", new object[] {
-                        a,
-                        state,
-                        city});
+                        activity,
+                        city,
+                        state});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void FindActivitiesAsync(Activities a, string state, string city) {
-            this.FindActivitiesAsync(a, state, city, null);
+        public void FindActivitiesAsync(Activity activity, string city, string state) {
+            this.FindActivitiesAsync(activity, city, state, null);
         }
         
         /// <remarks/>
-        public void FindActivitiesAsync(Activities a, string state, string city, object userState) {
+        public void FindActivitiesAsync(Activity activity, string city, string state, object userState) {
             if ((this.FindActivitiesOperationCompleted == null)) {
                 this.FindActivitiesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnFindActivitiesOperationCompleted);
             }
             this.InvokeAsync("FindActivities", new object[] {
-                        a,
-                        state,
-                        city}, this.FindActivitiesOperationCompleted, userState);
+                        activity,
+                        city,
+                        state}, this.FindActivitiesOperationCompleted, userState);
         }
         
         private void OnFindActivitiesOperationCompleted(object arg) {
@@ -202,32 +202,32 @@ namespace TravelSite.ExperienceWebService {
         
         /// <remarks/>
         [System.Web.Services.WebMethodAttribute(MessageName="FindActivities1")]
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/FindActivitiesByVenues", RequestElementName="FindActivitiesByVenues", RequestNamespace="http://tempuri.org/", ResponseElementName="FindActivitiesByVenuesResponse", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("FindActivitiesByVenuesResult")]
-        public System.Data.DataSet FindActivities(Venue v, Activities a, string state, string city) {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/findbyvenue", RequestElementName="findbyvenue", RequestNamespace="http://tempuri.org/", ResponseElementName="findbyvenueResponse", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("findbyvenueResult")]
+        public System.Data.DataSet FindActivities(Venue venue, Activity activity, string city, string state) {
             object[] results = this.Invoke("FindActivities1", new object[] {
-                        v,
-                        a,
-                        state,
-                        city});
+                        venue,
+                        activity,
+                        city,
+                        state});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void FindActivities1Async(Venue v, Activities a, string state, string city) {
-            this.FindActivities1Async(v, a, state, city, null);
+        public void FindActivities1Async(Venue venue, Activity activity, string city, string state) {
+            this.FindActivities1Async(venue, activity, city, state, null);
         }
         
         /// <remarks/>
-        public void FindActivities1Async(Venue v, Activities a, string state, string city, object userState) {
+        public void FindActivities1Async(Venue venue, Activity activity, string city, string state, object userState) {
             if ((this.FindActivities1OperationCompleted == null)) {
                 this.FindActivities1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnFindActivities1OperationCompleted);
             }
             this.InvokeAsync("FindActivities1", new object[] {
-                        v,
-                        a,
-                        state,
-                        city}, this.FindActivities1OperationCompleted, userState);
+                        venue,
+                        activity,
+                        city,
+                        state}, this.FindActivities1OperationCompleted, userState);
         }
         
         private void OnFindActivities1OperationCompleted(object arg) {
@@ -239,32 +239,32 @@ namespace TravelSite.ExperienceWebService {
         
         /// <remarks/>
         [System.Web.Services.WebMethodAttribute(MessageName="FindActivities2")]
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/FindActivitiesByAgency", RequestElementName="FindActivitiesByAgency", RequestNamespace="http://tempuri.org/", ResponseElementName="FindActivitiesByAgencyResponse", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("FindActivitiesByAgencyResult")]
-        public System.Data.DataSet FindActivities(Agency name, Activities a, string state, string city) {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/findbyAgency", RequestElementName="findbyAgency", RequestNamespace="http://tempuri.org/", ResponseElementName="findbyAgencyResponse", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("findbyAgencyResult")]
+        public System.Data.DataSet FindActivities(Agencies agency, Activity activity, string city, string state) {
             object[] results = this.Invoke("FindActivities2", new object[] {
-                        name,
-                        a,
-                        state,
-                        city});
+                        agency,
+                        activity,
+                        city,
+                        state});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void FindActivities2Async(Agency name, Activities a, string state, string city) {
-            this.FindActivities2Async(name, a, state, city, null);
+        public void FindActivities2Async(Agencies agency, Activity activity, string city, string state) {
+            this.FindActivities2Async(agency, activity, city, state, null);
         }
         
         /// <remarks/>
-        public void FindActivities2Async(Agency name, Activities a, string state, string city, object userState) {
+        public void FindActivities2Async(Agencies agency, Activity activity, string city, string state, object userState) {
             if ((this.FindActivities2OperationCompleted == null)) {
                 this.FindActivities2OperationCompleted = new System.Threading.SendOrPostCallback(this.OnFindActivities2OperationCompleted);
             }
             this.InvokeAsync("FindActivities2", new object[] {
-                        name,
-                        a,
-                        state,
-                        city}, this.FindActivities2OperationCompleted, userState);
+                        agency,
+                        activity,
+                        city,
+                        state}, this.FindActivities2OperationCompleted, userState);
         }
         
         private void OnFindActivities2OperationCompleted(object arg) {
@@ -275,64 +275,64 @@ namespace TravelSite.ExperienceWebService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/TravelLogin", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool TravelLogin(string TravelID, string TravelPassword) {
-            object[] results = this.Invoke("TravelLogin", new object[] {
-                        TravelID,
-                        TravelPassword});
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/loginCheck", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool loginCheck(string id, string pass) {
+            object[] results = this.Invoke("loginCheck", new object[] {
+                        id,
+                        pass});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void TravelLoginAsync(string TravelID, string TravelPassword) {
-            this.TravelLoginAsync(TravelID, TravelPassword, null);
+        public void loginCheckAsync(string id, string pass) {
+            this.loginCheckAsync(id, pass, null);
         }
         
         /// <remarks/>
-        public void TravelLoginAsync(string TravelID, string TravelPassword, object userState) {
-            if ((this.TravelLoginOperationCompleted == null)) {
-                this.TravelLoginOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTravelLoginOperationCompleted);
+        public void loginCheckAsync(string id, string pass, object userState) {
+            if ((this.loginCheckOperationCompleted == null)) {
+                this.loginCheckOperationCompleted = new System.Threading.SendOrPostCallback(this.OnloginCheckOperationCompleted);
             }
-            this.InvokeAsync("TravelLogin", new object[] {
-                        TravelID,
-                        TravelPassword}, this.TravelLoginOperationCompleted, userState);
+            this.InvokeAsync("loginCheck", new object[] {
+                        id,
+                        pass}, this.loginCheckOperationCompleted, userState);
         }
         
-        private void OnTravelLoginOperationCompleted(object arg) {
-            if ((this.TravelLoginCompleted != null)) {
+        private void OnloginCheckOperationCompleted(object arg) {
+            if ((this.loginCheckCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.TravelLoginCompleted(this, new TravelLoginCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.loginCheckCompleted(this, new loginCheckCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Reserve", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Reserve(Agency ag, Activities a, Customer c, string TravelID, string TravelPassword) {
+        public bool Reserve(Agencies agency, Activity activity, Customer customer, string travelSiteiID, string travelSitePassword) {
             object[] results = this.Invoke("Reserve", new object[] {
-                        ag,
-                        a,
-                        c,
-                        TravelID,
-                        TravelPassword});
+                        agency,
+                        activity,
+                        customer,
+                        travelSiteiID,
+                        travelSitePassword});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void ReserveAsync(Agency ag, Activities a, Customer c, string TravelID, string TravelPassword) {
-            this.ReserveAsync(ag, a, c, TravelID, TravelPassword, null);
+        public void ReserveAsync(Agencies agency, Activity activity, Customer customer, string travelSiteiID, string travelSitePassword) {
+            this.ReserveAsync(agency, activity, customer, travelSiteiID, travelSitePassword, null);
         }
         
         /// <remarks/>
-        public void ReserveAsync(Agency ag, Activities a, Customer c, string TravelID, string TravelPassword, object userState) {
+        public void ReserveAsync(Agencies agency, Activity activity, Customer customer, string travelSiteiID, string travelSitePassword, object userState) {
             if ((this.ReserveOperationCompleted == null)) {
                 this.ReserveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnReserveOperationCompleted);
             }
             this.InvokeAsync("Reserve", new object[] {
-                        ag,
-                        a,
-                        c,
-                        TravelID,
-                        TravelPassword}, this.ReserveOperationCompleted, userState);
+                        agency,
+                        activity,
+                        customer,
+                        travelSiteiID,
+                        travelSitePassword}, this.ReserveOperationCompleted, userState);
         }
         
         private void OnReserveOperationCompleted(object arg) {
@@ -367,89 +367,65 @@ namespace TravelSite.ExperienceWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Agency {
+    public partial class Agencies {
         
-        private string agency_cityField;
+        private string agenciesIDField;
         
-        private string agency_emailField;
+        private string agenciesNameField;
         
-        private int agency_idField;
+        private string agenciesAddressField;
         
-        private string agency_nameField;
+        private string agenciesCityField;
         
-        private string agency_phoneField;
-        
-        private string agency_stateField;
-        
-        private int agency_zipField;
+        private string agenciesStateField;
         
         /// <remarks/>
-        public string Agency_city {
+        public string agenciesID {
             get {
-                return this.agency_cityField;
+                return this.agenciesIDField;
             }
             set {
-                this.agency_cityField = value;
+                this.agenciesIDField = value;
             }
         }
         
         /// <remarks/>
-        public string Agency_email {
+        public string agenciesName {
             get {
-                return this.agency_emailField;
+                return this.agenciesNameField;
             }
             set {
-                this.agency_emailField = value;
+                this.agenciesNameField = value;
             }
         }
         
         /// <remarks/>
-        public int Agency_id {
+        public string agenciesAddress {
             get {
-                return this.agency_idField;
+                return this.agenciesAddressField;
             }
             set {
-                this.agency_idField = value;
+                this.agenciesAddressField = value;
             }
         }
         
         /// <remarks/>
-        public string Agency_name {
+        public string agenciesCity {
             get {
-                return this.agency_nameField;
+                return this.agenciesCityField;
             }
             set {
-                this.agency_nameField = value;
+                this.agenciesCityField = value;
             }
         }
         
         /// <remarks/>
-        public string Agency_phone {
+        public string agenciesState {
             get {
-                return this.agency_phoneField;
+                return this.agenciesStateField;
             }
             set {
-                this.agency_phoneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Agency_state {
-            get {
-                return this.agency_stateField;
-            }
-            set {
-                this.agency_stateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int Agency_zip {
-            get {
-                return this.agency_zipField;
-            }
-            set {
-                this.agency_zipField = value;
+                this.agenciesStateField = value;
             }
         }
     }
@@ -462,51 +438,87 @@ namespace TravelSite.ExperienceWebService {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class Customer {
         
-        private string addressField;
+        private string customerIDField;
         
-        private string emailField;
+        private string customerFirstNameField;
         
-        private string nameField;
+        private string customerLastNameField;
         
-        private string phoneField;
+        private string customerAddressField;
+        
+        private string customerCityField;
+        
+        private string customerZipField;
+        
+        private string customerStateField;
         
         /// <remarks/>
-        public string Address {
+        public string customerID {
             get {
-                return this.addressField;
+                return this.customerIDField;
             }
             set {
-                this.addressField = value;
+                this.customerIDField = value;
             }
         }
         
         /// <remarks/>
-        public string Email {
+        public string customerFirstName {
             get {
-                return this.emailField;
+                return this.customerFirstNameField;
             }
             set {
-                this.emailField = value;
+                this.customerFirstNameField = value;
             }
         }
         
         /// <remarks/>
-        public string Name {
+        public string customerLastName {
             get {
-                return this.nameField;
+                return this.customerLastNameField;
             }
             set {
-                this.nameField = value;
+                this.customerLastNameField = value;
             }
         }
         
         /// <remarks/>
-        public string Phone {
+        public string customerAddress {
             get {
-                return this.phoneField;
+                return this.customerAddressField;
             }
             set {
-                this.phoneField = value;
+                this.customerAddressField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string customerCity {
+            get {
+                return this.customerCityField;
+            }
+            set {
+                this.customerCityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string customerZip {
+            get {
+                return this.customerZipField;
+            }
+            set {
+                this.customerZipField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string customerState {
+            get {
+                return this.customerStateField;
+            }
+            set {
+                this.customerStateField = value;
             }
         }
     }
@@ -519,51 +531,51 @@ namespace TravelSite.ExperienceWebService {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class Venue {
         
-        private string venue_cityField;
+        private string venueNameField;
         
-        private int venue_idField;
+        private string venueAddressField;
         
-        private string venue_nameField;
+        private string venueCityField;
         
-        private string venue_stateField;
+        private string venueStateField;
         
         /// <remarks/>
-        public string Venue_city {
+        public string venueName {
             get {
-                return this.venue_cityField;
+                return this.venueNameField;
             }
             set {
-                this.venue_cityField = value;
+                this.venueNameField = value;
             }
         }
         
         /// <remarks/>
-        public int Venue_id {
+        public string venueAddress {
             get {
-                return this.venue_idField;
+                return this.venueAddressField;
             }
             set {
-                this.venue_idField = value;
+                this.venueAddressField = value;
             }
         }
         
         /// <remarks/>
-        public string Venue_name {
+        public string venueCity {
             get {
-                return this.venue_nameField;
+                return this.venueCityField;
             }
             set {
-                this.venue_nameField = value;
+                this.venueCityField = value;
             }
         }
         
         /// <remarks/>
-        public string Venue_state {
+        public string venueState {
             get {
-                return this.venue_stateField;
+                return this.venueStateField;
             }
             set {
-                this.venue_stateField = value;
+                this.venueStateField = value;
             }
         }
     }
@@ -574,159 +586,111 @@ namespace TravelSite.ExperienceWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Activities {
+    public partial class Activity {
         
-        private int activity_idField;
+        private string activityIDField;
         
-        private int activity_avaliabilityField;
+        private string activityTypeField;
         
-        private int activity_no_of_bookingField;
+        private string activityTimeField;
         
-        private decimal activity_costField;
+        private string activityDayField;
         
-        private string activity_typeField;
+        private int activityPriceField;
         
-        private string activity_statusField;
+        private string venueNameField;
         
-        private string activity_startDateField;
+        private string venueCityField;
         
-        private string activity_enddateField;
-        
-        private string activity_infoField;
-        
-        private string activity_locationField;
-        
-        private string activity_cityField;
-        
-        private string activity_stateField;
+        private string venueStateField;
         
         /// <remarks/>
-        public int Activity_id {
+        public string activityID {
             get {
-                return this.activity_idField;
+                return this.activityIDField;
             }
             set {
-                this.activity_idField = value;
+                this.activityIDField = value;
             }
         }
         
         /// <remarks/>
-        public int Activity_avaliability {
+        public string activityType {
             get {
-                return this.activity_avaliabilityField;
+                return this.activityTypeField;
             }
             set {
-                this.activity_avaliabilityField = value;
+                this.activityTypeField = value;
             }
         }
         
         /// <remarks/>
-        public int Activity_no_of_booking {
+        public string activityTime {
             get {
-                return this.activity_no_of_bookingField;
+                return this.activityTimeField;
             }
             set {
-                this.activity_no_of_bookingField = value;
+                this.activityTimeField = value;
             }
         }
         
         /// <remarks/>
-        public decimal Activity_cost {
+        public string activityDay {
             get {
-                return this.activity_costField;
+                return this.activityDayField;
             }
             set {
-                this.activity_costField = value;
+                this.activityDayField = value;
             }
         }
         
         /// <remarks/>
-        public string Activity_type {
+        public int activityPrice {
             get {
-                return this.activity_typeField;
+                return this.activityPriceField;
             }
             set {
-                this.activity_typeField = value;
+                this.activityPriceField = value;
             }
         }
         
         /// <remarks/>
-        public string Activity_status {
+        public string venueName {
             get {
-                return this.activity_statusField;
+                return this.venueNameField;
             }
             set {
-                this.activity_statusField = value;
+                this.venueNameField = value;
             }
         }
         
         /// <remarks/>
-        public string Activity_startDate {
+        public string venueCity {
             get {
-                return this.activity_startDateField;
+                return this.venueCityField;
             }
             set {
-                this.activity_startDateField = value;
+                this.venueCityField = value;
             }
         }
         
         /// <remarks/>
-        public string Activity_enddate {
+        public string venueState {
             get {
-                return this.activity_enddateField;
+                return this.venueStateField;
             }
             set {
-                this.activity_enddateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Activity_info {
-            get {
-                return this.activity_infoField;
-            }
-            set {
-                this.activity_infoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Activity_location {
-            get {
-                return this.activity_locationField;
-            }
-            set {
-                this.activity_locationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Activity_city {
-            get {
-                return this.activity_cityField;
-            }
-            set {
-                this.activity_cityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Activity_state {
-            get {
-                return this.activity_stateField;
-            }
-            set {
-                this.activity_stateField = value;
+                this.venueStateField = value;
             }
         }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     public delegate void GetActivityAgenciesCompletedEventHandler(object sender, GetActivityAgenciesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetActivityAgenciesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -748,11 +712,11 @@ namespace TravelSite.ExperienceWebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     public delegate void GetActivitiesCompletedEventHandler(object sender, GetActivitiesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetActivitiesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -774,11 +738,11 @@ namespace TravelSite.ExperienceWebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     public delegate void FindActivitiesCompletedEventHandler(object sender, FindActivitiesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class FindActivitiesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -800,11 +764,11 @@ namespace TravelSite.ExperienceWebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     public delegate void FindActivities1CompletedEventHandler(object sender, FindActivities1CompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class FindActivities1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -826,11 +790,11 @@ namespace TravelSite.ExperienceWebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     public delegate void FindActivities2CompletedEventHandler(object sender, FindActivities2CompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class FindActivities2CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -852,18 +816,18 @@ namespace TravelSite.ExperienceWebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
-    public delegate void TravelLoginCompletedEventHandler(object sender, TravelLoginCompletedEventArgs e);
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void loginCheckCompletedEventHandler(object sender, loginCheckCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TravelLoginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class loginCheckCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal TravelLoginCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal loginCheckCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -878,11 +842,11 @@ namespace TravelSite.ExperienceWebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     public delegate void ReserveCompletedEventHandler(object sender, ReserveCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ReserveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {

@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TravelSiteLibrary;
 using System.Data;
-using TravelSite.ExperienceWebService;
+using TravelSite.ExperienceWebService2;
 
 namespace TravelSite
 {
@@ -18,6 +18,7 @@ namespace TravelSite
         {
             if (!Page.IsPostBack)
             {
+                
 
                 this.PageTemplateASCX.title = "Test Page";
                 this.PageTemplateASCX.navDefaultHeading = "Default Search";
@@ -69,7 +70,7 @@ namespace TravelSite
             this.PageTemplateASCX.ds = null;
 
             //CHANGE THIS-----------------------------------------------------------------------------------------FILL
-            ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
+            ExperienceWebService2.ActivitiesService pxy = new ActivitiesService();
 
             //check if mandatory fields were filled out
             //in this case, city and state must be filled out for every search
@@ -117,8 +118,8 @@ namespace TravelSite
                             if (((TextBox)this.PageTemplateASCX.txtbox3control).Text != "")
                             {
                                 //CREATE NECESSARY OBJECTS TO RUN METHOD//CHANGE THIS-----------------------------------------------------------------------------------------FILL
-                                ExperienceWebService.Agency agency = new Agency();
-                                agency.Agency_id = Convert.ToInt32(((TextBox)this.PageTemplateASCX.txtbox3control).Text);
+                                ExperienceWebService2.Agencies agency = new Agencies();
+                                agency.agenciesID =((TextBox)this.PageTemplateASCX.txtbox3control).Text;
 
                                 //REPLACE THIS METHOD //CHANGE THIS-----------------------------------------------------------------------------------------FILL
                                 this.PageTemplateASCX.ds = 
@@ -150,10 +151,10 @@ namespace TravelSite
                             if (((TextBox)this.PageTemplateASCX.txtbox2control).Text != "")
                             {
                                 //CHANGE THIS-----------------------------------------------------------------------------------------FILL
-                                ExperienceWebService.Activities activity = new Activities();
-                                activity.Activity_type = ((TextBox)this.PageTemplateASCX.txtbox2control).Text;
-                                activity.Activity_startDate = "02/02/2018";
-                                activity.Activity_enddate = "02/03/2018";
+                                ExperienceWebService2.Activity activity = new Activity();
+                                activity.activityType = ((TextBox)this.PageTemplateASCX.txtbox2control).Text;
+                                activity.activityDay = "02/02/2018";
+                                activity.activityTime = "02/03/2018";
                                 this.PageTemplateASCX.ds = null;
                                 //CHANGE THIS-----------------------------------------------------------------------------------------FILL
                                 this.PageTemplateASCX.ds = pxy.FindActivities(activity, ((TextBox)this.PageTemplateASCX.stateCritbox).Text, ((TextBox)this.PageTemplateASCX.cityCritbox).Text); //get appropriate dataset
