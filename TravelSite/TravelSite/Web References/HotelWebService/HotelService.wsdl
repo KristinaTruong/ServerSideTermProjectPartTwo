@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetHotels">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHotelsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHotelsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoomsByHotel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hotel" type="tns:Hotel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Hotel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRoomsByHotelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRoomsByHotelResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindRooms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="amenities" type="tns:Amenities" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Amenities">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="HasFreeCoffee" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSmoking" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasFreeWifi" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="BedSize" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasKitchen" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FreeBreakfast" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindRoomsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindRoomsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindRoomsByHotel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hotel" type="tns:Hotel" />
+            <s:element minOccurs="0" maxOccurs="1" name="amenities" type="tns:Amenities" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindRoomsByHotelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindRoomsByHotelResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckDates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="roomID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="reqStart" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="reqEnd" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckDatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckDatesResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Reserve">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="room" type="tns:Room" />
+            <s:element minOccurs="0" maxOccurs="1" name="customer" type="tns:Customer" />
+            <s:element minOccurs="0" maxOccurs="1" name="reservation" type="tns:Reservation" />
+            <s:element minOccurs="0" maxOccurs="1" name="TravelSiteID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TravelSitePassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Room">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Hotel">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="RoomID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="RoomNum" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="RoomDesc" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ComfortablySleeps" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:float" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Customer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Reservation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RoomID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="HotelID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReserveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReserveResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetHotelsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHotels" />
+  </wsdl:message>
+  <wsdl:message name="GetHotelsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHotelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomsByHotelSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoomsByHotel" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomsByHotelSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoomsByHotelResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindRoomsSoapIn">
+    <wsdl:part name="parameters" element="tns:FindRooms" />
+  </wsdl:message>
+  <wsdl:message name="FindRoomsSoapOut">
+    <wsdl:part name="parameters" element="tns:FindRoomsResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindRoomsByHotelSoapIn">
+    <wsdl:part name="parameters" element="tns:FindRoomsByHotel" />
+  </wsdl:message>
+  <wsdl:message name="FindRoomsByHotelSoapOut">
+    <wsdl:part name="parameters" element="tns:FindRoomsByHotelResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckDatesSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckDates" />
+  </wsdl:message>
+  <wsdl:message name="CheckDatesSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReserveSoapIn">
+    <wsdl:part name="parameters" element="tns:Reserve" />
+  </wsdl:message>
+  <wsdl:message name="ReserveSoapOut">
+    <wsdl:part name="parameters" element="tns:ReserveResponse" />
+  </wsdl:message>
+  <wsdl:portType name="HotelServiceSoap">
+    <wsdl:operation name="GetHotels">
+      <wsdl:input message="tns:GetHotelsSoapIn" />
+      <wsdl:output message="tns:GetHotelsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomsByHotel">
+      <wsdl:input message="tns:GetRoomsByHotelSoapIn" />
+      <wsdl:output message="tns:GetRoomsByHotelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindRooms">
+      <wsdl:input message="tns:FindRoomsSoapIn" />
+      <wsdl:output message="tns:FindRoomsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindRoomsByHotel">
+      <wsdl:input message="tns:FindRoomsByHotelSoapIn" />
+      <wsdl:output message="tns:FindRoomsByHotelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckDates">
+      <wsdl:input message="tns:CheckDatesSoapIn" />
+      <wsdl:output message="tns:CheckDatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Reserve">
+      <wsdl:input message="tns:ReserveSoapIn" />
+      <wsdl:output message="tns:ReserveSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HotelServiceSoap" type="tns:HotelServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetHotels">
+      <soap:operation soapAction="http://tempuri.org/GetHotels" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomsByHotel">
+      <soap:operation soapAction="http://tempuri.org/GetRoomsByHotel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindRooms">
+      <soap:operation soapAction="http://tempuri.org/FindRooms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindRoomsByHotel">
+      <soap:operation soapAction="http://tempuri.org/FindRoomsByHotel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckDates">
+      <soap:operation soapAction="http://tempuri.org/CheckDates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reserve">
+      <soap:operation soapAction="http://tempuri.org/Reserve" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HotelServiceSoap12" type="tns:HotelServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetHotels">
+      <soap12:operation soapAction="http://tempuri.org/GetHotels" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomsByHotel">
+      <soap12:operation soapAction="http://tempuri.org/GetRoomsByHotel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindRooms">
+      <soap12:operation soapAction="http://tempuri.org/FindRooms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindRoomsByHotel">
+      <soap12:operation soapAction="http://tempuri.org/FindRoomsByHotel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckDates">
+      <soap12:operation soapAction="http://tempuri.org/CheckDates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reserve">
+      <soap12:operation soapAction="http://tempuri.org/Reserve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HotelService">
+    <wsdl:port name="HotelServiceSoap" binding="tns:HotelServiceSoap">
+      <soap:address location="http://cis-iis2.temple.edu/Spring2018/CIS3342_tue92295/TermProjectWS/HotelService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HotelServiceSoap12" binding="tns:HotelServiceSoap12">
+      <soap12:address location="http://cis-iis2.temple.edu/Spring2018/CIS3342_tue92295/TermProjectWS/HotelService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
