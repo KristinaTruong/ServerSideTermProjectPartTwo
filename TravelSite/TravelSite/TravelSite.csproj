@@ -112,11 +112,10 @@
     </Content>
     <None Include="Web References\CarWebService\RentalCarService.wsdl" />
     <None Include="Web References\ExperienceWebService2\ActivitiesService.wsdl" />
-    <Content Include="Web References\ExperienceWebService2\Reference.map">
+    <None Include="Web References\ExperienceWebService2\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <None Include="Web References\ExperienceWebService2\ActivitiesService.disco" />
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -126,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\CarWebService\RentalCarService.disco" />
+    <None Include="Web References\ExperienceWebService2\ActivitiesService.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

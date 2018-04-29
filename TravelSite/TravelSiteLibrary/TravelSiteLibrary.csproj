@@ -68,11 +68,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Web References\ExperienceWebServiceClass\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
@@ -109,17 +104,6 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>TravelSiteLibrary_CarWebServiceClass_RentalCarService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://cis-iis2.temple.edu/Spring2018/CIS3342_tug62391/TermProjectWS/ActivitiesService.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\ExperienceWebServiceClass\</RelPath>
-      <UpdateFromURL>http://cis-iis2.temple.edu/Spring2018/CIS3342_tug62391/TermProjectWS/ActivitiesService.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>TravelSiteLibrary_ExperienceWebServiceClass_ActivitiesService</CachedSettingsPropName>
-    </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -138,14 +122,6 @@
     </None>
     <None Include="Web References\CarWebServiceClass\RentalCarService.disco" />
     <None Include="Web References\CarWebServiceClass\RentalCarService.wsdl" />
-    <None Include="Web References\ExperienceWebServiceClass\ActivitiesService.wsdl" />
-    <None Include="Web References\ExperienceWebServiceClass\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\ExperienceWebServiceClass\ActivitiesService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\CarWebServiceClass2\CarService.disco" />

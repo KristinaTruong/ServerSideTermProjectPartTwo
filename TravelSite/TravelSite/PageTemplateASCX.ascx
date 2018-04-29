@@ -33,6 +33,9 @@
     <li class="nav-item">
         <a class="nav-link active" id="navAgencyAndActivity" href="#" runat="server" onserverclick="display4">By Agency & Activity Type</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link active" id="navSearch4" href="#" runat="server" onserverclick="display5">Search 5</a>
+    </li>
 </ul>
 <!----------------------------------------------------------------------------------------------------->
 
@@ -150,12 +153,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <div id="txtbox9Heading" runat="server">BOX 8</div>
+                                <div id="txtbox9Heading" runat="server">BOX 9</div>
                                 <br />
                                 <asp:TextBox ID="txtbox9" runat="server"></asp:TextBox><div id="valtxtbox9" style="display: none; color: red;" runat="server">*Required</div>
                             </div>
                             <div class="col">
-                                <div id="txtbox10Heading" runat="server">BOX 9</div>
+                                <div id="txtbox10Heading" runat="server">BOX 10</div>
                                 <br />
                                 <asp:TextBox ID="txtbox10" runat="server"></asp:TextBox><div id="valtxtbox10" style="display: none; color: red;" runat="server">*Required</div>
                             </div>
@@ -171,6 +174,32 @@
                 </div>
             </div>
         </div>
+    <!-- SEARCH 4 -->
+    <div class="row" id="search5" runat="server" style="display: none;">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div id="txtbox12Heading" runat="server">BOX 12</div>
+                            <br />
+                            <asp:TextBox ID="txtbox12" runat="server"></asp:TextBox><div id="valtxtbox12" style="display: none; color: red;" runat="server">*Required</div>
+                        </div>
+                        <div class="col">
+                            <div id="txtbox13Heading" runat="server">BOX 13</div>
+                            <br />
+                            <asp:TextBox ID="txtbox13" runat="server"></asp:TextBox><div id="valtxtbox13" style="display: none; color: red;" runat="server">*Required</div>
+                        </div>
+                        <div class="col">
+                            <div id="txtbox14Heading" runat="server">BOX 14</div>
+                            <br />
+                            <asp:TextBox ID="txtbox14" runat="server"></asp:TextBox><div id="valtxtbox14" style="display: none; color: red;" runat="server">*Required</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         <!-- SEARCH BY VENUE-->
         <!-- SECTION TEMPLATE --------------------------------------------------------------------------------------
         <div class="row" id="sectionName" runat="server" style="display:none;">
@@ -213,7 +242,7 @@
             <!----- GRIDVIEW ----------------------------------------------------------------------------->
             <br />
             <asp:GridView ID="gvAvailable" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4"
-                EmptyDataText="No results were found." ForeColor="Black" GridLines="Horizontal" Width="100%">
+                EmptyDataText="No results were found." ForeColor="Black" GridLines="Horizontal" Width="100%" ViewStateMode="Enabled">
                 <Columns>
                     <asp:TemplateField HeaderText="Select">
                         <ItemTemplate>

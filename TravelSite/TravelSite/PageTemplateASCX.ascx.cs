@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TravelSite.ExperienceWebService;
 using TravelSiteLibrary;
 using System.Data;
 namespace TravelSite
@@ -16,6 +15,7 @@ namespace TravelSite
         public String navHeading2 { set { navAgency.InnerText = value; } }
         public String navHeading3 { set { navActivity.InnerText = value; } }
         public String navHeading4 { set { navAgencyAndActivity.InnerText = value; } }
+        public String navHeading5 { set { navSearch4.InnerText = value; } }
 
         //city and state labels
         public String cityCrit { set { cityCriteria.InnerText = value; } }
@@ -42,6 +42,10 @@ namespace TravelSite
         public String txtbox9head { set { txtbox9Heading.InnerText = value; } }
         public String txtbox10head { set { txtbox10Heading.InnerText = value; } }
         public String txtbox11head { set { txtbox11Heading.InnerText = value; } }
+        //search5
+        public String txtbox12head { set { txtbox12Heading.InnerText = value; } }
+        public String txtbox13head { set { txtbox13Heading.InnerText = value; } }
+        public String txtbox14head { set { txtbox14Heading.InnerText = value; } }
 
 
         //TEXTBOX VALIDATORS
@@ -60,6 +64,10 @@ namespace TravelSite
         public Control txtbox9validator { get { return valtxtbox9; } }
         public Control txtbox10validator { get { return valtxtbox10; } }
         public Control txtbox11validator { get { return valtxtbox11; } }
+        //search5
+        public Control txtbox12validator { get { return valtxtbox12; } }
+        public Control txtbox13validator { get { return valtxtbox13; } }
+        public Control txtbox14validator { get { return valtxtbox14; } }
 
 
         //TXTBOX CONTROL
@@ -78,6 +86,10 @@ namespace TravelSite
         public Control txtbox9control { get { return txtbox9; } }
         public Control txtbox10control { get { return txtbox10; } }
         public Control txtbox11control { get { return txtbox11; } }
+        //search5
+        public Control txtbox12control { get { return txtbox12; } }
+        public Control txtbox13control { get { return txtbox13; } }
+        public Control txtbox14control { get { return txtbox14; } }
 
 
         //error messages  
@@ -361,6 +373,7 @@ namespace TravelSite
             successfulAdd.Style["display"] = "none";
             failedSearch.Style["display"] = "none";
             noResults.Style["display"] = "none";
+           
             //reset validation
             valCity.Style["display"] = "none";
             valState.Style["display"] = "none";
@@ -375,6 +388,10 @@ namespace TravelSite
             valtxtbox9.Style["display"] = "none";
             valtxtbox10.Style["display"] = "none";
             valtxtbox11.Style["display"] = "none";
+            valtxtbox12.Style["display"] = "none";
+            valtxtbox13.Style["display"] = "none";
+            valtxtbox14.Style["display"] = "none";
+
         }
 
         public void resetSearch() //resets search section visibility
@@ -383,7 +400,7 @@ namespace TravelSite
             search2.Style["display"] = "none";
             search3.Style["display"] = "none";
             search4.Style["display"] = "none";
-
+            search5.Style["display"] = "none";
         }
 
         //-------------------------------------------------------------------------------------------------------------
@@ -433,6 +450,17 @@ namespace TravelSite
             introSection.Style["display"] = "none";
         }
 
+        public void display5(object Source, EventArgs e)
+        {
+            //ViewState["method"] = "byAgencyAndActivity";
+            ViewState["method"] = "5";
+            resetSearch();
+            buttonSection.Style["visibility"] = "visible";
+            searchDefault.Style["display"] = "block";
+            search5.Style["display"] = "block";
+            introSection.Style["display"] = "none";
+        }
+
         //DISPLAY ERROR / SUCCESS MESSAGES
         public void noSearchResults()
         {
@@ -468,6 +496,9 @@ namespace TravelSite
         public void displayVal9() { valtxtbox9.Style["display"] = "inline"; }
         public void displayVal10() { valtxtbox10.Style["display"] = "inline"; }
         public void displayVal11() { valtxtbox11.Style["display"] = "inline"; }
+        public void displayVal12() { valtxtbox12.Style["display"] = "inline"; }
+        public void displayVal13() { valtxtbox13.Style["display"] = "inline"; }
+        public void displayVal14() { valtxtbox14.Style["display"] = "inline"; }
 
         //HIDE VALIDATORS
         public void hideCityVal() { valCity.Style["display"] = "none"; }
@@ -483,6 +514,9 @@ namespace TravelSite
         public void hideVal9() { valtxtbox9.Style["display"] = "none"; }
         public void hideVal10() { valtxtbox10.Style["display"] = "none"; }
         public void hideVal11() { valtxtbox11.Style["display"] = "none"; }
+        public void hideVal12() { valtxtbox12.Style["display"] = "none"; }
+        public void hideVal13() { valtxtbox13.Style["display"] = "none"; }
+        public void hideVal14() { valtxtbox14.Style["display"] = "none"; }
 
         //hide unnecessary textboxes, and their headings & validators
         public void hideTxtBox1() { txtbox1Heading.Visible = false; valtxtbox1.Visible = false; txtbox1.Visible = false; }
@@ -496,7 +530,10 @@ namespace TravelSite
         public void hideTxtBox9() { txtbox9Heading.Visible = false; valtxtbox9.Visible = false; txtbox9.Visible = false; }
         public void hideTxtBox10() { txtbox10Heading.Visible = false; valtxtbox10.Visible = false; txtbox10.Visible = false; }
         public void hideTxtBox11() { txtbox11Heading.Visible = false; valtxtbox11.Visible = false; txtbox11.Visible = false; }
-        
+        public void hideTxtBox12() { txtbox12Heading.Visible = false; valtxtbox12.Visible = false; txtbox12.Visible = false; }
+        public void hideTxtBox13() { txtbox13Heading.Visible = false; valtxtbox13.Visible = false; txtbox13.Visible = false; }
+        public void hideTxtBox14() { txtbox14Heading.Visible = false; valtxtbox14.Visible = false; txtbox14.Visible = false; }
+
     }
 
 }
