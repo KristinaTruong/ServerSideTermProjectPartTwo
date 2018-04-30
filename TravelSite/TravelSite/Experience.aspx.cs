@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TravelSiteLibrary;
-using TravelSite.ExperienceWebService;
+using TravelSite.ExperienceWebService2;
 
 namespace TravelSite
 {
@@ -48,7 +48,7 @@ namespace TravelSite
             reset();
             gvAvailable.DataSource = null;
             ds = null;
-            ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
+            ExperienceWebService2.ActivitiesService pxy = new ExperienceWebService2.ActivitiesService();
             if (validateRequirements())
             {
                 if (ViewState["method"] != null)
@@ -75,8 +75,8 @@ namespace TravelSite
                         case "byAgency":
                             if (validateAgency())
                             {
-                                ExperienceWebService.Agency agency = new Agency();
-                                agency.Agency_id = Convert.ToInt32(txtAgencyID.Text);
+                                ExperienceWebService2.Agencies agency = new ExperienceWebService2.Agencies();
+                                agency.agenciesID = txtAgencyID.Text;
                                 
                                 ds = pxy.GetActivities(agency, txtState.Text, txtCity.Text); //get appropriate dataset
                                 if (ds != null)
@@ -103,10 +103,10 @@ namespace TravelSite
                             if (txtActivityType.Text != "")
                             {
 
-                                ExperienceWebService.Activities activity = new Activities();
-                                activity.Activity_type = txtActivityType.Text;
-                                activity.Activity_startDate = "02/02/2018";
-                                activity.Activity_enddate= "02/03/2018";
+                                ExperienceWebService2.Activity activity = new ExperienceWebService2.Activity(); ;
+                                activity.activityType = txtActivityType.Text;
+                                activity.activityDay = "02/02/2018";
+                                //activity.Activity_enddate= "02/03/2018";
                                 ds = null;
                                 ds = pxy.FindActivities(activity, txtState.Text, txtCity.Text); //get appropriate dataset
                                 if (ds != null)

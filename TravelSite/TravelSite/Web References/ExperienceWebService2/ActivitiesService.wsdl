@@ -5,8 +5,8 @@
       <s:element name="GetActivityAgencies">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -27,21 +27,19 @@
       <s:element name="GetActivities">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="a" type="tns:Agency" />
-            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="agencies" type="tns:Agencies" />
             <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="Agency">
+      <s:complexType name="Agencies">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Agency_city" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Agency_email" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Agency_id" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Agency_name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Agency_phone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Agency_state" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Agency_zip" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="agenciesID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="agenciesName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="agenciesAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="agenciesCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="agenciesState" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetActivitiesResponse">
@@ -61,26 +59,22 @@
       <s:element name="FindActivities">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="a" type="tns:Activities" />
-            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="activity" type="tns:Activity" />
             <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="Activities">
+      <s:complexType name="Activity">
         <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Activity_id" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Activity_avaliability" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Activity_no_of_booking" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Activity_cost" type="s:decimal" />
-          <s:element minOccurs="0" maxOccurs="1" name="Activity_type" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Activity_status" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Activity_startDate" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Activity_enddate" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Activity_info" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Activity_location" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Activity_city" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Activity_state" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="activityID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="activityType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="activityTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="activityDay" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="activityPrice" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="venueName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="venueCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="venueState" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="FindActivitiesResponse">
@@ -97,28 +91,28 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="FindActivitiesByVenues">
+      <s:element name="findbyvenue">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="v" type="tns:Venue" />
-            <s:element minOccurs="0" maxOccurs="1" name="a" type="tns:Activities" />
-            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="venue" type="tns:Venue" />
+            <s:element minOccurs="0" maxOccurs="1" name="activity" type="tns:Activity" />
             <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:complexType name="Venue">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Venue_city" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Venue_id" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Venue_name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Venue_state" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="venueName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="venueAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="venueCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="venueState" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="FindActivitiesByVenuesResponse">
+      <s:element name="findbyvenueResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="FindActivitiesByVenuesResult">
+            <s:element minOccurs="0" maxOccurs="1" name="findbyvenueResult">
               <s:complexType>
                 <s:sequence>
                   <s:element ref="s:schema" />
@@ -129,20 +123,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="FindActivitiesByAgency">
+      <s:element name="findbyAgency">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="name" type="tns:Agency" />
-            <s:element minOccurs="0" maxOccurs="1" name="a" type="tns:Activities" />
-            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="agency" type="tns:Agencies" />
+            <s:element minOccurs="0" maxOccurs="1" name="activity" type="tns:Activity" />
             <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="FindActivitiesByAgencyResponse">
+      <s:element name="findbyAgencyResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="FindActivitiesByAgencyResult">
+            <s:element minOccurs="0" maxOccurs="1" name="findbyAgencyResult">
               <s:complexType>
                 <s:sequence>
                   <s:element ref="s:schema" />
@@ -153,38 +147,41 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="TravelLogin">
+      <s:element name="loginCheck">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="TravelID" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="TravelPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="TravelLoginResponse">
+      <s:element name="loginCheckResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="TravelLoginResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="loginCheckResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="Reserve">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="ag" type="tns:Agency" />
-            <s:element minOccurs="0" maxOccurs="1" name="a" type="tns:Activities" />
-            <s:element minOccurs="0" maxOccurs="1" name="c" type="tns:Customer" />
-            <s:element minOccurs="0" maxOccurs="1" name="TravelID" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="TravelPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="agency" type="tns:Agencies" />
+            <s:element minOccurs="0" maxOccurs="1" name="activity" type="tns:Activity" />
+            <s:element minOccurs="0" maxOccurs="1" name="customer" type="tns:Customer" />
+            <s:element minOccurs="0" maxOccurs="1" name="travelSiteiID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travelSitePassword" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:complexType name="Customer">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customerFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customerLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customerAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customerCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customerZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customerState" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="ReserveResponse">
@@ -214,23 +211,23 @@
   <wsdl:message name="FindActivitiesSoapOut">
     <wsdl:part name="parameters" element="tns:FindActivitiesResponse" />
   </wsdl:message>
-  <wsdl:message name="FindActivitiesByVenuesSoapIn">
-    <wsdl:part name="parameters" element="tns:FindActivitiesByVenues" />
+  <wsdl:message name="findbyvenueSoapIn">
+    <wsdl:part name="parameters" element="tns:findbyvenue" />
   </wsdl:message>
-  <wsdl:message name="FindActivitiesByVenuesSoapOut">
-    <wsdl:part name="parameters" element="tns:FindActivitiesByVenuesResponse" />
+  <wsdl:message name="findbyvenueSoapOut">
+    <wsdl:part name="parameters" element="tns:findbyvenueResponse" />
   </wsdl:message>
-  <wsdl:message name="FindActivitiesByAgencySoapIn">
-    <wsdl:part name="parameters" element="tns:FindActivitiesByAgency" />
+  <wsdl:message name="findbyAgencySoapIn">
+    <wsdl:part name="parameters" element="tns:findbyAgency" />
   </wsdl:message>
-  <wsdl:message name="FindActivitiesByAgencySoapOut">
-    <wsdl:part name="parameters" element="tns:FindActivitiesByAgencyResponse" />
+  <wsdl:message name="findbyAgencySoapOut">
+    <wsdl:part name="parameters" element="tns:findbyAgencyResponse" />
   </wsdl:message>
-  <wsdl:message name="TravelLoginSoapIn">
-    <wsdl:part name="parameters" element="tns:TravelLogin" />
+  <wsdl:message name="loginCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:loginCheck" />
   </wsdl:message>
-  <wsdl:message name="TravelLoginSoapOut">
-    <wsdl:part name="parameters" element="tns:TravelLoginResponse" />
+  <wsdl:message name="loginCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:loginCheckResponse" />
   </wsdl:message>
   <wsdl:message name="ReserveSoapIn">
     <wsdl:part name="parameters" element="tns:Reserve" />
@@ -252,16 +249,16 @@
       <wsdl:output message="tns:FindActivitiesSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="FindActivities">
-      <wsdl:input name="FindActivitiesByVenues" message="tns:FindActivitiesByVenuesSoapIn" />
-      <wsdl:output name="FindActivitiesByVenues" message="tns:FindActivitiesByVenuesSoapOut" />
+      <wsdl:input name="findbyvenue" message="tns:findbyvenueSoapIn" />
+      <wsdl:output name="findbyvenue" message="tns:findbyvenueSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="FindActivities">
-      <wsdl:input name="FindActivitiesByAgency" message="tns:FindActivitiesByAgencySoapIn" />
-      <wsdl:output name="FindActivitiesByAgency" message="tns:FindActivitiesByAgencySoapOut" />
+      <wsdl:input name="findbyAgency" message="tns:findbyAgencySoapIn" />
+      <wsdl:output name="findbyAgency" message="tns:findbyAgencySoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="TravelLogin">
-      <wsdl:input message="tns:TravelLoginSoapIn" />
-      <wsdl:output message="tns:TravelLoginSoapOut" />
+    <wsdl:operation name="loginCheck">
+      <wsdl:input message="tns:loginCheckSoapIn" />
+      <wsdl:output message="tns:loginCheckSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Reserve">
       <wsdl:input message="tns:ReserveSoapIn" />
@@ -298,25 +295,25 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="FindActivities">
-      <soap:operation soapAction="http://tempuri.org/FindActivitiesByVenues" style="document" />
-      <wsdl:input name="FindActivitiesByVenues">
+      <soap:operation soapAction="http://tempuri.org/findbyvenue" style="document" />
+      <wsdl:input name="findbyvenue">
         <soap:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="FindActivitiesByVenues">
+      <wsdl:output name="findbyvenue">
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="FindActivities">
-      <soap:operation soapAction="http://tempuri.org/FindActivitiesByAgency" style="document" />
-      <wsdl:input name="FindActivitiesByAgency">
+      <soap:operation soapAction="http://tempuri.org/findbyAgency" style="document" />
+      <wsdl:input name="findbyAgency">
         <soap:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="FindActivitiesByAgency">
+      <wsdl:output name="findbyAgency">
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="TravelLogin">
-      <soap:operation soapAction="http://tempuri.org/TravelLogin" style="document" />
+    <wsdl:operation name="loginCheck">
+      <soap:operation soapAction="http://tempuri.org/loginCheck" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -364,25 +361,25 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="FindActivities">
-      <soap12:operation soapAction="http://tempuri.org/FindActivitiesByVenues" style="document" />
-      <wsdl:input name="FindActivitiesByVenues">
+      <soap12:operation soapAction="http://tempuri.org/findbyvenue" style="document" />
+      <wsdl:input name="findbyvenue">
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="FindActivitiesByVenues">
+      <wsdl:output name="findbyvenue">
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="FindActivities">
-      <soap12:operation soapAction="http://tempuri.org/FindActivitiesByAgency" style="document" />
-      <wsdl:input name="FindActivitiesByAgency">
+      <soap12:operation soapAction="http://tempuri.org/findbyAgency" style="document" />
+      <wsdl:input name="findbyAgency">
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="FindActivitiesByAgency">
+      <wsdl:output name="findbyAgency">
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="TravelLogin">
-      <soap12:operation soapAction="http://tempuri.org/TravelLogin" style="document" />
+    <wsdl:operation name="loginCheck">
+      <soap12:operation soapAction="http://tempuri.org/loginCheck" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -402,10 +399,10 @@
   </wsdl:binding>
   <wsdl:service name="ActivitiesService">
     <wsdl:port name="ActivitiesServiceSoap" binding="tns:ActivitiesServiceSoap">
-      <soap:address location="http://cis-iis2.temple.edu/Spring2018/CIS3342_tug62391/TermProjectWS/ActivitiesService.asmx" />
+      <soap:address location="http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf51382/TermProjectWS/ActivitiesService.asmx" />
     </wsdl:port>
     <wsdl:port name="ActivitiesServiceSoap12" binding="tns:ActivitiesServiceSoap12">
-      <soap12:address location="http://cis-iis2.temple.edu/Spring2018/CIS3342_tug62391/TermProjectWS/ActivitiesService.asmx" />
+      <soap12:address location="http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf51382/TermProjectWS/ActivitiesService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

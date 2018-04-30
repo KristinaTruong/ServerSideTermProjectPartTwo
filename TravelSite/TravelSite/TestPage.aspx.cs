@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TravelSiteLibrary;
 using System.Data;
-using TravelSite.ExperienceWebService;
+using TravelSite.ExperienceWebService2;
 
 namespace TravelSite
 {
@@ -18,22 +18,36 @@ namespace TravelSite
         {
             if (!Page.IsPostBack)
             {
+                
 
                 this.PageTemplateASCX.title = "Test Page";
-                this.PageTemplateASCX.navDefaultHeading = "Default Search";
+                this.PageTemplateASCX.navDefaultHeading = "Get Activity Agencies";
 
                 //search sections
-                this.PageTemplateASCX.navHeading2 = "Search 1";
-                this.PageTemplateASCX.navHeading3 = "Search 2";
-                this.PageTemplateASCX.navHeading4 = "Search 3";
-                this.PageTemplateASCX.navHeading4 = "Search 4";
+                this.PageTemplateASCX.navHeading2 = "Get Activities";
+                this.PageTemplateASCX.navHeading3 = "Find Activities";
+                this.PageTemplateASCX.navHeading4 = "Find Activities By Venue";
+                this.PageTemplateASCX.navHeading5 = "Find Activities By Agency";
 
                 //defaultSearch
                 this.PageTemplateASCX.cityCrit = "City";
                 this.PageTemplateASCX.stateCrit = "State";
                 this.PageTemplateASCX.txtbox3head = "Agency ID";
+                this.PageTemplateASCX.txtbox9head = "Activity Type";
+                this.PageTemplateASCX.txtbox10head = "Venue Name";
+                this.PageTemplateASCX.txtbox12head = "Activity Type";
+                this.PageTemplateASCX.txtbox13head = "Agency Name";
                 this.PageTemplateASCX.hideTxtBox1();
                 this.PageTemplateASCX.hideTxtBox2();
+                this.PageTemplateASCX.hideTxtBox8();
+
+                this.PageTemplateASCX.txtbox6head = "Activity Type";
+                this.PageTemplateASCX.txtbox7head = "Activity Day";
+
+                this.PageTemplateASCX.hideTxtBox4();
+                this.PageTemplateASCX.hideTxtBox5();
+                this.PageTemplateASCX.hideTxtBox11();
+                this.PageTemplateASCX.hideTxtBox14();
                 /*
                 this.PageTemplateASCX.txtbox1head = "Agency ID";
                 this.PageTemplateASCX.txtbox2head = "Agency ID";
@@ -50,26 +64,29 @@ namespace TravelSite
                 this.PageTemplateASCX.txtbox10head = "Agency ID";
                 this.PageTemplateASCX.txtbox11head = "Agency ID";
                 */
-
+                //buttons
+               
 
 
             }
-            //buttons
             myaddButton = (Button)this.PageTemplateASCX.addButton;
             mysearchButton = (Button)this.PageTemplateASCX.searchButton;
             this.PageTemplateASCX.searchButtonClick += new EventHandler(search);
             this.PageTemplateASCX.addButtonClick += new EventHandler(add);
+            //ViewState["dataSource"] = this.PageTemplateASCX.ds;
+
         }
         
         //search button event - added to the control
         private void search(object sender, System.EventArgs e)
         {
+            ((GridView)this.PageTemplateASCX.gridview).DataBind();
             this.PageTemplateASCX.reset();
-            ((GridView)this.PageTemplateASCX.gridview).DataSource = null;
-            this.PageTemplateASCX.ds = null;
+            //((GridView)this.PageTemplateASCX.gridview).DataSource = null;
+           // this.PageTemplateASCX.ds = null;
 
             //CHANGE THIS-----------------------------------------------------------------------------------------FILL
-            ExperienceWebService.ActivitiesService pxy = new ActivitiesService();
+            ExperienceWebService2.ActivitiesService pxy = new ExperienceWebService2.ActivitiesService();
 
             //check if mandatory fields were filled out
             //in this case, city and state must be filled out for every search
@@ -97,11 +114,13 @@ namespace TravelSite
                     {
                         case "default": //default search
                             this.PageTemplateASCX.ds = //CHANGE THIS-----------------------------------------------------------------------------------------FILL
-                                pxy.GetActivityAgencies(((TextBox)this.PageTemplateASCX.stateCritbox).Text, ((TextBox)this.PageTemplateASCX.cityCritbox).Text); //get appropriate dataset
+                                pxy.GetActivityAgencies(((TextBox)this.PageTemplateASCX.cityCritbox).Text, ((TextBox)this.PageTemplateASCX.stateCritbox).Text); //get appropriate dataset
+                            
                             if (this.PageTemplateASCX.ds != null)
                             {
                                 ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
                                 ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
+                                //((GridView)this.PageTemplateASCX.gridview).AutoGenerateColumns = false;
                                 if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
                                 {
 
@@ -111,18 +130,19 @@ namespace TravelSite
                                 { this.PageTemplateASCX.noSearchResults(); }
                             }
                             else
-                            { this.PageTemplateASCX.noSearchResults();}
+                            { this.PageTemplateASCX.noSearchResults(); }
                             break;
                         case "2": //search 2
                             if (((TextBox)this.PageTemplateASCX.txtbox3control).Text != "")
                             {
                                 //CREATE NECESSARY OBJECTS TO RUN METHOD//CHANGE THIS-----------------------------------------------------------------------------------------FILL
-                                ExperienceWebService.Agency agency = new Agency();
-                                agency.Agency_id = Convert.ToInt32(((TextBox)this.PageTemplateASCX.txtbox3control).Text);
+                                ExperienceWebService2.Agencies agency = new Agencies();
+                                agency.agenciesID = ((TextBox)this.PageTemplateASCX.txtbox3control).Text;
 
                                 //REPLACE THIS METHOD //CHANGE THIS-----------------------------------------------------------------------------------------FILL
-                                this.PageTemplateASCX.ds = 
-                                    pxy.GetActivities(agency, ((TextBox)this.PageTemplateASCX.stateCritbox).Text, ((TextBox)this.PageTemplateASCX.cityCritbox).Text); //get appropriate dataset
+                                this.PageTemplateASCX.ds =
+                                    pxy.GetActivities(agency, ((TextBox)this.PageTemplateASCX.cityCritbox).Text, ((TextBox)this.PageTemplateASCX.stateCritbox).Text); //get appropriate dataset
+                                
                                 if (this.PageTemplateASCX.ds != null)
                                 {
                                     ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
@@ -147,16 +167,17 @@ namespace TravelSite
 
                             break;
                         case "3": //search 3
-                            if (((TextBox)this.PageTemplateASCX.txtbox2control).Text != "")
+                            if (((TextBox)this.PageTemplateASCX.txtbox6control).Text != ""
+                                && ((TextBox)this.PageTemplateASCX.txtbox7control).Text != "")
                             {
                                 //CHANGE THIS-----------------------------------------------------------------------------------------FILL
-                                ExperienceWebService.Activities activity = new Activities();
-                                activity.Activity_type = ((TextBox)this.PageTemplateASCX.txtbox2control).Text;
-                                activity.Activity_startDate = "02/02/2018";
-                                activity.Activity_enddate = "02/03/2018";
-                                this.PageTemplateASCX.ds = null;
+                                ExperienceWebService2.Activity activity = new Activity();
+                                activity.activityType = ((TextBox)this.PageTemplateASCX.txtbox6control).Text;
+                                activity.activityDay = ((TextBox)this.PageTemplateASCX.txtbox7control).Text;
+                                //this.PageTemplateASCX.ds = null;
                                 //CHANGE THIS-----------------------------------------------------------------------------------------FILL
-                                this.PageTemplateASCX.ds = pxy.FindActivities(activity, ((TextBox)this.PageTemplateASCX.stateCritbox).Text, ((TextBox)this.PageTemplateASCX.cityCritbox).Text); //get appropriate dataset
+                                this.PageTemplateASCX.ds = pxy.FindActivities(activity, ((TextBox)this.PageTemplateASCX.cityCritbox).Text, ((TextBox)this.PageTemplateASCX.stateCritbox).Text); //get appropriate dataset
+                                
                                 if (this.PageTemplateASCX.ds != null)
                                 {
                                     ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
@@ -169,33 +190,120 @@ namespace TravelSite
                                     }
                                     else
                                     { this.PageTemplateASCX.noSearchResults(); }
-
+                                    for (int i = 0; i < ((GridView)this.PageTemplateASCX.gridview).Rows.Count; i++)
+                                    {
+                                        String image = "";
+                                        image = ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[1].Text;
+                                        ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[1].Text = "<img style=\"max-width:100px;max-height:100px;\" src=\"" + image + "\"/>";
+                                    }
                                 }
+
+
+
                                 else
                                 { this.PageTemplateASCX.noSearchResults(); }
                             }
                             else
-                            { this.PageTemplateASCX.noSearchResults();  }
+                            {
+                                this.PageTemplateASCX.displayVal6();
+                                this.PageTemplateASCX.displayVal7();
+                                this.PageTemplateASCX.failedSearchResults();
+                            }
+
                             break;
                         case "4": //search 4
-
-                            break;
-                        default:
-                            this.PageTemplateASCX.ds = pxy.GetActivityAgencies(((TextBox)this.PageTemplateASCX.stateCritbox).Text, ((TextBox)this.PageTemplateASCX.cityCritbox).Text); //get appropriate dataset
-                            if (this.PageTemplateASCX.ds != null)
+                            if (((TextBox)this.PageTemplateASCX.txtbox9control).Text != ""
+                                && ((TextBox)this.PageTemplateASCX.txtbox10control).Text != "")
                             {
-                                ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
-                                ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
-                                if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
-                                {
+                                //CHANGE THIS-----------------------------------------------------------------------------------------FILL
+                                ExperienceWebService2.Activity activity = new Activity();
+                                activity.activityType = ((TextBox)this.PageTemplateASCX.txtbox9control).Text;
+                                activity.activityDay = ((TextBox)this.PageTemplateASCX.txtbox10control).Text;
+                                //this.PageTemplateASCX.ds = null;
 
-                                    ((Button)this.PageTemplateASCX.addButton).Enabled = true;
+                                //CHANGE THIS-----------------------------------------------------------------------------------------FILL
+                                //this.PageTemplateASCX.ds = pxy.FindActivitiesByVenue(activity, ((TextBox)this.PageTemplateASCX.cityCritbox).Text, ((TextBox)this.PageTemplateASCX.stateCritbox).Text); //get appropriate dataset
+                                //ViewState["dataSource"] = this.PageTemplateASCX.ds;
+                                if (this.PageTemplateASCX.ds != null)
+                                {
+                                    
+                                    ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
+
+                                    ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
+                                    if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
+                                    {
+
+                                        ((Button)this.PageTemplateASCX.addButton).Enabled = true;
+                                    }
+                                    else
+                                    { this.PageTemplateASCX.noSearchResults(); }
+                                    for (int i = 0; i < ((GridView)this.PageTemplateASCX.gridview).Rows.Count; i++)
+                                    {
+                                        String image = "";
+                                        image = ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[1].Text;
+                                        ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[1].Text = "<img style=\"max-width:100px;max-height:100px;\" src=\"" + image + "\"/>";
+                                    }
                                 }
+
+
+
                                 else
                                 { this.PageTemplateASCX.noSearchResults(); }
                             }
                             else
-                            { this.PageTemplateASCX.noSearchResults(); }
+                            {
+                                this.PageTemplateASCX.displayVal9();
+                                this.PageTemplateASCX.displayVal10();
+                                this.PageTemplateASCX.failedSearchResults();
+                            }
+                            break;
+                        case "5": //search 4
+                            if (((TextBox)this.PageTemplateASCX.txtbox12control).Text != ""
+                                && ((TextBox)this.PageTemplateASCX.txtbox13control).Text != "")
+                            {
+                                //CHANGE THIS-----------------------------------------------------------------------------------------FILL
+                                ExperienceWebService2.Activity activity = new Activity();
+                                activity.activityType = ((TextBox)this.PageTemplateASCX.txtbox12control).Text;
+                                activity.activityDay = ((TextBox)this.PageTemplateASCX.txtbox13control).Text;
+                                
+                                //CHANGE THIS-----------------------------------------------------------------------------------------FILL
+                                //this.PageTemplateASCX.ds = pxy.FindActivitiesByAgency(activity, ((TextBox)this.PageTemplateASCX.cityCritbox).Text, ((TextBox)this.PageTemplateASCX.stateCritbox).Text); //get appropriate dataset
+                                
+                                if (this.PageTemplateASCX.ds != null)
+                                {
+                                   // ViewState["dataSource"] = this.PageTemplateASCX.ds;
+                                    ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
+
+                                    ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
+                                    if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
+                                    {
+
+                                        ((Button)this.PageTemplateASCX.addButton).Enabled = true;
+                                    }
+                                    else
+                                    { this.PageTemplateASCX.noSearchResults(); }
+                                    for (int i = 0; i < ((GridView)this.PageTemplateASCX.gridview).Rows.Count; i++)
+                                    {
+                                        String image = "";
+                                        image = ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[1].Text;
+                                        ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[1].Text = "<img style=\"max-width:100px;max-height:100px;\" src=\"" + image + "\"/>";
+                                    }
+                                }
+
+
+
+                                else
+                                { this.PageTemplateASCX.noSearchResults(); }
+                            }
+                            else
+                            {
+                                this.PageTemplateASCX.displayVal12();
+                                this.PageTemplateASCX.displayVal13();
+                                this.PageTemplateASCX.failedSearchResults();
+                            }
+                            break;
+                        default:
+                            
                             break;
                     }
                 }
@@ -208,7 +316,11 @@ namespace TravelSite
 
         private void add(object sender, System.EventArgs e)
         {
+            //((GridView)this.PageTemplateASCX.gridview).DataBind();
             this.PageTemplateASCX.reset();
+            //((GridView)this.PageTemplateASCX.gridview).DataSource = ViewState["dataSource"];
+            //((GridView)this.PageTemplateASCX.gridview).DataBind();
+            
             int selectedCount = 0; //count number selected
             for (int i = 0; i < ((GridView)this.PageTemplateASCX.gridview).Rows.Count; i++) //count
             {

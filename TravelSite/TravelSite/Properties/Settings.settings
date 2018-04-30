@@ -5,14 +5,16 @@
     <Setting Name="TravelSite_CarWebService_RentalCarService" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://cis-iis2.temple.edu/Spring2018/CIS3342_tug34927/TermProjectWS/RentalCarService.asmx</Value>
     </Setting>
-    <Setting Name="TravelSite_ExperienceWebService_ActivitiesService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://cis-iis2.temple.edu/Spring2018/CIS3342_tug62391/TermProjectWS/ActivitiesService.asmx</Value>
-    </Setting>
     <Setting Name="TravelSite_CarWebService2_CarService" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf45882/TermProjectWS/CarService.asmx</Value>
     </Setting>
+
+    <Setting Name="TravelSite_ExperienceWebService2_ActivitiesService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf51382/TermProjectWS/ActivitiesService.asmx</Value>
+
     <Setting Name="TravelSite_HotelWebService_HotelService" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://cis-iis2.temple.edu/Spring2018/CIS3342_tue92295/TermProjectWS/HotelService.asmx</Value>
+
     </Setting>
   </Settings>
 </SettingsFile>
