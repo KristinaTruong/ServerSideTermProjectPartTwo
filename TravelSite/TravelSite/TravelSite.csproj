@@ -96,6 +96,7 @@
     <Content Include="TestPage.aspx" />
     <Content Include="TOS.aspx" />
     <Content Include="TravelSite.Master" />
+    <None Include="Properties\PublishProfiles\Kristina.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -277,7 +277,7 @@ namespace TravelSite
                         //create a new object
                         ExperienceClass newExp = new ExperienceClass();
                         //initialize its properities to the record's values that was chosen
-                        newExp.Agency_id = 1;
+                        //newExp.Agency_id = 1;
 
                         //if a vacation package exists
                         if (VacationPackage.getCustomerPackage(this.PageTemplateASCX.objCookie.Values["LoginID"].ToString()) == null)

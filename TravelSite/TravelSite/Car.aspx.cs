@@ -134,13 +134,7 @@ namespace TravelSite
                                 ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
                                 ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
                                 //((GridView)this.PageTemplateASCX.gridview).AutoGenerateColumns = false;
-                                if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
-                                {
-
-                                    ((Button)this.PageTemplateASCX.addButton).Enabled = true;
-                                }
-                                else
-                                { this.PageTemplateASCX.noSearchResults(); }
+                                
                             }
                             else
                             { this.PageTemplateASCX.noSearchResults(); }
@@ -159,13 +153,7 @@ namespace TravelSite
                                         ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
 
                                         ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
-                                        if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
-                                        {
-                                            ((Button)this.PageTemplateASCX.addButton).Enabled = true;
-
-                                        }
-                                        else
-                                        { this.PageTemplateASCX.noSearchResults(); }
+                                       
                                     }
                                     else
                                     { this.PageTemplateASCX.noSearchResults(); }
@@ -203,13 +191,7 @@ namespace TravelSite
                                         ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
 
                                         ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
-                                        if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
-                                        {
-
-                                            ((Button)this.PageTemplateASCX.addButton).Enabled = true;
-                                        }
-                                        else
-                                        { this.PageTemplateASCX.noSearchResults(); }
+                                        
                                         /*
                                         for (int i = 0; i < ((GridView)this.PageTemplateASCX.gridview).Rows.Count; i++)
                                         {
@@ -271,14 +253,14 @@ namespace TravelSite
                                         }
                                         else
                                         { this.PageTemplateASCX.noSearchResults(); }
-                                        /*
+                                        
                                         for (int i = 0; i < ((GridView)this.PageTemplateASCX.gridview).Rows.Count; i++)
                                         {
                                             String image = "";
                                             image = ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[1].Text;
-                                            ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[1].Text = "<img style=\"max-width:100px;max-height:100px;\" src=\"" + image + "\"/>";
+                                            ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[6].Text = "<img style=\"max-width:100px;max-height:100px;\" src=\"" + image + "\"/>";
                                         }
-                                        */
+                                        
                                     }
 
 
@@ -390,28 +372,27 @@ namespace TravelSite
                     if (selected.Checked == true)
                     {
                         //create a new object
-                        CarClass newExp = new CarClass();
+                        CarClass newCar = new CarClass();
                         //initialize its properities to the record's values that was chosen
-                        switch (ViewState["method"].ToString())
-                        {
-                            case "default":
-                                newExp.agencyID = Convert.ToInt32(((GridView)this.PageTemplateASCX.gridview).Rows[j].Cells[0].Text);
-                                break;
-                        }
-                        
+
+                        newCar.agencyID = Convert.ToInt32(((TextBox)this.PageTemplateASCX.txtbox9control).Text);
+
+                        newCar.CarID = ((GridView)this.PageTemplateASCX.gridview).Rows[j].Cells[5].Text;
+                        newCar.Cost = ((GridView)this.PageTemplateASCX.gridview).Rows[j].Cells[3].Text;
 
                         //if a vacation package exists
                         if (VacationPackage.getCustomerPackage(this.PageTemplateASCX.objCookie.Values["LoginID"].ToString()) == null)
                         {
                             this.PageTemplateASCX.myPackage = new VacationPackage(); //if not, create a new one
+                            
                         }
                         else
                         {
                             //if yes, retrieve the package
                             this.PageTemplateASCX.myPackage = VacationPackage.getCustomerPackage(this.PageTemplateASCX.objCookie.Values["LoginID"].ToString());
+                            
                         }
-                        //finally, add the new object to the vacation package's appropriate list
-                        this.PageTemplateASCX.myPackage.carArray.Add(newExp);
+                        this.PageTemplateASCX.myPackage.carArray.Add(newCar);
                     }
                 }
                 //update the vacation package in the database

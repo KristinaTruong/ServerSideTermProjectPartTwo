@@ -34,11 +34,11 @@ namespace TravelSiteLibrary
         public VacationPackage()
         {
             experienceArray = new List<ExperienceClass>();
-            /*
+            
             carArray = new List<CarClass>();
             flightArray = new List<FlightClass>();
             hotelArray = new List<HotelClass>();
-            */
+            
         }
         //serialize a vacation package object
         private static byte[] serializeVacationPackage(VacationPackage package)

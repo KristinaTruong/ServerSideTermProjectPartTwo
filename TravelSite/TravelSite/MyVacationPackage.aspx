@@ -7,7 +7,7 @@
     To delete items from the package, select a package, click the delete button<br /><br />
     <div class="container-fluid" style="display:inline;width:100%;">
     <asp:Button width="48%" class="btn btn-primary" ID="btnPurchase" runat="server" Text="PURCHASE" OnClick="btnPurchase_Click" />
-    <asp:Button width="48%" class="btn btn-danger" ID="btnDelete" runat="server" Text="DELETE" />
+    <asp:Button width="48%" class="btn btn-danger" ID="btnDelete" runat="server" Text="DELETE" OnClick="btnDelete_Click" />
     </div><br /><br />
     <h2>Hotels</h2>
     <asp:GridView Width="100%" ID="gvHotel" runat="server" BackColor="White" 

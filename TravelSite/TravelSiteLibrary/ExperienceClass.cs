@@ -19,13 +19,9 @@ namespace TravelSiteLibrary
         //fields needed to create the above class objects for the web methods to work!
 
         //AGENCY
-        public int Agency_id { get; set; }
-        public String Agency_name { get; set; }
-
-        //ACTIVITY
-        public int Activity_id { get; set; }
-        public decimal Activity_cost { get; set; }
-        public String Activity_type { get; set; }
+        public String Agency_id { get; set; }
+         //ACTIVITY
+        public String Activity_id { get; set; }
 
 
         //CUSTOMER
@@ -45,14 +41,11 @@ namespace TravelSiteLibrary
             reserved = false;
         }
 
-        public ExperienceClass(int agencyID, String agencyName, int activityID, decimal activityCost
+        public ExperienceClass(String agencyID, String agencyName, String activityID, decimal activityCost
             , String activityType)
         {
             Agency_id = agencyID;
-            Agency_name = agencyName;
             Activity_id = activityID;
-            Activity_cost = activityCost;
-            Activity_type = activityType;
             //ADD CUSTOMER ATTRIBUTES
             SiteID = "";
             SitePassword = "";

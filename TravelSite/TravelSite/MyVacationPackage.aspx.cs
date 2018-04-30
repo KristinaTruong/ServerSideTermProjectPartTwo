@@ -15,6 +15,11 @@ namespace TravelSite
     public partial class MyVacationPackage : System.Web.UI.Page
     {
         HttpCookie objCookie;
+        Boolean hotelBool;
+        Boolean carBool;
+        Boolean flightBool;
+        Boolean experienceBool;
+        VacationPackage package;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -40,18 +45,26 @@ namespace TravelSite
                     gvHotel.DataBind();
                     */
                     //---------------------------------------
-                    VacationPackage package =  VacationPackage.getCustomerPackage(objCookie["LoginID"]);
-                    gvHotel.DataSource = package.hotelArray;
-                    gvCar.DataSource = package.carArray;
-                    gvFlight.DataSource = package.flightArray;
-                    gvActivity.DataSource = package.experienceArray;
-                    gvHotel.DataBind();gvCar.DataBind();gvFlight.DataBind();gvActivity.DataBind();
+                  
                 }
                 else
                 {
                     Response.Redirect("Login.aspx");
                 }
             }
+            package = VacationPackage.getCustomerPackage(objCookie["LoginID"]);
+            if (package.hotelArray != null && package.hotelArray.Count != 0) { gvHotel.DataSource = package.hotelArray; gvHotel.DataBind(); hotelBool = true; }
+            else { hotelBool = false; }
+            if (package.carArray != null && package.carArray.Count != 0) { gvCar.DataSource = package.carArray; gvCar.DataBind(); carBool = true; }
+            else { carBool = false; }
+            if (package.flightArray != null && package.flightArray.Count != 0) { gvFlight.DataSource = package.flightArray; gvFlight.DataBind(); flightBool = true; }
+            else { flightBool = false; }
+            if (package.experienceArray != null && package.experienceArray.Count != 0) { gvActivity.DataSource = package.experienceArray; gvActivity.DataBind(); experienceBool = true; }
+            else { experienceBool = false; }
+            gvActivity.DataBind();
+            gvFlight.DataBind();
+            gvCar.DataBind();
+            gvHotel.DataBind();
         }
 
         protected void btnPurchase_Click(object sender, EventArgs e)
@@ -82,7 +95,7 @@ namespace TravelSite
             }
 
             List<CarClass> carList = package.carArray;
-            for (int i = 0; i < expList.Count; i++)
+            for (int i = 0; i < carList.Count; i++)
             {
                 DataSet ds = CustomerData.getCustomerInfo(objCookie["LoginID"]);
 
@@ -101,8 +114,9 @@ namespace TravelSite
             }
 
             List<FlightClass> flightList = package.flightArray;
-            for (int i = 0; i < expList.Count; i++)
+            for (int i = 0; i < flightList.Count; i++)
             {
+                /*
                 DataSet ds = CustomerData.getCustomerInfo(objCookie["LoginID"]);
 
                 FlightClass item = new FlightClass();
@@ -116,12 +130,13 @@ namespace TravelSite
                 CarWebService.CarService pxy = new CarWebService.CarService();
                 Boolean reserved = pxy.Reserve(item.agencyID, car, customer, 1, "Vacation2018");
                 if (reserved == false) { item.reserved = false; completed = false; }
-                if (reserved == true) { item.reserved = true; }
+                if (reserved == true) { item.reserved = true; }*/
             }
 
             List<HotelClass> hotelList = package.hotelArray;
-            for (int i = 0; i < expList.Count; i++)
+            for (int i = 0; i < hotelList.Count; i++)
             {
+                /*
                 DataSet ds = CustomerData.getCustomerInfo(objCookie["LoginID"]);
 
                 FlightClass item = new FlightClass();
@@ -135,7 +150,7 @@ namespace TravelSite
                 CarWebService.CarService pxy = new CarWebService.CarService();
                 Boolean reserved = pxy.Reserve(item.agencyID, car, customer, 1, "Vacation2018");
                 if (reserved == false) { item.reserved = false; completed = false; }
-                if (reserved == true) { item.reserved = true; }
+                if (reserved == true) { item.reserved = true; }*/
             }
 
             if (completed == false)
@@ -144,7 +159,80 @@ namespace TravelSite
             }
             else
             {
-                VacationPackage.archivePackage();
+                //VacationPackage.archivePackage();
+            }
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            Boolean completed = true;
+            package = VacationPackage.getCustomerPackage(objCookie["LoginID"]);
+
+            if (experienceBool)
+            {
+                List<ExperienceClass> expList = package.experienceArray;
+                for (int i = 0; i < expList.Count; i++)
+                {
+                    if (gvActivity.Rows.Count > 0)
+                    {
+                        if (((CheckBox)gvActivity.Rows[i].FindControl("chkSelect")).Checked)
+                        {
+                            package.experienceArray.RemoveAt(i);
+                        }
+                    }
+
+                }
+            }
+            if (carBool)
+            {
+                List<CarClass> carList = package.carArray;
+                for (int i = 0; i < carList.Count; i++)
+                {
+                    if (gvCar.Rows.Count > 0)
+                    {
+                        if (((CheckBox)gvCar.Rows[i].FindControl("chkSelect")).Checked)
+                        {
+                            package.carArray.RemoveAt(i);
+                        }
+                    }
+                }
+            }
+            if (flightBool)
+            {
+                List<FlightClass> flightList = package.flightArray;
+                for (int i = 0; i < flightList.Count; i++)
+                {
+                    if (gvFlight.Rows.Count > 0)
+                    {
+                        if (((CheckBox)gvFlight.Rows[i].FindControl("chkSelect")).Checked)
+                        {
+                            package.flightArray.RemoveAt(i);
+                        }
+                    }
+                }
+            }
+            if (hotelBool)
+            {
+                List<HotelClass> hotelList = package.hotelArray;
+                for (int i = 0; i < hotelList.Count; i++)
+                {
+                    if (gvHotel.Rows.Count > 0)
+                    {
+                        if (((CheckBox)gvHotel.Rows[i].FindControl("chkSelect")).Checked)
+                        {
+                            package.hotelArray.RemoveAt(i);
+                        }
+                    }
+                }
+            }
+            VacationPackage.updatePackage(objCookie.Values["LoginID"].ToString(), VacationPackage.getCustomerPackage(objCookie["LoginID"]));
+            if (completed == false)
+            {
+
+            }
+            else
+            {
+                //VacationPackage.archivePackage();
             }
         }
     }

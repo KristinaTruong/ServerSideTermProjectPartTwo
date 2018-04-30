@@ -153,7 +153,10 @@ namespace TravelSite
         }
 
 
-
+        public void disableAdd()
+        {
+            btnAdd.Enabled = false;
+        }
         /*
         public  void btnSearch_Click(object sender, EventArgs e)
         {
