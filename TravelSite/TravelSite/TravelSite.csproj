@@ -112,7 +112,7 @@
     </Content>
     <None Include="Web References\CarWebService\RentalCarService.wsdl" />
     <None Include="Web References\ExperienceWebService2\ActivitiesService.wsdl" />
-    <None Include="Web References\ExperienceWebService2\Reference.map">
+    <Content Include="Web References\ExperienceWebService2\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
 
