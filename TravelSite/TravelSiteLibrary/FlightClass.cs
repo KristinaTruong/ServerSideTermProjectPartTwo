@@ -9,6 +9,9 @@ namespace TravelSiteLibrary
     [Serializable]
     public class FlightClass
     {
+        public int AirCarrierID { get; set; }
 
+
+        
     }
 }

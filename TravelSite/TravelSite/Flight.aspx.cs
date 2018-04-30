@@ -9,6 +9,8 @@ namespace TravelSite
 {
     public partial class Flight : System.Web.UI.Page
     {
+        Button myaddButton;
+        Button mysearchButton;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -29,3 +31,4 @@ namespace TravelSite
         }
     }
 }
+       

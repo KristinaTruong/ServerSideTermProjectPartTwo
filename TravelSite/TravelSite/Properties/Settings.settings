@@ -14,5 +14,8 @@
     <Setting Name="TravelSite_HotelWebService_HotelService" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://cis-iis2.temple.edu/Spring2018/CIS3342_tue92295/TermProjectWS/HotelService.asmx</Value>
     </Setting>
+    <Setting Name="TravelSite_FlightWebService_AirService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf54356/TermProjectWS/AirService.asmx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
