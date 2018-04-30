@@ -18,8 +18,16 @@ namespace TravelSiteLibrary
         public String Color { get; set; }
         public String PricePerDay { get; set; }
 
-        public int AgencyID { get; set; }
-        
+        public int agencyID { get; set; }
+         public CarClass()
+        {
+
+        }
+
+        public CarClass(int id)
+        {
+            agencyID = id;
+        }
     }
 
 }

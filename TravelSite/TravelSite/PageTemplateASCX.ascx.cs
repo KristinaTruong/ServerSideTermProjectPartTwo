@@ -17,6 +17,10 @@ namespace TravelSite
         public String navHeading4 { set { navAgencyAndActivity.InnerText = value; } }
         public String navHeading5 { set { navSearch4.InnerText = value; } }
 
+        public void hideNav4()
+        {
+            navSearch4.Visible = false;
+        }
         //city and state labels
         public String cityCrit { set { cityCriteria.InnerText = value; } }
         public String stateCrit { set { stateCriteria.InnerText = value; } }

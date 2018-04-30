@@ -24,11 +24,11 @@ namespace TravelSiteLibrary
 
         //AMENITITES LIST ---------------------------------------------------------------
         public List<ExperienceClass> experienceArray { get; set; }
-        /*
+        
         public List<CarClass> carArray { get; set; }
         public List<FlightClass> flightArray { get; set; }
         public List<HotelClass> hotelArray { get; set; }
-        */
+        
         //--------------------------------------------------------------------------------
 
         public VacationPackage()
@@ -157,6 +157,28 @@ namespace TravelSiteLibrary
 
         }
 
+        public static DataSet getPastTrips(String login)
+        {
+            SqlCommand objCommand = new SqlCommand();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "GetPastTrips";
+            objCommand.Parameters.AddWithValue("login", login);
+
+            DataSet ds = objDB.GetDataSetUsingCmdObj(objCommand);
+
+            return ds;
+        }
+        public static DataSet getTripInfo(int id)
+        {
+            SqlCommand objCommand = new SqlCommand();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "GetTripInfo";
+            objCommand.Parameters.AddWithValue("vacationID", id);
+
+            DataSet ds = objDB.GetDataSetUsingCmdObj(objCommand);
+
+            return ds;
+        }
 
     }
 }

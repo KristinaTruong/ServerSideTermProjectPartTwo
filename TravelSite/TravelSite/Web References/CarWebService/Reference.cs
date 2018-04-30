@@ -24,11 +24,31 @@ namespace TravelSite.CarWebService {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Web.Services.WebServiceBindingAttribute(Name="RentalCarServiceSoap", Namespace="http://tempuri.org/")]
-    public partial class RentalCarService : System.Web.Services.Protocols.SoapHttpClientProtocol {
+    [System.Web.Services.WebServiceBindingAttribute(Name="CarServiceSoap", Namespace="http://tempuri.org/")]
+    public partial class CarService : System.Web.Services.Protocols.SoapHttpClientProtocol {
+        
+        private System.Threading.SendOrPostCallback HelloWorldOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddUserOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CheckCustOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetCitiesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GiveCustomerATripIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetCustomerIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ReserveOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetCarTypeOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetStatesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAgencyIDOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetRentalCarAgenciesOperationCompleted;
         
@@ -36,15 +56,14 @@ namespace TravelSite.CarWebService {
         
         private System.Threading.SendOrPostCallback FindCarsOperationCompleted;
         
-        private System.Threading.SendOrPostCallback FindCarsByAgencyOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback ReserveOperationCompleted;
+        private System.Threading.SendOrPostCallback FindCarByAgencyOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
-        public RentalCarService() {
-            this.Url = global::TravelSite.Properties.Settings.Default.TravelSite_CarWebService_RentalCarService;
+        public CarService() {
+            this.Url = "http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf45882/TermProjectWS/CarService.a" +
+                "smx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -79,6 +98,36 @@ namespace TravelSite.CarWebService {
         }
         
         /// <remarks/>
+        public event HelloWorldCompletedEventHandler HelloWorldCompleted;
+        
+        /// <remarks/>
+        public event AddUserCompletedEventHandler AddUserCompleted;
+        
+        /// <remarks/>
+        public event CheckCustCompletedEventHandler CheckCustCompleted;
+        
+        /// <remarks/>
+        public event GetCitiesCompletedEventHandler GetCitiesCompleted;
+        
+        /// <remarks/>
+        public event GiveCustomerATripIDCompletedEventHandler GiveCustomerATripIDCompleted;
+        
+        /// <remarks/>
+        public event GetCustomerIDCompletedEventHandler GetCustomerIDCompleted;
+        
+        /// <remarks/>
+        public event ReserveCompletedEventHandler ReserveCompleted;
+        
+        /// <remarks/>
+        public event GetCarTypeCompletedEventHandler GetCarTypeCompleted;
+        
+        /// <remarks/>
+        public event GetStatesCompletedEventHandler GetStatesCompleted;
+        
+        /// <remarks/>
+        public event GetAgencyIDCompletedEventHandler GetAgencyIDCompleted;
+        
+        /// <remarks/>
         public event GetRentalCarAgenciesCompletedEventHandler GetRentalCarAgenciesCompleted;
         
         /// <remarks/>
@@ -88,10 +137,300 @@ namespace TravelSite.CarWebService {
         public event FindCarsCompletedEventHandler FindCarsCompleted;
         
         /// <remarks/>
-        public event FindCarsByAgencyCompletedEventHandler FindCarsByAgencyCompleted;
+        public event FindCarByAgencyCompletedEventHandler FindCarByAgencyCompleted;
         
         /// <remarks/>
-        public event ReserveCompletedEventHandler ReserveCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string HelloWorld() {
+            object[] results = this.Invoke("HelloWorld", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void HelloWorldAsync() {
+            this.HelloWorldAsync(null);
+        }
+        
+        /// <remarks/>
+        public void HelloWorldAsync(object userState) {
+            if ((this.HelloWorldOperationCompleted == null)) {
+                this.HelloWorldOperationCompleted = new System.Threading.SendOrPostCallback(this.OnHelloWorldOperationCompleted);
+            }
+            this.InvokeAsync("HelloWorld", new object[0], this.HelloWorldOperationCompleted, userState);
+        }
+        
+        private void OnHelloWorldOperationCompleted(object arg) {
+            if ((this.HelloWorldCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.HelloWorldCompleted(this, new HelloWorldCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool AddUser(Customer myCustomer) {
+            object[] results = this.Invoke("AddUser", new object[] {
+                        myCustomer});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddUserAsync(Customer myCustomer) {
+            this.AddUserAsync(myCustomer, null);
+        }
+        
+        /// <remarks/>
+        public void AddUserAsync(Customer myCustomer, object userState) {
+            if ((this.AddUserOperationCompleted == null)) {
+                this.AddUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddUserOperationCompleted);
+            }
+            this.InvokeAsync("AddUser", new object[] {
+                        myCustomer}, this.AddUserOperationCompleted, userState);
+        }
+        
+        private void OnAddUserOperationCompleted(object arg) {
+            if ((this.AddUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddUserCompleted(this, new AddUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CheckCust", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool CheckCust(int id, string password) {
+            object[] results = this.Invoke("CheckCust", new object[] {
+                        id,
+                        password});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CheckCustAsync(int id, string password) {
+            this.CheckCustAsync(id, password, null);
+        }
+        
+        /// <remarks/>
+        public void CheckCustAsync(int id, string password, object userState) {
+            if ((this.CheckCustOperationCompleted == null)) {
+                this.CheckCustOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCheckCustOperationCompleted);
+            }
+            this.InvokeAsync("CheckCust", new object[] {
+                        id,
+                        password}, this.CheckCustOperationCompleted, userState);
+        }
+        
+        private void OnCheckCustOperationCompleted(object arg) {
+            if ((this.CheckCustCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CheckCustCompleted(this, new CheckCustCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCities", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet GetCities(string selectedState) {
+            object[] results = this.Invoke("GetCities", new object[] {
+                        selectedState});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetCitiesAsync(string selectedState) {
+            this.GetCitiesAsync(selectedState, null);
+        }
+        
+        /// <remarks/>
+        public void GetCitiesAsync(string selectedState, object userState) {
+            if ((this.GetCitiesOperationCompleted == null)) {
+                this.GetCitiesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCitiesOperationCompleted);
+            }
+            this.InvokeAsync("GetCities", new object[] {
+                        selectedState}, this.GetCitiesOperationCompleted, userState);
+        }
+        
+        private void OnGetCitiesOperationCompleted(object arg) {
+            if ((this.GetCitiesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetCitiesCompleted(this, new GetCitiesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GiveCustomerATripID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void GiveCustomerATripID(int customerID) {
+            this.Invoke("GiveCustomerATripID", new object[] {
+                        customerID});
+        }
+        
+        /// <remarks/>
+        public void GiveCustomerATripIDAsync(int customerID) {
+            this.GiveCustomerATripIDAsync(customerID, null);
+        }
+        
+        /// <remarks/>
+        public void GiveCustomerATripIDAsync(int customerID, object userState) {
+            if ((this.GiveCustomerATripIDOperationCompleted == null)) {
+                this.GiveCustomerATripIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGiveCustomerATripIDOperationCompleted);
+            }
+            this.InvokeAsync("GiveCustomerATripID", new object[] {
+                        customerID}, this.GiveCustomerATripIDOperationCompleted, userState);
+        }
+        
+        private void OnGiveCustomerATripIDOperationCompleted(object arg) {
+            if ((this.GiveCustomerATripIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GiveCustomerATripIDCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCustomerID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int GetCustomerID(Customer newCust) {
+            object[] results = this.Invoke("GetCustomerID", new object[] {
+                        newCust});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetCustomerIDAsync(Customer newCust) {
+            this.GetCustomerIDAsync(newCust, null);
+        }
+        
+        /// <remarks/>
+        public void GetCustomerIDAsync(Customer newCust, object userState) {
+            if ((this.GetCustomerIDOperationCompleted == null)) {
+                this.GetCustomerIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCustomerIDOperationCompleted);
+            }
+            this.InvokeAsync("GetCustomerID", new object[] {
+                        newCust}, this.GetCustomerIDOperationCompleted, userState);
+        }
+        
+        private void OnGetCustomerIDOperationCompleted(object arg) {
+            if ((this.GetCustomerIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetCustomerIDCompleted(this, new GetCustomerIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Reserve", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool Reserve(int agencyid, Car newCar, Customer newCust, int travelID, string travelPassword) {
+            object[] results = this.Invoke("Reserve", new object[] {
+                        agencyid,
+                        newCar,
+                        newCust,
+                        travelID,
+                        travelPassword});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ReserveAsync(int agencyid, Car newCar, Customer newCust, int travelID, string travelPassword) {
+            this.ReserveAsync(agencyid, newCar, newCust, travelID, travelPassword, null);
+        }
+        
+        /// <remarks/>
+        public void ReserveAsync(int agencyid, Car newCar, Customer newCust, int travelID, string travelPassword, object userState) {
+            if ((this.ReserveOperationCompleted == null)) {
+                this.ReserveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnReserveOperationCompleted);
+            }
+            this.InvokeAsync("Reserve", new object[] {
+                        agencyid,
+                        newCar,
+                        newCust,
+                        travelID,
+                        travelPassword}, this.ReserveOperationCompleted, userState);
+        }
+        
+        private void OnReserveOperationCompleted(object arg) {
+            if ((this.ReserveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ReserveCompleted(this, new ReserveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCarType", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet GetCarType() {
+            object[] results = this.Invoke("GetCarType", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetCarTypeAsync() {
+            this.GetCarTypeAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetCarTypeAsync(object userState) {
+            if ((this.GetCarTypeOperationCompleted == null)) {
+                this.GetCarTypeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCarTypeOperationCompleted);
+            }
+            this.InvokeAsync("GetCarType", new object[0], this.GetCarTypeOperationCompleted, userState);
+        }
+        
+        private void OnGetCarTypeOperationCompleted(object arg) {
+            if ((this.GetCarTypeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetCarTypeCompleted(this, new GetCarTypeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetStates", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet GetStates() {
+            object[] results = this.Invoke("GetStates", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetStatesAsync() {
+            this.GetStatesAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetStatesAsync(object userState) {
+            if ((this.GetStatesOperationCompleted == null)) {
+                this.GetStatesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetStatesOperationCompleted);
+            }
+            this.InvokeAsync("GetStates", new object[0], this.GetStatesOperationCompleted, userState);
+        }
+        
+        private void OnGetStatesOperationCompleted(object arg) {
+            if ((this.GetStatesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetStatesCompleted(this, new GetStatesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAgencyID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int GetAgencyID(string agency) {
+            object[] results = this.Invoke("GetAgencyID", new object[] {
+                        agency});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAgencyIDAsync(string agency) {
+            this.GetAgencyIDAsync(agency, null);
+        }
+        
+        /// <remarks/>
+        public void GetAgencyIDAsync(string agency, object userState) {
+            if ((this.GetAgencyIDOperationCompleted == null)) {
+                this.GetAgencyIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAgencyIDOperationCompleted);
+            }
+            this.InvokeAsync("GetAgencyID", new object[] {
+                        agency}, this.GetAgencyIDOperationCompleted, userState);
+        }
+        
+        private void OnGetAgencyIDOperationCompleted(object arg) {
+            if ((this.GetAgencyIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAgencyIDCompleted(this, new GetAgencyIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetRentalCarAgencies", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -126,28 +465,28 @@ namespace TravelSite.CarWebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCarsByAgency", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet GetCarsByAgency(Agency agency, string city, string state) {
+        public System.Data.DataSet GetCarsByAgency(int carAgencyID, string state, string city) {
             object[] results = this.Invoke("GetCarsByAgency", new object[] {
-                        agency,
-                        city,
-                        state});
+                        carAgencyID,
+                        state,
+                        city});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void GetCarsByAgencyAsync(Agency agency, string city, string state) {
-            this.GetCarsByAgencyAsync(agency, city, state, null);
+        public void GetCarsByAgencyAsync(int carAgencyID, string state, string city) {
+            this.GetCarsByAgencyAsync(carAgencyID, state, city, null);
         }
         
         /// <remarks/>
-        public void GetCarsByAgencyAsync(Agency agency, string city, string state, object userState) {
+        public void GetCarsByAgencyAsync(int carAgencyID, string state, string city, object userState) {
             if ((this.GetCarsByAgencyOperationCompleted == null)) {
                 this.GetCarsByAgencyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCarsByAgencyOperationCompleted);
             }
             this.InvokeAsync("GetCarsByAgency", new object[] {
-                        agency,
-                        city,
-                        state}, this.GetCarsByAgencyOperationCompleted, userState);
+                        carAgencyID,
+                        state,
+                        city}, this.GetCarsByAgencyOperationCompleted, userState);
         }
         
         private void OnGetCarsByAgencyOperationCompleted(object arg) {
@@ -159,26 +498,26 @@ namespace TravelSite.CarWebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/FindCars", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet FindCars(Requirement[] requirements, string city, string state) {
+        public System.Data.DataSet FindCars(CarPerks myCar, string city, string state) {
             object[] results = this.Invoke("FindCars", new object[] {
-                        requirements,
+                        myCar,
                         city,
                         state});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void FindCarsAsync(Requirement[] requirements, string city, string state) {
-            this.FindCarsAsync(requirements, city, state, null);
+        public void FindCarsAsync(CarPerks myCar, string city, string state) {
+            this.FindCarsAsync(myCar, city, state, null);
         }
         
         /// <remarks/>
-        public void FindCarsAsync(Requirement[] requirements, string city, string state, object userState) {
+        public void FindCarsAsync(CarPerks myCar, string city, string state, object userState) {
             if ((this.FindCarsOperationCompleted == null)) {
                 this.FindCarsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnFindCarsOperationCompleted);
             }
             this.InvokeAsync("FindCars", new object[] {
-                        requirements,
+                        myCar,
                         city,
                         state}, this.FindCarsOperationCompleted, userState);
         }
@@ -191,74 +530,37 @@ namespace TravelSite.CarWebService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/FindCarsByAgency", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet FindCarsByAgency(Agency agency, Requirement[] requirements, string city, string state) {
-            object[] results = this.Invoke("FindCarsByAgency", new object[] {
-                        agency,
-                        requirements,
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/FindCarByAgency", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet FindCarByAgency(int agencyID, string state, string city, CarPerks perks) {
+            object[] results = this.Invoke("FindCarByAgency", new object[] {
+                        agencyID,
+                        state,
                         city,
-                        state});
+                        perks});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void FindCarsByAgencyAsync(Agency agency, Requirement[] requirements, string city, string state) {
-            this.FindCarsByAgencyAsync(agency, requirements, city, state, null);
+        public void FindCarByAgencyAsync(int agencyID, string state, string city, CarPerks perks) {
+            this.FindCarByAgencyAsync(agencyID, state, city, perks, null);
         }
         
         /// <remarks/>
-        public void FindCarsByAgencyAsync(Agency agency, Requirement[] requirements, string city, string state, object userState) {
-            if ((this.FindCarsByAgencyOperationCompleted == null)) {
-                this.FindCarsByAgencyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnFindCarsByAgencyOperationCompleted);
+        public void FindCarByAgencyAsync(int agencyID, string state, string city, CarPerks perks, object userState) {
+            if ((this.FindCarByAgencyOperationCompleted == null)) {
+                this.FindCarByAgencyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnFindCarByAgencyOperationCompleted);
             }
-            this.InvokeAsync("FindCarsByAgency", new object[] {
-                        agency,
-                        requirements,
+            this.InvokeAsync("FindCarByAgency", new object[] {
+                        agencyID,
+                        state,
                         city,
-                        state}, this.FindCarsByAgencyOperationCompleted, userState);
+                        perks}, this.FindCarByAgencyOperationCompleted, userState);
         }
         
-        private void OnFindCarsByAgencyOperationCompleted(object arg) {
-            if ((this.FindCarsByAgencyCompleted != null)) {
+        private void OnFindCarByAgencyOperationCompleted(object arg) {
+            if ((this.FindCarByAgencyCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.FindCarsByAgencyCompleted(this, new FindCarsByAgencyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Reserve", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Reserve(Agency agency, Car car, Customer customer, int travelSiteID, string travelSitePassword) {
-            object[] results = this.Invoke("Reserve", new object[] {
-                        agency,
-                        car,
-                        customer,
-                        travelSiteID,
-                        travelSitePassword});
-            return ((bool)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void ReserveAsync(Agency agency, Car car, Customer customer, int travelSiteID, string travelSitePassword) {
-            this.ReserveAsync(agency, car, customer, travelSiteID, travelSitePassword, null);
-        }
-        
-        /// <remarks/>
-        public void ReserveAsync(Agency agency, Car car, Customer customer, int travelSiteID, string travelSitePassword, object userState) {
-            if ((this.ReserveOperationCompleted == null)) {
-                this.ReserveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnReserveOperationCompleted);
-            }
-            this.InvokeAsync("Reserve", new object[] {
-                        agency,
-                        car,
-                        customer,
-                        travelSiteID,
-                        travelSitePassword}, this.ReserveOperationCompleted, userState);
-        }
-        
-        private void OnReserveOperationCompleted(object arg) {
-            if ((this.ReserveCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.ReserveCompleted(this, new ReserveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.FindCarByAgencyCompleted(this, new FindCarByAgencyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -287,60 +589,19 @@ namespace TravelSite.CarWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Agency {
-        
-        private int agencyIDField;
-        
-        private string agencyNameField;
-        
-        private string phoneNumberField;
-        
-        /// <remarks/>
-        public int AgencyID {
-            get {
-                return this.agencyIDField;
-            }
-            set {
-                this.agencyIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string AgencyName {
-            get {
-                return this.agencyNameField;
-            }
-            set {
-                this.agencyNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string PhoneNumber {
-            get {
-                return this.phoneNumberField;
-            }
-            set {
-                this.phoneNumberField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class Customer {
         
         private int customerIDField;
         
-        private string firstNameField;
+        private string nameField;
         
-        private string lastNameField;
+        private string addressField;
         
-        private string phoneNumberField;
+        private string emailField;
+        
+        private float totalDollarSalesField;
+        
+        private int tripIDField;
         
         /// <remarks/>
         public int CustomerID {
@@ -353,32 +614,85 @@ namespace TravelSite.CarWebService {
         }
         
         /// <remarks/>
-        public string FirstName {
+        public string Name {
             get {
-                return this.firstNameField;
+                return this.nameField;
             }
             set {
-                this.firstNameField = value;
+                this.nameField = value;
             }
         }
         
         /// <remarks/>
-        public string LastName {
+        public string Address {
             get {
-                return this.lastNameField;
+                return this.addressField;
             }
             set {
-                this.lastNameField = value;
+                this.addressField = value;
             }
         }
         
         /// <remarks/>
-        public string PhoneNumber {
+        public string Email {
             get {
-                return this.phoneNumberField;
+                return this.emailField;
             }
             set {
-                this.phoneNumberField = value;
+                this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public float TotalDollarSales {
+            get {
+                return this.totalDollarSalesField;
+            }
+            set {
+                this.totalDollarSalesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int TripID {
+            get {
+                return this.tripIDField;
+            }
+            set {
+                this.tripIDField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class CarPerks {
+        
+        private int perkIDField;
+        
+        private string[] perkNameField;
+        
+        /// <remarks/>
+        public int PerkID {
+            get {
+                return this.perkIDField;
+            }
+            set {
+                this.perkIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string[] PerkName {
+            get {
+                return this.perkNameField;
+            }
+            set {
+                this.perkNameField = value;
             }
         }
     }
@@ -391,20 +705,54 @@ namespace TravelSite.CarWebService {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class Car {
         
+        private int carAgencyIDField;
+        
         private int carIDField;
         
-        private string makeField;
+        private string carMakeField;
         
-        private string modelField;
+        private string carModelField;
         
-        private int yearField;
+        private System.DateTime pickupdateField;
         
-        private string colorField;
+        private System.DateTime dropoffdateField;
         
-        private string typeField;
+        private decimal carcostField;
+        
+        private int carquantityField;
+        
+        private string carTypeField;
+        
+        private int carAgencyIDField1;
+        
+        private string cartypeField;
+        
+        private int carIDField1;
+        
+        private string carMakeField1;
+        
+        private string carModelField1;
+        
+        private System.DateTime pickupdateField1;
+        
+        private System.DateTime dropoffdateField1;
+        
+        private decimal carcostField1;
+        
+        private int carquantityField1;
         
         /// <remarks/>
-        public int CarID {
+        public int carAgencyID {
+            get {
+                return this.carAgencyIDField;
+            }
+            set {
+                this.carAgencyIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int carID {
             get {
                 return this.carIDField;
             }
@@ -414,107 +762,410 @@ namespace TravelSite.CarWebService {
         }
         
         /// <remarks/>
-        public string Make {
+        public string carMake {
             get {
-                return this.makeField;
+                return this.carMakeField;
             }
             set {
-                this.makeField = value;
+                this.carMakeField = value;
             }
         }
         
         /// <remarks/>
-        public string Model {
+        public string carModel {
             get {
-                return this.modelField;
+                return this.carModelField;
             }
             set {
-                this.modelField = value;
+                this.carModelField = value;
             }
         }
         
         /// <remarks/>
-        public int Year {
+        public System.DateTime pickupdate {
             get {
-                return this.yearField;
+                return this.pickupdateField;
             }
             set {
-                this.yearField = value;
+                this.pickupdateField = value;
             }
         }
         
         /// <remarks/>
-        public string Color {
+        public System.DateTime dropoffdate {
             get {
-                return this.colorField;
+                return this.dropoffdateField;
             }
             set {
-                this.colorField = value;
+                this.dropoffdateField = value;
             }
         }
         
         /// <remarks/>
-        public string Type {
+        public decimal carcost {
             get {
-                return this.typeField;
+                return this.carcostField;
             }
             set {
-                this.typeField = value;
+                this.carcostField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int carquantity {
+            get {
+                return this.carquantityField;
+            }
+            set {
+                this.carquantityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CarType {
+            get {
+                return this.carTypeField;
+            }
+            set {
+                this.carTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CarAgencyID {
+            get {
+                return this.carAgencyIDField1;
+            }
+            set {
+                this.carAgencyIDField1 = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string cartype {
+            get {
+                return this.cartypeField;
+            }
+            set {
+                this.cartypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CarID {
+            get {
+                return this.carIDField1;
+            }
+            set {
+                this.carIDField1 = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CarMake {
+            get {
+                return this.carMakeField1;
+            }
+            set {
+                this.carMakeField1 = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CarModel {
+            get {
+                return this.carModelField1;
+            }
+            set {
+                this.carModelField1 = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime Pickupdate {
+            get {
+                return this.pickupdateField1;
+            }
+            set {
+                this.pickupdateField1 = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime Dropoffdate {
+            get {
+                return this.dropoffdateField1;
+            }
+            set {
+                this.dropoffdateField1 = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal Carcost {
+            get {
+                return this.carcostField1;
+            }
+            set {
+                this.carcostField1 = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Carquantity {
+            get {
+                return this.carquantityField1;
+            }
+            set {
+                this.carquantityField1 = value;
             }
         }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
-    [System.SerializableAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void HelloWorldCompletedEventHandler(object sender, HelloWorldCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Requirement {
+    public partial class HelloWorldCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
-        private int requirementIDField;
+        private object[] results;
         
-        private string requirementNameField;
-        
-        private decimal requirementPriceField;
-        
-        /// <remarks/>
-        public int RequirementID {
-            get {
-                return this.requirementIDField;
-            }
-            set {
-                this.requirementIDField = value;
-            }
+        internal HelloWorldCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
         }
         
         /// <remarks/>
-        public string RequirementName {
+        public string Result {
             get {
-                return this.requirementNameField;
-            }
-            set {
-                this.requirementNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public decimal RequirementPrice {
-            get {
-                return this.requirementPriceField;
-            }
-            set {
-                this.requirementPriceField = value;
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void AddUserCompletedEventHandler(object sender, AddUserCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void CheckCustCompletedEventHandler(object sender, CheckCustCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CheckCustCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CheckCustCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void GetCitiesCompletedEventHandler(object sender, GetCitiesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetCitiesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetCitiesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void GiveCustomerATripIDCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void GetCustomerIDCompletedEventHandler(object sender, GetCustomerIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetCustomerIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetCustomerIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void ReserveCompletedEventHandler(object sender, ReserveCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ReserveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ReserveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void GetCarTypeCompletedEventHandler(object sender, GetCarTypeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetCarTypeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetCarTypeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void GetStatesCompletedEventHandler(object sender, GetStatesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetStatesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetStatesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void GetAgencyIDCompletedEventHandler(object sender, GetAgencyIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAgencyIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAgencyIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     public delegate void GetRentalCarAgenciesCompletedEventHandler(object sender, GetRentalCarAgenciesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetRentalCarAgenciesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -536,11 +1187,11 @@ namespace TravelSite.CarWebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     public delegate void GetCarsByAgencyCompletedEventHandler(object sender, GetCarsByAgencyCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetCarsByAgencyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -562,11 +1213,11 @@ namespace TravelSite.CarWebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     public delegate void FindCarsCompletedEventHandler(object sender, FindCarsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class FindCarsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -588,18 +1239,18 @@ namespace TravelSite.CarWebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
-    public delegate void FindCarsByAgencyCompletedEventHandler(object sender, FindCarsByAgencyCompletedEventArgs e);
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void FindCarByAgencyCompletedEventHandler(object sender, FindCarByAgencyCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class FindCarsByAgencyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class FindCarByAgencyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal FindCarsByAgencyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal FindCarByAgencyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -609,32 +1260,6 @@ namespace TravelSite.CarWebService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((System.Data.DataSet)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
-    public delegate void ReserveCompletedEventHandler(object sender, ReserveCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class ReserveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal ReserveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public bool Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
             }
         }
     }

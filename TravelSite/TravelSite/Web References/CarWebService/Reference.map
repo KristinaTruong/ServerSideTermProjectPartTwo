@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://cis-iis2.temple.edu/Spring2018/CIS3342_tug34927/TermProjectWS/RentalCarService.asmx?disco" filename="RentalCarService.disco" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://cis-iis2.temple.edu/Spring2018/CIS3342_tug34927/TermProjectWS/RentalCarService.asmx?wsdl" filename="RentalCarService.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf45882/TermProjectWS/CarService.asmx?wsdl" filename="CarService.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf45882/TermProjectWS/CarService.asmx?disco" filename="CarService.disco" />
   </Results>
 </DiscoveryClientResultsFile>
