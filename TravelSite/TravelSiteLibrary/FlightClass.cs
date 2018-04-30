@@ -9,6 +9,7 @@ namespace TravelSiteLibrary
     [Serializable]
     public class FlightClass
     {
+        public Boolean reserved;
 
     }
 }

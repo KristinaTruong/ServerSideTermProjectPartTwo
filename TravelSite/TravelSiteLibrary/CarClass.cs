@@ -17,9 +17,19 @@ namespace TravelSiteLibrary
         public String Type { get; set; }
         public String Color { get; set; }
         public String PricePerDay { get; set; }
+        public String Cost  {get;set;}
+        public int agencyID { get; set; }
+        public Boolean reserved;
+         public CarClass()
+        {
+            reserved = false;
+        }
 
-        public int AgencyID { get; set; }
-        
+        public CarClass(int id)
+        {
+            agencyID = id;
+            reserved = false;
+        }
     }
 
 }

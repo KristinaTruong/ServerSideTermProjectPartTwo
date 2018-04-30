@@ -19,13 +19,36 @@ namespace TravelSite
                 Boolean loggedIn = CustomerData.checkForLoginCookie(objCookie);
                 if (loggedIn)
                 {
-                    //do nothing
+                    //DEBUG------------------------------------------
+                    /*
+                    List<CarClass> carArray = new List<CarClass>();
+                    CarClass car1 = new CarClass(1);
+                    carArray.Add(car1);
+                    CarClass car2 = new CarClass(1);
+                    carArray.Add(car2);
+                    CarClass car3 = new CarClass(1);
+                    carArray.Add(car3);
+                    CarClass car4 = new CarClass(1);
+                    carArray.Add(car4);
+                    gvHotel.DataSource = carArray;
+                    gvHotel.DataBind();*/
+                    //--------------------------------------------------
+                    //VacationPackage currentPackage = VacationPackage.getCustomerPackage(objCookie["LoginID"].ToString());
+                    gvTrips.DataSource = VacationPackage.getPastTrips(objCookie["LoginID"]);
+                    gvTrips.DataBind();
                 }
                 else
                 {
                     Response.Redirect("Login.aspx");
                 }
             }
+        }
+
+
+        protected void btnSeeMore_Click(object sender, EventArgs e)
+        {
+            VacationPackage.getTripInfo(Convert.ToInt32(gvHotel.SelectedRow.Cells[1].Text));
+
         }
     }
 }

@@ -19,56 +19,66 @@ namespace TravelSite
         {
             if (!Page.IsPostBack)
             {
+                HttpCookie objCookie;
+                objCookie = Request.Cookies["TravelSite"];
+                Boolean loggedIn = CustomerData.checkForLoginCookie(objCookie);
+                if (loggedIn)
+                {
+
+                    this.PageTemplateASCX.title = "Explore Activities";
+                    this.PageTemplateASCX.navDefaultHeading = "Get Activity Agencies";
+
+                    //search sections
+                    this.PageTemplateASCX.navHeading2 = "Get Activities";
+                    this.PageTemplateASCX.navHeading3 = "Find Activities";
+                    this.PageTemplateASCX.navHeading4 = "Find Activities By Venue";
+                    this.PageTemplateASCX.navHeading5 = "Find Activities By Agency";
+
+                    //defaultSearch
+                    this.PageTemplateASCX.cityCrit = "City";
+                    this.PageTemplateASCX.stateCrit = "State";
+                    this.PageTemplateASCX.txtbox3head = "Agency ID";
+                    this.PageTemplateASCX.txtbox9head = "Activity Type";
+                    this.PageTemplateASCX.txtbox10head = "Venue Name";
+                    this.PageTemplateASCX.txtbox12head = "Activity Type";
+                    this.PageTemplateASCX.txtbox13head = "Agency Name";
+                    this.PageTemplateASCX.hideTxtBox1();
+                    this.PageTemplateASCX.hideTxtBox2();
+                    this.PageTemplateASCX.hideTxtBox8();
+
+                    this.PageTemplateASCX.txtbox6head = "Activity Type";
+                    this.PageTemplateASCX.txtbox7head = "Activity Day";
+
+                    this.PageTemplateASCX.hideTxtBox4();
+                    this.PageTemplateASCX.hideTxtBox5();
+                    this.PageTemplateASCX.hideTxtBox11();
+                    this.PageTemplateASCX.hideTxtBox14();
+                    /*
+                    this.PageTemplateASCX.txtbox1head = "Agency ID";
+                    this.PageTemplateASCX.txtbox2head = "Agency ID";
+                    //search2
+                    this.PageTemplateASCX.txtbox3head = "Agency ID";
+                    this.PageTemplateASCX.txtbox4head = "Agency ID";
+                    this.PageTemplateASCX.txtbox5head = "Agency ID";
+                    //search3
+                    this.PageTemplateASCX.txtbox6head = "Agency ID";
+                    this.PageTemplateASCX.txtbox7head = "Agency ID";
+                    this.PageTemplateASCX.txtbox8head = "Agency ID";
+                    //search4
+                    this.PageTemplateASCX.txtbox9head = "Agency ID";
+                    this.PageTemplateASCX.txtbox10head = "Agency ID";
+                    this.PageTemplateASCX.txtbox11head = "Agency ID";
+                    */
+                    //buttons
 
 
-                this.PageTemplateASCX.title = "Explore Activities";
-                this.PageTemplateASCX.navDefaultHeading = "Get Activity Agencies";
 
-                //search sections
-                this.PageTemplateASCX.navHeading2 = "Get Activities";
-                this.PageTemplateASCX.navHeading3 = "Find Activities";
-                this.PageTemplateASCX.navHeading4 = "Find Activities By Venue";
-                this.PageTemplateASCX.navHeading5 = "Find Activities By Agency";
-
-                //defaultSearch
-                this.PageTemplateASCX.cityCrit = "City";
-                this.PageTemplateASCX.stateCrit = "State";
-                this.PageTemplateASCX.txtbox3head = "Agency ID";
-                this.PageTemplateASCX.txtbox9head = "Activity Type";
-                this.PageTemplateASCX.txtbox10head = "Venue Name";
-                this.PageTemplateASCX.txtbox12head = "Activity Type";
-                this.PageTemplateASCX.txtbox13head = "Agency Name";
-                this.PageTemplateASCX.hideTxtBox1();
-                this.PageTemplateASCX.hideTxtBox2();
-                this.PageTemplateASCX.hideTxtBox8();
-
-                this.PageTemplateASCX.txtbox6head = "Activity Type";
-                this.PageTemplateASCX.txtbox7head = "Activity Day";
-
-                this.PageTemplateASCX.hideTxtBox4();
-                this.PageTemplateASCX.hideTxtBox5();
-                this.PageTemplateASCX.hideTxtBox11();
-                this.PageTemplateASCX.hideTxtBox14();
-                /*
-                this.PageTemplateASCX.txtbox1head = "Agency ID";
-                this.PageTemplateASCX.txtbox2head = "Agency ID";
-                //search2
-                this.PageTemplateASCX.txtbox3head = "Agency ID";
-                this.PageTemplateASCX.txtbox4head = "Agency ID";
-                this.PageTemplateASCX.txtbox5head = "Agency ID";
-                //search3
-                this.PageTemplateASCX.txtbox6head = "Agency ID";
-                this.PageTemplateASCX.txtbox7head = "Agency ID";
-                this.PageTemplateASCX.txtbox8head = "Agency ID";
-                //search4
-                this.PageTemplateASCX.txtbox9head = "Agency ID";
-                this.PageTemplateASCX.txtbox10head = "Agency ID";
-                this.PageTemplateASCX.txtbox11head = "Agency ID";
-                */
-                //buttons
-
-
-
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
+               
             }
             myaddButton = (Button)this.PageTemplateASCX.addButton;
             mysearchButton = (Button)this.PageTemplateASCX.searchButton;

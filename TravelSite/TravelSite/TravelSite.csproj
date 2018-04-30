@@ -100,29 +100,22 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\CarWebService2\CarService.disco" />
+    <None Include="Web References\CarWebService\CarService.wsdl" />
     <Content Include="Web References\CarWebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <None Include="Web References\CarWebService2\CarService.wsdl" />
-    <Content Include="Web References\CarWebService2\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <None Include="Web References\CarWebService\RentalCarService.wsdl" />
     <None Include="Web References\ExperienceWebService2\ActivitiesService.wsdl" />
+    <None Include="Web References\CarWebService\CarService.disco" />
     <Content Include="Web References\ExperienceWebService2\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-
     </Content>
     <None Include="Web References\HotelWebService\HotelService.wsdl" />
     <Content Include="Web References\HotelWebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -131,8 +124,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\CarWebService\RentalCarService.disco" />
-
     <None Include="Web References\ExperienceWebService2\ActivitiesService.disco" />
     <None Include="Web References\HotelWebService\HotelService.disco" />
     <Content Include="Web.config" />
@@ -270,11 +261,6 @@
     <Compile Include="TravelSite.Master.designer.cs">
       <DependentUpon>TravelSite.Master</DependentUpon>
     </Compile>
-    <Compile Include="Web References\CarWebService2\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <Compile Include="Web References\CarWebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -321,14 +307,16 @@
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf45882/TermProjectWS/CarService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\CarWebService2\</RelPath>
+      <RelPath>Web References\CarWebService\</RelPath>
       <UpdateFromURL>http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf45882/TermProjectWS/CarService.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>TravelSite_CarWebService2_CarService</CachedSettingsPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf51382/TermProjectWS/ActivitiesService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
@@ -340,17 +328,6 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>TravelSite_ExperienceWebService2_ActivitiesService</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://cis-iis2.temple.edu/Spring2018/CIS3342_tug34927/TermProjectWS/RentalCarService.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\CarWebService\</RelPath>
-      <UpdateFromURL>http://cis-iis2.temple.edu/Spring2018/CIS3342_tug34927/TermProjectWS/RentalCarService.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>TravelSite_CarWebService_RentalCarService</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
