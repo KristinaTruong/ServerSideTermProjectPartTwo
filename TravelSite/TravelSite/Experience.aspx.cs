@@ -13,173 +13,341 @@ namespace TravelSite
     public partial class Experience : System.Web.UI.Page
     {
 
-        private DataSet defaultData;
-        public DataSet ds; //set up dataset
-        HttpCookie objCookie; //setup cookie
-        VacationPackage myPackage; //user's vacation package
-        ExperienceClass newExp;
-        String method = ""; //string to carry web method name
-        //this will be used to know which column to extract the correct value for creating an object
-        //because methods may return different fields 
-
+        Button myaddButton;
+        Button mysearchButton;
         protected void Page_Load(object sender, EventArgs e)
         {
-            objCookie = Request.Cookies["TravelSite"];
-
             if (!Page.IsPostBack)
             {
-                //copy and paste to check if a user is logged in
 
-                Boolean loggedIn = CustomerData.checkForLoginCookie(objCookie);
-                if (loggedIn)
-                {
-                    myPackage = VacationPackage.getCustomerPackage(objCookie.Values["LoginID"].ToString());
 
-                }
-                else
-                {
-                    Response.Redirect("Login.aspx");
-                }
+                this.PageTemplateASCX.title = "Explore Activities";
+                this.PageTemplateASCX.navDefaultHeading = "Get Activity Agencies";
+
+                //search sections
+                this.PageTemplateASCX.navHeading2 = "Get Activities";
+                this.PageTemplateASCX.navHeading3 = "Find Activities";
+                this.PageTemplateASCX.navHeading4 = "Find Activities By Venue";
+                this.PageTemplateASCX.navHeading5 = "Find Activities By Agency";
+
+                //defaultSearch
+                this.PageTemplateASCX.cityCrit = "City";
+                this.PageTemplateASCX.stateCrit = "State";
+                this.PageTemplateASCX.txtbox3head = "Agency ID";
+                this.PageTemplateASCX.txtbox9head = "Activity Type";
+                this.PageTemplateASCX.txtbox10head = "Venue Name";
+                this.PageTemplateASCX.txtbox12head = "Activity Type";
+                this.PageTemplateASCX.txtbox13head = "Agency Name";
+                this.PageTemplateASCX.hideTxtBox1();
+                this.PageTemplateASCX.hideTxtBox2();
+                this.PageTemplateASCX.hideTxtBox8();
+
+                this.PageTemplateASCX.txtbox6head = "Activity Type";
+                this.PageTemplateASCX.txtbox7head = "Activity Day";
+
+                this.PageTemplateASCX.hideTxtBox4();
+                this.PageTemplateASCX.hideTxtBox5();
+                this.PageTemplateASCX.hideTxtBox11();
+                this.PageTemplateASCX.hideTxtBox14();
+                /*
+                this.PageTemplateASCX.txtbox1head = "Agency ID";
+                this.PageTemplateASCX.txtbox2head = "Agency ID";
+                //search2
+                this.PageTemplateASCX.txtbox3head = "Agency ID";
+                this.PageTemplateASCX.txtbox4head = "Agency ID";
+                this.PageTemplateASCX.txtbox5head = "Agency ID";
+                //search3
+                this.PageTemplateASCX.txtbox6head = "Agency ID";
+                this.PageTemplateASCX.txtbox7head = "Agency ID";
+                this.PageTemplateASCX.txtbox8head = "Agency ID";
+                //search4
+                this.PageTemplateASCX.txtbox9head = "Agency ID";
+                this.PageTemplateASCX.txtbox10head = "Agency ID";
+                this.PageTemplateASCX.txtbox11head = "Agency ID";
+                */
+                //buttons
+
+
+
             }
+            myaddButton = (Button)this.PageTemplateASCX.addButton;
+            mysearchButton = (Button)this.PageTemplateASCX.searchButton;
+            this.PageTemplateASCX.searchButtonClick += new EventHandler(search);
+            this.PageTemplateASCX.addButtonClick += new EventHandler(add);
+            //ViewState["dataSource"] = this.PageTemplateASCX.ds;
+
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
+        //search button event - added to the control
+        private void search(object sender, System.EventArgs e)
         {
-            reset();
-            gvAvailable.DataSource = null;
-            ds = null;
+            ((GridView)this.PageTemplateASCX.gridview).DataBind();
+            this.PageTemplateASCX.reset();
+            //((GridView)this.PageTemplateASCX.gridview).DataSource = null;
+            // this.PageTemplateASCX.ds = null;
+
+            //CHANGE THIS-----------------------------------------------------------------------------------------FILL
             ExperienceWebService2.ActivitiesService pxy = new ExperienceWebService2.ActivitiesService();
-            if (validateRequirements())
+
+            //check if mandatory fields were filled out
+            //in this case, city and state must be filled out for every search
+            Boolean valid = true;
+            if (((TextBox)this.PageTemplateASCX.cityCritbox).Text == "")
             {
-                if (ViewState["method"] != null)
+                valid = false;
+                //valCity.Style["display"] = "inline";
+                this.PageTemplateASCX.displayCityVal();
+                this.PageTemplateASCX.failedAddResults();
+            }
+            if (((TextBox)this.PageTemplateASCX.stateCritbox).Text == "")
+            {
+                valid = false;
+                //valState.Style["display"] = "inline";
+                this.PageTemplateASCX.displayStateVal();
+                this.PageTemplateASCX.failedAddResults();
+            }
+
+            if (valid)
+            {
+                if (this.PageTemplateASCX.viewState != null)
                 {
-                    switch (ViewState["method"].ToString())
+                    switch (this.PageTemplateASCX.viewState.ToString())
                     {
-                        case "default":
-                            ds = pxy.GetActivityAgencies(txtState.Text, txtCity.Text); //get appropriate dataset
-                            if (ds != null)
+                        case "default": //default search
+                            this.PageTemplateASCX.ds = //CHANGE THIS-----------------------------------------------------------------------------------------FILL
+                                pxy.GetActivityAgencies(((TextBox)this.PageTemplateASCX.cityCritbox).Text, ((TextBox)this.PageTemplateASCX.stateCritbox).Text); //get appropriate dataset
+
+                            if (this.PageTemplateASCX.ds != null)
                             {
-                                gvAvailable.DataSource = ds; //assign as datasource
-                                gvAvailable.DataBind(); //databind it to gridview
-                                if (ds.Tables[0].Rows.Count > 0)
+                                ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
+                                ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
+                                //((GridView)this.PageTemplateASCX.gridview).AutoGenerateColumns = false;
+                                if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
                                 {
 
-                                    btnAdd.Enabled = true;
+                                    ((Button)this.PageTemplateASCX.addButton).Enabled = true;
                                 }
                                 else
-                                {noSearchResults();}
+                                { this.PageTemplateASCX.noSearchResults(); }
                             }
                             else
-                            {noSearchResults();}
+                            { this.PageTemplateASCX.noSearchResults(); }
                             break;
-                        case "byAgency":
-                            if (validateAgency())
+                        case "2": //search 2
+                            if (((TextBox)this.PageTemplateASCX.txtbox3control).Text != "")
                             {
-                                ExperienceWebService2.Agencies agency = new ExperienceWebService2.Agencies();
-                                agency.agenciesID = txtAgencyID.Text;
-                                
-                                ds = pxy.GetActivities(agency, txtState.Text, txtCity.Text); //get appropriate dataset
-                                if (ds != null)
-                                {
-                                    gvAvailable.DataSource = ds; //assign as datasource
+                                //CREATE NECESSARY OBJECTS TO RUN METHOD//CHANGE THIS-----------------------------------------------------------------------------------------FILL
+                                ExperienceWebService2.Agencies agency = new Agencies();
+                                agency.agenciesID = ((TextBox)this.PageTemplateASCX.txtbox3control).Text;
 
-                                    gvAvailable.DataBind(); //databind it to gridview
-                                    if (ds.Tables[0].Rows.Count > 0)
+                                //REPLACE THIS METHOD //CHANGE THIS-----------------------------------------------------------------------------------------FILL
+                                this.PageTemplateASCX.ds =
+                                    pxy.GetActivities(agency, ((TextBox)this.PageTemplateASCX.cityCritbox).Text, ((TextBox)this.PageTemplateASCX.stateCritbox).Text); //get appropriate dataset
+
+                                if (this.PageTemplateASCX.ds != null)
+                                {
+                                    ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
+
+                                    ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
+                                    if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
                                     {
-                                        btnAdd.Enabled = true;
+                                        ((Button)this.PageTemplateASCX.addButton).Enabled = true;
 
                                     }
                                     else
-                                    {noSearchResults();}
+                                    { this.PageTemplateASCX.noSearchResults(); }
                                 }
                                 else
-                                {noSearchResults();}
+                                { this.PageTemplateASCX.noSearchResults(); }
                             }
                             else
-                            {noSearchResults();}
+                            {
+                                this.PageTemplateASCX.displayVal3();
+                                this.PageTemplateASCX.failedSearchResults();
+                            }
 
                             break;
-                        case "byActivity":
-                            if (txtActivityType.Text != "")
+                        case "3": //search 3
+                            if (((TextBox)this.PageTemplateASCX.txtbox6control).Text != ""
+                                && ((TextBox)this.PageTemplateASCX.txtbox7control).Text != "")
                             {
+                                //CHANGE THIS-----------------------------------------------------------------------------------------FILL
+                                ExperienceWebService2.Activity activity = new Activity();
+                                activity.activityType = ((TextBox)this.PageTemplateASCX.txtbox6control).Text;
+                                activity.activityDay = ((TextBox)this.PageTemplateASCX.txtbox7control).Text;
+                                //this.PageTemplateASCX.ds = null;
+                                //CHANGE THIS-----------------------------------------------------------------------------------------FILL
+                                this.PageTemplateASCX.ds = pxy.FindActivities(activity, ((TextBox)this.PageTemplateASCX.cityCritbox).Text, ((TextBox)this.PageTemplateASCX.stateCritbox).Text); //get appropriate dataset
 
-                                ExperienceWebService2.Activity activity = new ExperienceWebService2.Activity(); ;
-                                activity.activityType = txtActivityType.Text;
-                                activity.activityDay = "02/02/2018";
-                                //activity.Activity_enddate= "02/03/2018";
-                                ds = null;
-                                ds = pxy.FindActivities(activity, txtState.Text, txtCity.Text); //get appropriate dataset
-                                if (ds != null)
+                                if (this.PageTemplateASCX.ds != null)
                                 {
-                                    gvAvailable.DataSource = ds; //assign as datasource
+                                    ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
 
-                                    gvAvailable.DataBind(); //databind it to gridview
-                                    if (ds.Tables[0].Rows.Count > 0)
+                                    ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
+                                    if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
                                     {
 
-                                        btnAdd.Enabled = true;
+                                        ((Button)this.PageTemplateASCX.addButton).Enabled = true;
                                     }
                                     else
-                                    { noSearchResults(); }
-
+                                    { this.PageTemplateASCX.noSearchResults(); }
+                                    /*
+                                    for (int i = 0; i < ((GridView)this.PageTemplateASCX.gridview).Rows.Count; i++)
+                                    {
+                                        String image = "";
+                                        image = ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[1].Text;
+                                        ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[1].Text = "<img style=\"max-width:100px;max-height:100px;\" src=\"" + image + "\"/>";
+                                    }
+                                    */
                                 }
+
+
+
                                 else
-                                { noSearchResults(); }
+                                { this.PageTemplateASCX.noSearchResults(); }
                             }
                             else
-                            { noSearchResults(); valActivityType.Style["display"] = "inline"; }
+                            {
+                                this.PageTemplateASCX.displayVal6();
+                                this.PageTemplateASCX.displayVal7();
+                                this.PageTemplateASCX.failedSearchResults();
+                            }
+
                             break;
-                        case "byVenue":
-                            
+                        case "4": //search 4
+                            if (((TextBox)this.PageTemplateASCX.txtbox9control).Text != ""
+                                && ((TextBox)this.PageTemplateASCX.txtbox10control).Text != "")
+                            {
+                                //CHANGE THIS-----------------------------------------------------------------------------------------FILL
+                                ExperienceWebService2.Activity activity = new Activity();
+                                activity.activityType = ((TextBox)this.PageTemplateASCX.txtbox9control).Text;
+                                ExperienceWebService2.Venue venue = new Venue();
+                                venue.venueName = ((TextBox)this.PageTemplateASCX.txtbox10control).Text;
+
+                                //this.PageTemplateASCX.ds = null;
+
+                                //CHANGE THIS-----------------------------------------------------------------------------------------FILL
+                                this.PageTemplateASCX.ds = pxy.FindActivities(venue, activity, ((TextBox)this.PageTemplateASCX.cityCritbox).Text, ((TextBox)this.PageTemplateASCX.stateCritbox).Text); //get appropriate dataset
+                                //ViewState["dataSource"] = this.PageTemplateASCX.ds;
+                                if (this.PageTemplateASCX.ds != null)
+                                {
+
+                                    ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
+
+                                    ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
+                                    if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
+                                    {
+
+                                        ((Button)this.PageTemplateASCX.addButton).Enabled = true;
+                                    }
+                                    else
+                                    { this.PageTemplateASCX.noSearchResults(); }
+                                    /*
+                                    for (int i = 0; i < ((GridView)this.PageTemplateASCX.gridview).Rows.Count; i++)
+                                    {
+                                        String image = "";
+                                        image = ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[1].Text;
+                                        ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[1].Text = "<img style=\"max-width:100px;max-height:100px;\" src=\"" + image + "\"/>";
+                                    }
+                                    */
+                                }
+
+
+
+                                else
+                                { this.PageTemplateASCX.noSearchResults(); }
+                            }
+                            else
+                            {
+                                this.PageTemplateASCX.displayVal9();
+                                this.PageTemplateASCX.displayVal10();
+                                this.PageTemplateASCX.failedSearchResults();
+                            }
                             break;
-                        case "byAgencyAndActivity":
-                            
+                        case "5": //search 4
+                            if (((TextBox)this.PageTemplateASCX.txtbox12control).Text != ""
+                                && ((TextBox)this.PageTemplateASCX.txtbox13control).Text != "")
+                            {
+                                //CHANGE THIS-----------------------------------------------------------------------------------------FILL
+                                ExperienceWebService2.Activity activity = new Activity();
+                                activity.activityType = ((TextBox)this.PageTemplateASCX.txtbox12control).Text;
+                                ExperienceWebService2.Agencies agency = new Agencies();
+                                agency.agenciesName = ((TextBox)this.PageTemplateASCX.txtbox13control).Text;
+
+                                //CHANGE THIS-----------------------------------------------------------------------------------------FILL
+                                this.PageTemplateASCX.ds = pxy.FindActivities(agency, activity, ((TextBox)this.PageTemplateASCX.cityCritbox).Text, ((TextBox)this.PageTemplateASCX.stateCritbox).Text); //get appropriate dataset
+
+                                if (this.PageTemplateASCX.ds != null)
+                                {
+                                    // ViewState["dataSource"] = this.PageTemplateASCX.ds;
+                                    ((GridView)this.PageTemplateASCX.gridview).DataSource = this.PageTemplateASCX.ds; //assign as datasource
+
+                                    ((GridView)this.PageTemplateASCX.gridview).DataBind(); //databind it to gridview
+                                    if (this.PageTemplateASCX.ds.Tables[0].Rows.Count > 0)
+                                    {
+
+                                        ((Button)this.PageTemplateASCX.addButton).Enabled = true;
+                                    }
+                                    else
+                                    { this.PageTemplateASCX.noSearchResults(); }
+                                    /*
+                                    for (int i = 0; i < ((GridView)this.PageTemplateASCX.gridview).Rows.Count; i++)
+                                    {
+                                        String image = "";
+                                        image = ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[1].Text;
+                                        ((GridView)this.PageTemplateASCX.gridview).Rows[i].Cells[1].Text = "<img style=\"max-width:100px;max-height:100px;\" src=\"" + image + "\"/>";
+                                    }
+                                    */
+                                }
+
+
+
+                                else
+                                { this.PageTemplateASCX.noSearchResults(); }
+                            }
+                            else
+                            {
+                                this.PageTemplateASCX.displayVal12();
+                                this.PageTemplateASCX.displayVal13();
+                                this.PageTemplateASCX.failedSearchResults();
+                            }
                             break;
                         default:
-                            ds = pxy.GetActivityAgencies(txtState.Text, txtCity.Text); //get appropriate dataset
-                            if (ds != null)
-                            {
-                                gvAvailable.DataSource = ds; //assign as datasource
-                                gvAvailable.DataBind(); //databind it to gridview
-                                if (ds.Tables[0].Rows.Count > 0)
-                                {
 
-                                    btnAdd.Enabled = true;
-                                }
-                                else
-                                {noSearchResults();}
-                            }
-                            else
-                            {noSearchResults();}
                             break;
                     }
                 }
             }
             else
             {
-                ViewState["method"] = "default";
+                this.PageTemplateASCX.viewState = "default";
             }
         }
-        protected void btnAdd_Click(object sender, EventArgs e)
+
+        private void add(object sender, System.EventArgs e)
         {
-            reset();
+            //((GridView)this.PageTemplateASCX.gridview).DataBind();
+            this.PageTemplateASCX.reset();
+            //((GridView)this.PageTemplateASCX.gridview).DataSource = ViewState["dataSource"];
+            //((GridView)this.PageTemplateASCX.gridview).DataBind();
+
             int selectedCount = 0; //count number selected
-            for (int i = 0; i < gvAvailable.Rows.Count; i++) //count
+            for (int i = 0; i < ((GridView)this.PageTemplateASCX.gridview).Rows.Count; i++) //count
             {
-                CheckBox selected = (CheckBox)gvAvailable.Rows[i].FindControl("chkSelect");
+                CheckBox selected = (CheckBox)((GridView)this.PageTemplateASCX.gridview).Rows[i].FindControl("chkSelect");
                 if (selected.Checked) { selectedCount++; } //if selected, increment counter
             }
             if (selectedCount == 0) //if none selected
             {
-                failedAdd.Style["display"] = "block";
+                this.PageTemplateASCX.failedAddResults();
             }
             else //if at least one selected
             {
                 //reloop through gridview
-                for (int j = 0; j < gvAvailable.Rows.Count; j++)
+                for (int j = 0; j < ((GridView)this.PageTemplateASCX.gridview).Rows.Count; j++)
                 {
                     //if the select box is checked..
-                    CheckBox selected = (CheckBox)gvAvailable.Rows[j].FindControl("chkSelect");
+                    CheckBox selected = (CheckBox)((GridView)this.PageTemplateASCX.gridview).Rows[j].FindControl("chkSelect");
                     if (selected.Checked == true)
                     {
                         //create a new object
@@ -188,148 +356,28 @@ namespace TravelSite
                         newExp.Agency_id = 1;
 
                         //if a vacation package exists
-                        if (VacationPackage.getCustomerPackage(objCookie.Values["LoginID"].ToString()) == null)
+                        if (VacationPackage.getCustomerPackage(this.PageTemplateASCX.objCookie.Values["LoginID"].ToString()) == null)
                         {
-                            myPackage = new VacationPackage(); //if not, create a new one
+                            this.PageTemplateASCX.myPackage = new VacationPackage(); //if not, create a new one
                         }
                         else
                         {
                             //if yes, retrieve the package
-                            myPackage = VacationPackage.getCustomerPackage(objCookie.Values["LoginID"].ToString());
+                            this.PageTemplateASCX.myPackage = VacationPackage.getCustomerPackage(this.PageTemplateASCX.objCookie.Values["LoginID"].ToString());
                         }
                         //finally, add the new object to the vacation package's appropriate list
-                        myPackage.experienceArray.Add(newExp);
+                        this.PageTemplateASCX.myPackage.experienceArray.Add(newExp);
                     }
                 }
                 //update the vacation package in the database
-                VacationPackage.updatePackage(objCookie.Values["LoginID"].ToString(), myPackage);
-                successfulAdd.Style["display"] = "block";
+                VacationPackage.updatePackage(this.PageTemplateASCX.objCookie.Values["LoginID"].ToString(), this.PageTemplateASCX.myPackage);
+                this.PageTemplateASCX.successfulAddResults();
             }
 
         }
-
-        //---------------------------------------------------------------------------------------------------------------------
-        //PRIVATE METHODS -----------------------------------------------------------------------------------------------------
-
-        private Boolean validateRequirements()
+        protected void UserControl_ButtonClick(object sender, EventArgs e)
         {
-            Boolean valid = true;
-            if (txtCity.Text == "")
-            {
-                valid = false;
-                valCity.Style["display"] = "inline";
-                failedSearch.Style["display"] = "block";
-            }
-            if (txtState.Text == "")
-            {
-                valid = false;
-                valState.Style["display"] = "inline";
-                failedSearch.Style["display"] = "block";
-            }
-            return valid;
+            //handle the event 
         }
-
-        private Boolean validateAgency()
-        {
-            Boolean valid = true;
-            if (txtAgencyID.Text == "")
-            {
-                failedSearch.Style["display"] = "block";
-                valAgencyID.Style["display"] = "inline";
-                valid = false;
-            }
-            else if (txtAgencyID.Text != "")
-            {
-                try
-                {
-                    int convertedID = Convert.ToInt32(txtAgencyID.Text);
-                }
-                catch (FormatException e)
-                {
-                    valid = false;
-                }
-            }
-            return valid;
-        }
-        private void reset() //resets error and validation messages
-        {
-            //reset error messagess
-            failedAdd.Style["display"] = "none";
-            successfulAdd.Style["display"] = "none";
-            failedSearch.Style["display"] = "none";
-            noResults.Style["display"] = "none";
-            //reset validation
-            valCity.Style["display"] = "none";
-            valState.Style["display"] = "none";
-            valAgencyID.Style["display"] = "none";
-            valActivityType.Style["display"] = "none";
-        }
-
-        private void resetSearch() //resets search section visibility
-        {
-            searchDefault.Style["display"] = "none";
-            searchAgency.Style["display"] = "none";
-            searchActivity.Style["display"] = "none";
-            searchAgencyAndActivity.Style["display"] = "none";
-            searchVenue.Style["display"] = "none";
-        }
-
-        //-------------------------------------------------------------------------------------------------------------
-        //SPECIFIES WEB METHOD IN VIEW STATE OBJECT DEPENDING ON SEARCH TAB THAT WAS CLICKED
-        protected void displayDefault(object Source, EventArgs e) //search for agencies
-        {
-            resetSearch();
-            buttonSection.Style["visibility"] = "visible";
-            ViewState["method"] = "default";
-            searchDefault.Style["display"] = "block";
-            introSection.Style["display"] = "none";
-        }
-
-        protected void displayAgency(object Source, EventArgs e) //search by agencies
-        {
-
-            ViewState["method"] = "byAgency";
-            resetSearch();
-            buttonSection.Style["visibility"] = "visible";
-            searchDefault.Style["display"] = "block";
-            searchAgency.Style["display"] = "block";
-            introSection.Style["display"] = "none";
-        }
-
-        protected void displayActivity(object Source, EventArgs e) //search by activity
-        {
-            ViewState["method"] = "byActivity";
-            resetSearch();
-            buttonSection.Style["visibility"] = "visible";
-            searchDefault.Style["display"] = "block";
-            searchActivity.Style["display"] = "block";
-            introSection.Style["display"] = "none";
-        }
-
-        protected void displayAgencyAndActivity(object Source, EventArgs e) //search by agency and activity
-        {
-            ViewState["method"] = "byAgencyAndActivity";
-            resetSearch();
-            buttonSection.Style["visibility"] = "visible";
-            searchDefault.Style["display"] = "block";
-            searchAgencyAndActivity.Style["display"] = "block";
-            introSection.Style["display"] = "none";
-        }
-
-        protected void displayVenue(object Source, EventArgs e) //search by venue
-        {
-            ViewState["method"] = "byVenue";
-            resetSearch();
-            buttonSection.Style["visibility"] = "visible";
-            searchDefault.Style["display"] = "block";
-            searchVenue.Style["display"] = "block";
-            introSection.Style["display"] = "none";
-        }
-
-        protected void noSearchResults()
-        {
-
-        }
-
     }
 }

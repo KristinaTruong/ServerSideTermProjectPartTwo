@@ -114,6 +114,7 @@
                             <br />
                             <asp:TextBox ID="txtbox5" runat="server"></asp:TextBox><div id="valtxtbox5" style="display: none; color: red;" runat="server">*Required</div>
                         </div>
+                        <div class="col"></div>
                     </div>
                 </div>
             </div>
@@ -141,6 +142,8 @@
                                 <br />
                                 <asp:TextBox ID="txtbox8" runat="server"></asp:TextBox><div id="valtxtbox8" style="display: none; color: red;" runat="server">*Required</div>
                             </div>
+                        <div class="col"></div>
+
                     </div>
                 </div>
             </div>
@@ -167,6 +170,8 @@
                                 <br />
                                 <asp:TextBox ID="txtbox11" runat="server"></asp:TextBox><div id="valtxtbox11" style="display: none; color: red;" runat="server">*Required</div>
                             </div>
+                        <div class="col"></div>
+
                         </div>
 
 
@@ -195,6 +200,8 @@
                             <br />
                             <asp:TextBox ID="txtbox14" runat="server"></asp:TextBox><div id="valtxtbox14" style="display: none; color: red;" runat="server">*Required</div>
                         </div>
+                        <div class="col"></div>
+
                     </div>
                 </div>
             </div>
