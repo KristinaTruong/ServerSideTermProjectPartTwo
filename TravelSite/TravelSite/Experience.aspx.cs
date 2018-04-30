@@ -227,7 +227,7 @@ namespace TravelSite
                                 //this.PageTemplateASCX.ds = null;
 
                                 //CHANGE THIS-----------------------------------------------------------------------------------------FILL
-                                this.PageTemplateASCX.ds = pxy.FindActivities(venue,activity, ((TextBox)this.PageTemplateASCX.cityCritbox).Text, ((TextBox)this.PageTemplateASCX.stateCritbox).Text); //get appropriate dataset
+                                this.PageTemplateASCX.ds = pxy.FindActivities(venue, activity, ((TextBox)this.PageTemplateASCX.cityCritbox).Text, ((TextBox)this.PageTemplateASCX.stateCritbox).Text); //get appropriate dataset
                                 //ViewState["dataSource"] = this.PageTemplateASCX.ds;
                                 if (this.PageTemplateASCX.ds != null)
                                 {
@@ -275,7 +275,7 @@ namespace TravelSite
                                 agency.agenciesName = ((TextBox)this.PageTemplateASCX.txtbox13control).Text;
 
                                 //CHANGE THIS-----------------------------------------------------------------------------------------FILL
-                                this.PageTemplateASCX.ds = pxy.FindActivities(agency,activity, ((TextBox)this.PageTemplateASCX.cityCritbox).Text, ((TextBox)this.PageTemplateASCX.stateCritbox).Text); //get appropriate dataset
+                                this.PageTemplateASCX.ds = pxy.FindActivities(agency, activity, ((TextBox)this.PageTemplateASCX.cityCritbox).Text, ((TextBox)this.PageTemplateASCX.stateCritbox).Text); //get appropriate dataset
 
                                 if (this.PageTemplateASCX.ds != null)
                                 {
