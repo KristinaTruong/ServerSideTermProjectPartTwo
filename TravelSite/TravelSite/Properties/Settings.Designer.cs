@@ -55,5 +55,16 @@ namespace TravelSite.Properties {
                 return ((string)(this["TravelSite_ExperienceWebService2_ActivitiesService"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://cis-iis2.temple.edu/Spring2018/CIS3342_tue92295/TermProjectWS/HotelService" +
+            ".asmx")]
+        public string TravelSite_HotelWebService_HotelService {
+            get {
+                return ((string)(this["TravelSite_HotelWebService_HotelService"]));
+            }
+        }
     }
 }

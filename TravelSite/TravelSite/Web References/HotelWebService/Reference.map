@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://cis-iis2.temple.edu/Spring2018/CIS3342_tue92295/TermProjectWS/HotelService.asmx?disco" filename="HotelService.disco" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://cis-iis2.temple.edu/Spring2018/CIS3342_tue92295/TermProjectWS/HotelService.asmx?wsdl" filename="HotelService.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>

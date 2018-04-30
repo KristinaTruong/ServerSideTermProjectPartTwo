@@ -115,7 +115,14 @@
     <None Include="Web References\ExperienceWebService2\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+
+    </Content>
+    <None Include="Web References\HotelWebService\HotelService.wsdl" />
+    <Content Include="Web References\HotelWebService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -125,7 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\CarWebService\RentalCarService.disco" />
+
     <None Include="Web References\ExperienceWebService2\ActivitiesService.disco" />
+    <None Include="Web References\HotelWebService\HotelService.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -276,6 +285,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\HotelWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TravelSiteLibrary\TravelSiteLibrary.csproj">
@@ -294,6 +308,17 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <WebReferenceUrl Include="http://cis-iis2.temple.edu/Spring2018/CIS3342_tue92295/TermProjectWS/HotelService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\HotelWebService\</RelPath>
+      <UpdateFromURL>http://cis-iis2.temple.edu/Spring2018/CIS3342_tue92295/TermProjectWS/HotelService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>TravelSite_HotelWebService_HotelService</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://cis-iis2.temple.edu/Spring2018/CIS3342_tuf45882/TermProjectWS/CarService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\CarWebService2\</RelPath>
