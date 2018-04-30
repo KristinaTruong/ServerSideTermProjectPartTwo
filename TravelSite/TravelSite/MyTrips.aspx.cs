@@ -47,7 +47,7 @@ namespace TravelSite
 
         protected void btnSeeMore_Click(object sender, EventArgs e)
         {
-            VacationPackage.getTripInfo(Convert.ToInt32(gvHotel.SelectedRow.Cells[0].Text));
+            VacationPackage.getTripInfo(Convert.ToInt32(gvHotel.SelectedRow.Cells[1].Text));
 
         }
     }

@@ -32,7 +32,7 @@ namespace TravelSiteLibrary
 
         private String SiteID;
         private String SitePassword;
-
+        public Boolean reserved;
 
         public ExperienceClass()
         {
@@ -42,6 +42,7 @@ namespace TravelSiteLibrary
             customer = new Customer();*/
             SiteID = "";
             SitePassword = "";
+            reserved = false;
         }
 
         public ExperienceClass(int agencyID, String agencyName, int activityID, decimal activityCost
@@ -55,6 +56,7 @@ namespace TravelSiteLibrary
             //ADD CUSTOMER ATTRIBUTES
             SiteID = "";
             SitePassword = "";
+            reserved = false;
         }
     }
 }

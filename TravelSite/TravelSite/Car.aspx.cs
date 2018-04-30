@@ -26,7 +26,7 @@ namespace TravelSite
                 if (loggedIn)
                 {
 
-                    this.PageTemplateASCX.title = "Explore Activities";
+                    this.PageTemplateASCX.title = "Car Rentals";
                     this.PageTemplateASCX.navDefaultHeading = "Get Rental Car Agencies";
 
                     //search sections
@@ -76,17 +76,18 @@ namespace TravelSite
 
 
                 }
-                myaddButton = (Button)this.PageTemplateASCX.addButton;
-                mysearchButton = (Button)this.PageTemplateASCX.searchButton;
-                this.PageTemplateASCX.searchButtonClick += new EventHandler(search);
-                this.PageTemplateASCX.addButtonClick += new EventHandler(add);
-                //ViewState["dataSource"] = this.PageTemplateASCX.ds;
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
+               
             }
-            else
-            {
-                Response.Redirect("Login.aspx");
-            }
-
+            
+            myaddButton = (Button)this.PageTemplateASCX.addButton;
+            mysearchButton = (Button)this.PageTemplateASCX.searchButton;
+            this.PageTemplateASCX.searchButtonClick += new EventHandler(search);
+            this.PageTemplateASCX.addButtonClick += new EventHandler(add);
+            //ViewState["dataSource"] = this.PageTemplateASCX.ds;
         }
 
         //search button event - added to the control
