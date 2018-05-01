@@ -11,5 +11,6 @@ namespace TravelSiteLibrary
     {
         public Boolean reserved;
 
+
     }
 }

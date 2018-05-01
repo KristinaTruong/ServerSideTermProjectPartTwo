@@ -275,7 +275,9 @@ namespace TravelSite
                     if (selected.Checked == true)
                     {
                         //create a new object
-                        ExperienceClass newExp = new ExperienceClass();
+                        HotelClass newHot = new HotelClass();
+                        newHot.ID = 1;
+
                         //initialize its properities to the record's values that was chosen
                         //newExp.Agency_id = 1;
 
@@ -290,7 +292,7 @@ namespace TravelSite
                             this.PageTemplateASCX.myPackage = VacationPackage.getCustomerPackage(this.PageTemplateASCX.objCookie.Values["LoginID"].ToString());
                         }
                         //finally, add the new object to the vacation package's appropriate list
-                        this.PageTemplateASCX.myPackage.experienceArray.Add(newExp);
+                        this.PageTemplateASCX.myPackage.hotelArray.Add(newHot);
                     }
                 }
                 //update the vacation package in the database
@@ -305,4 +307,3 @@ namespace TravelSite
         }
     }
 }
-    
