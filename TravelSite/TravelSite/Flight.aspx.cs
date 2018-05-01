@@ -292,7 +292,7 @@ namespace TravelSite
                         //FlightWebService.FlightClass newFli = new FlightWebService.FlightClass();
                         TravelSiteLibrary.FlightClass newFli = new TravelSiteLibrary.FlightClass();
                         //initialize its properities to the record's values that was chosen
-                        newFli.AirCarrierID = 1;
+                        //newFli.AirCarrierID = 1;
 
                         //if a vacation package exists
                         if (VacationPackage.getCustomerPackage(this.PageTemplateASCX.objCookie.Values["LoginID"].ToString()) == null)
